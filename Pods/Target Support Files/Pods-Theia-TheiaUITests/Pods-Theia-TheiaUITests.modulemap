@@ -1,0 +1,6 @@
+framework module Pods_Theia_TheiaUITests {
+  umbrella header "Pods-Theia-TheiaUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1DB18ACA7881C0C57FBDD9C0 /* Pods_Theia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B863B79F4931C318BF5D9998 /* Pods_Theia.framework */; };
+		761019B55B7E724A764A4F76 /* Pods_Theia_TheiaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 129227D94C7A8083E133E9F3 /* Pods_Theia_TheiaUITests.framework */; };
+		A40D210BE9653CF21B25701C /* Pods_TheiaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE64D5FAC4B2420CEE6CA40 /* Pods_TheiaTests.framework */; };
 		E531D1182808170600E735BA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E531D1172808170600E735BA /* AppDelegate.m */; };
 		E531D11B2808170600E735BA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E531D11A2808170600E735BA /* ViewController.m */; };
 		E531D11E2808170600E735BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E531D11C2808170600E735BA /* Main.storyboard */; };
@@ -36,6 +39,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		129227D94C7A8083E133E9F3 /* Pods_Theia_TheiaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Theia_TheiaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		167D0CC0183637707F20B556 /* Pods-TheiaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheiaTests.release.xcconfig"; path = "Target Support Files/Pods-TheiaTests/Pods-TheiaTests.release.xcconfig"; sourceTree = "<group>"; };
+		4766014813E6C30FD18350D7 /* Pods-Theia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Theia.release.xcconfig"; path = "Target Support Files/Pods-Theia/Pods-Theia.release.xcconfig"; sourceTree = "<group>"; };
+		B863B79F4931C318BF5D9998 /* Pods_Theia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Theia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF9E074849A7A8C077DAB26B /* Pods-Theia-TheiaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Theia-TheiaUITests.release.xcconfig"; path = "Target Support Files/Pods-Theia-TheiaUITests/Pods-Theia-TheiaUITests.release.xcconfig"; sourceTree = "<group>"; };
+		C9CA2D75F22FD885DA5F9DFE /* Pods-Theia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Theia.debug.xcconfig"; path = "Target Support Files/Pods-Theia/Pods-Theia.debug.xcconfig"; sourceTree = "<group>"; };
+		E2FE558D0F183B70C3DECA8E /* Pods-Theia-TheiaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Theia-TheiaUITests.debug.xcconfig"; path = "Target Support Files/Pods-Theia-TheiaUITests/Pods-Theia-TheiaUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E531D1132808170600E735BA /* Theia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Theia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E531D1162808170600E735BA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E531D1172808170600E735BA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -50,6 +60,8 @@
 		E531D1342808170800E735BA /* TheiaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheiaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E531D1382808170800E735BA /* TheiaUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TheiaUITests.m; sourceTree = "<group>"; };
 		E531D13A2808170800E735BA /* TheiaUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TheiaUITestsLaunchTests.m; sourceTree = "<group>"; };
+		E8CB08A3DE9B0CC9A662AD75 /* Pods-TheiaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheiaTests.debug.xcconfig"; path = "Target Support Files/Pods-TheiaTests/Pods-TheiaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FBE64D5FAC4B2420CEE6CA40 /* Pods_TheiaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheiaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DB18ACA7881C0C57FBDD9C0 /* Pods_Theia.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A40D210BE9653CF21B25701C /* Pods_TheiaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,12 +85,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				761019B55B7E724A764A4F76 /* Pods_Theia_TheiaUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15BF81776B0F5AC39684C188 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B863B79F4931C318BF5D9998 /* Pods_Theia.framework */,
+				129227D94C7A8083E133E9F3 /* Pods_Theia_TheiaUITests.framework */,
+				FBE64D5FAC4B2420CEE6CA40 /* Pods_TheiaTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B920E6522E844B4AB3EB8F45 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C9CA2D75F22FD885DA5F9DFE /* Pods-Theia.debug.xcconfig */,
+				4766014813E6C30FD18350D7 /* Pods-Theia.release.xcconfig */,
+				E2FE558D0F183B70C3DECA8E /* Pods-Theia-TheiaUITests.debug.xcconfig */,
+				BF9E074849A7A8C077DAB26B /* Pods-Theia-TheiaUITests.release.xcconfig */,
+				E8CB08A3DE9B0CC9A662AD75 /* Pods-TheiaTests.debug.xcconfig */,
+				167D0CC0183637707F20B556 /* Pods-TheiaTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		E531D10A2808170500E735BA = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +123,8 @@
 				E531D12D2808170800E735BA /* TheiaTests */,
 				E531D1372808170800E735BA /* TheiaUITests */,
 				E531D1142808170600E735BA /* Products */,
+				B920E6522E844B4AB3EB8F45 /* Pods */,
+				15BF81776B0F5AC39684C188 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -136,6 +177,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E531D13E2808170800E735BA /* Build configuration list for PBXNativeTarget "Theia" */;
 			buildPhases = (
+				45EC467CD9EA94C9BCF289B8 /* [CP] Check Pods Manifest.lock */,
 				E531D10F2808170500E735BA /* Sources */,
 				E531D1102808170500E735BA /* Frameworks */,
 				E531D1112808170500E735BA /* Resources */,
@@ -153,6 +195,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E531D1412808170800E735BA /* Build configuration list for PBXNativeTarget "TheiaTests" */;
 			buildPhases = (
+				A3970507E15DBAADE52071B9 /* [CP] Check Pods Manifest.lock */,
 				E531D1262808170800E735BA /* Sources */,
 				E531D1272808170800E735BA /* Frameworks */,
 				E531D1282808170800E735BA /* Resources */,
@@ -171,6 +214,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E531D1442808170800E735BA /* Build configuration list for PBXNativeTarget "TheiaUITests" */;
 			buildPhases = (
+				EDBE39E4AEABCC34AFA42BE3 /* [CP] Check Pods Manifest.lock */,
 				E531D1302808170800E735BA /* Sources */,
 				E531D1312808170800E735BA /* Frameworks */,
 				E531D1322808170800E735BA /* Resources */,
@@ -253,6 +297,75 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		45EC467CD9EA94C9BCF289B8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Theia-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A3970507E15DBAADE52071B9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TheiaTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EDBE39E4AEABCC34AFA42BE3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Theia-TheiaUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E531D10F2808170500E735BA /* Sources */ = {
@@ -431,6 +544,7 @@
 		};
 		E531D13F2808170800E735BA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9CA2D75F22FD885DA5F9DFE /* Pods-Theia.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -455,6 +569,7 @@
 		};
 		E531D1402808170800E735BA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4766014813E6C30FD18350D7 /* Pods-Theia.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -479,6 +594,7 @@
 		};
 		E531D1422808170800E735BA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8CB08A3DE9B0CC9A662AD75 /* Pods-TheiaTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -502,6 +618,7 @@
 		};
 		E531D1432808170800E735BA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 167D0CC0183637707F20B556 /* Pods-TheiaTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -525,6 +642,7 @@
 		};
 		E531D1452808170800E735BA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2FE558D0F183B70C3DECA8E /* Pods-Theia-TheiaUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -546,6 +664,7 @@
 		};
 		E531D1462808170800E735BA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF9E074849A7A8C077DAB26B /* Pods-Theia-TheiaUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

@@ -1,0 +1,749 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		004469E0E87204DD853398B3C757FD9D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE704B3F7EFE27740FC25A5CE60A6651 /* Foundation.framework */; };
+		0517D2F2E6BC1FACB7599BB4BD884E3D /* Pods-Theia-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9173C7785423FFA16DF69481BA047608 /* Pods-Theia-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1BBD1ABDA6A1F2209109A507C5E4C3E8 /* Pods-Theia-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5DCCB0AB7E5133C683D2757BF6E43B /* Pods-Theia-dummy.m */; };
+		A0D548AE87C5B1BDDD50EEE3B8995410 /* Pods-TheiaTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9250A76A455AA5A4B4CA978E32BB750A /* Pods-TheiaTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AF6913BDB0CA08869A4D46AC2FDFC22D /* Pods-Theia-TheiaUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B200FCC7D905DD2C11D1778D573EBF31 /* Pods-Theia-TheiaUITests-dummy.m */; };
+		CC7BA6D02CD2517D36E6FA30D0B9CCFC /* Pods-TheiaTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FD5E9758416DBC481DDF8881816F4EA3 /* Pods-TheiaTests-dummy.m */; };
+		E49B3C6F3820D9D3F40AFC2CE3CCDC84 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE704B3F7EFE27740FC25A5CE60A6651 /* Foundation.framework */; };
+		FDB7EA47967C216C6D727DF4ECCF4A0E /* Pods-Theia-TheiaUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BA60B3FA6B5950ABBF6529625DF63DB6 /* Pods-Theia-TheiaUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FDCB9BE2302F006E47858C59D78F6761 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE704B3F7EFE27740FC25A5CE60A6651 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		73E4E61114AEA97E6F76FFE474FA43C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 87793D948C9CCB63AA4E9E743A9B6A03;
+			remoteInfo = "Pods-Theia";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		02053170ECAF3974DA4457EEE72E0587 /* Pods-TheiaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TheiaTests.release.xcconfig"; sourceTree = "<group>"; };
+		0E550E48A5D15124A0A623752D401117 /* Pods-TheiaTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-TheiaTests.modulemap"; sourceTree = "<group>"; };
+		4D5218DED717D905843EF9FB8E93ACE9 /* Pods-TheiaTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TheiaTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		4EFB37FAB4E286521349672EFE2E9CA8 /* Pods-Theia-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Theia-acknowledgements.plist"; sourceTree = "<group>"; };
+		5D650A5E61E8AE1456DEFD9A4B904050 /* Pods-Theia-TheiaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Theia-TheiaUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5FAE74BE79768B3758842A87D7B09436 /* Pods-Theia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Theia.release.xcconfig"; sourceTree = "<group>"; };
+		666BB8C9C3FB6FC75863F9C4AEF44F0B /* Pods-Theia */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Theia"; path = Pods_Theia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		72E6C933870C1D2EBBB6B805D3E11BC0 /* Pods-TheiaTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TheiaTests-Info.plist"; sourceTree = "<group>"; };
+		76F7752A72C4F973ECDD8D8913F82AF8 /* Pods-Theia-TheiaUITests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Theia-TheiaUITests"; path = Pods_Theia_TheiaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9173C7785423FFA16DF69481BA047608 /* Pods-Theia-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Theia-umbrella.h"; sourceTree = "<group>"; };
+		9250A76A455AA5A4B4CA978E32BB750A /* Pods-TheiaTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TheiaTests-umbrella.h"; sourceTree = "<group>"; };
+		9BA625FBA0DBC37BD88965C4C3753344 /* Pods-Theia-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Theia-acknowledgements.markdown"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A4F87F8D4E8830EB3F381F9ED6040D2A /* Pods-Theia-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Theia-Info.plist"; sourceTree = "<group>"; };
+		AE704B3F7EFE27740FC25A5CE60A6651 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		AF1BF3B67F636274546EFAC4246904B5 /* Pods-Theia-TheiaUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Theia-TheiaUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		B200FCC7D905DD2C11D1778D573EBF31 /* Pods-Theia-TheiaUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Theia-TheiaUITests-dummy.m"; sourceTree = "<group>"; };
+		B44D50E2C0510EE0C75A08DE1C85E028 /* Pods-TheiaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TheiaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BA60B3FA6B5950ABBF6529625DF63DB6 /* Pods-Theia-TheiaUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Theia-TheiaUITests-umbrella.h"; sourceTree = "<group>"; };
+		BB384C32E83A820A133C59B9639DC520 /* Pods-Theia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Theia.debug.xcconfig"; sourceTree = "<group>"; };
+		BB5DCCB0AB7E5133C683D2757BF6E43B /* Pods-Theia-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Theia-dummy.m"; sourceTree = "<group>"; };
+		C4EFB30891DFAC6D5CAF9A7119263D70 /* Pods-Theia-TheiaUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Theia-TheiaUITests-Info.plist"; sourceTree = "<group>"; };
+		CA06BB8F467EED073DE6232D377CBF4D /* Pods-TheiaTests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-TheiaTests"; path = Pods_TheiaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0760FA5290F5B7B08D5EC0439F007C6 /* Pods-Theia-TheiaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Theia-TheiaUITests.release.xcconfig"; sourceTree = "<group>"; };
+		F04572E1219AE9D198DBC442FBD16712 /* Pods-Theia-TheiaUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Theia-TheiaUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		F58381D0E71C54F3F0522BB81F8A6525 /* Pods-Theia-TheiaUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Theia-TheiaUITests.modulemap"; sourceTree = "<group>"; };
+		F7CCE40313FB07393E91928AE80C7ACC /* Pods-TheiaTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TheiaTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		F878A7CDDDE549B4859CDD2A2DD3A3BA /* Pods-Theia.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Theia.modulemap"; sourceTree = "<group>"; };
+		FD5E9758416DBC481DDF8881816F4EA3 /* Pods-TheiaTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TheiaTests-dummy.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		28A8C695A59A70DF4C444A848159EC66 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				004469E0E87204DD853398B3C757FD9D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3E963EEE646B2298E02C93DC0743B39A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDCB9BE2302F006E47858C59D78F6761 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB1AC28F891058AD471AB070207CD1A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E49B3C6F3820D9D3F40AFC2CE3CCDC84 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		129FF2C6DA9146C132B84C2AB280DE94 /* Pods-Theia */ = {
+			isa = PBXGroup;
+			children = (
+				F878A7CDDDE549B4859CDD2A2DD3A3BA /* Pods-Theia.modulemap */,
+				9BA625FBA0DBC37BD88965C4C3753344 /* Pods-Theia-acknowledgements.markdown */,
+				4EFB37FAB4E286521349672EFE2E9CA8 /* Pods-Theia-acknowledgements.plist */,
+				BB5DCCB0AB7E5133C683D2757BF6E43B /* Pods-Theia-dummy.m */,
+				A4F87F8D4E8830EB3F381F9ED6040D2A /* Pods-Theia-Info.plist */,
+				9173C7785423FFA16DF69481BA047608 /* Pods-Theia-umbrella.h */,
+				BB384C32E83A820A133C59B9639DC520 /* Pods-Theia.debug.xcconfig */,
+				5FAE74BE79768B3758842A87D7B09436 /* Pods-Theia.release.xcconfig */,
+			);
+			name = "Pods-Theia";
+			path = "Target Support Files/Pods-Theia";
+			sourceTree = "<group>";
+		};
+		1F9FCB3618DC551B524D67B669081319 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DCADEF5968BA4BD0936606315FB57A49 /* tvOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		46B119088B440315E8A6D030D1362FC2 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				129FF2C6DA9146C132B84C2AB280DE94 /* Pods-Theia */,
+				688EA8E10206EFF29C3218B5ED240626 /* Pods-Theia-TheiaUITests */,
+				A73D9D4BA25A68FF6F5AD58190B1FC43 /* Pods-TheiaTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		688EA8E10206EFF29C3218B5ED240626 /* Pods-Theia-TheiaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F58381D0E71C54F3F0522BB81F8A6525 /* Pods-Theia-TheiaUITests.modulemap */,
+				AF1BF3B67F636274546EFAC4246904B5 /* Pods-Theia-TheiaUITests-acknowledgements.markdown */,
+				F04572E1219AE9D198DBC442FBD16712 /* Pods-Theia-TheiaUITests-acknowledgements.plist */,
+				B200FCC7D905DD2C11D1778D573EBF31 /* Pods-Theia-TheiaUITests-dummy.m */,
+				C4EFB30891DFAC6D5CAF9A7119263D70 /* Pods-Theia-TheiaUITests-Info.plist */,
+				BA60B3FA6B5950ABBF6529625DF63DB6 /* Pods-Theia-TheiaUITests-umbrella.h */,
+				5D650A5E61E8AE1456DEFD9A4B904050 /* Pods-Theia-TheiaUITests.debug.xcconfig */,
+				D0760FA5290F5B7B08D5EC0439F007C6 /* Pods-Theia-TheiaUITests.release.xcconfig */,
+			);
+			name = "Pods-Theia-TheiaUITests";
+			path = "Target Support Files/Pods-Theia-TheiaUITests";
+			sourceTree = "<group>";
+		};
+		A70D9A0EA208DFF922D3DFC23FC736B0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				666BB8C9C3FB6FC75863F9C4AEF44F0B /* Pods-Theia */,
+				76F7752A72C4F973ECDD8D8913F82AF8 /* Pods-Theia-TheiaUITests */,
+				CA06BB8F467EED073DE6232D377CBF4D /* Pods-TheiaTests */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A73D9D4BA25A68FF6F5AD58190B1FC43 /* Pods-TheiaTests */ = {
+			isa = PBXGroup;
+			children = (
+				0E550E48A5D15124A0A623752D401117 /* Pods-TheiaTests.modulemap */,
+				F7CCE40313FB07393E91928AE80C7ACC /* Pods-TheiaTests-acknowledgements.markdown */,
+				4D5218DED717D905843EF9FB8E93ACE9 /* Pods-TheiaTests-acknowledgements.plist */,
+				FD5E9758416DBC481DDF8881816F4EA3 /* Pods-TheiaTests-dummy.m */,
+				72E6C933870C1D2EBBB6B805D3E11BC0 /* Pods-TheiaTests-Info.plist */,
+				9250A76A455AA5A4B4CA978E32BB750A /* Pods-TheiaTests-umbrella.h */,
+				B44D50E2C0510EE0C75A08DE1C85E028 /* Pods-TheiaTests.debug.xcconfig */,
+				02053170ECAF3974DA4457EEE72E0587 /* Pods-TheiaTests.release.xcconfig */,
+			);
+			name = "Pods-TheiaTests";
+			path = "Target Support Files/Pods-TheiaTests";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				1F9FCB3618DC551B524D67B669081319 /* Frameworks */,
+				A70D9A0EA208DFF922D3DFC23FC736B0 /* Products */,
+				46B119088B440315E8A6D030D1362FC2 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		DCADEF5968BA4BD0936606315FB57A49 /* tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				AE704B3F7EFE27740FC25A5CE60A6651 /* Foundation.framework */,
+			);
+			name = tvOS;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		5952BB36EF0186E11BD3AEA934DD2D08 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0D548AE87C5B1BDDD50EEE3B8995410 /* Pods-TheiaTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7780A8660D4D4B947ED8CEB9D432BAAC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0517D2F2E6BC1FACB7599BB4BD884E3D /* Pods-Theia-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E84F1B47BD07B3D826B102363D206BCF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDB7EA47967C216C6D727DF4ECCF4A0E /* Pods-Theia-TheiaUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		5EAAFB919A628C73FEDBD25DB589E5BB /* Pods-TheiaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C7424FA4AA823D55C33776706295D1EE /* Build configuration list for PBXNativeTarget "Pods-TheiaTests" */;
+			buildPhases = (
+				5952BB36EF0186E11BD3AEA934DD2D08 /* Headers */,
+				7B09FBF45AE6FCB09603985C01033C1F /* Sources */,
+				28A8C695A59A70DF4C444A848159EC66 /* Frameworks */,
+				ABDD8B64663D726FB03496D950C82892 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A16402F802A91B128BFC768750CC501F /* PBXTargetDependency */,
+			);
+			name = "Pods-TheiaTests";
+			productName = Pods_TheiaTests;
+			productReference = CA06BB8F467EED073DE6232D377CBF4D /* Pods-TheiaTests */;
+			productType = "com.apple.product-type.framework";
+		};
+		87793D948C9CCB63AA4E9E743A9B6A03 /* Pods-Theia */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14DB4AD34B0AAEAD9C1017F57871EB0D /* Build configuration list for PBXNativeTarget "Pods-Theia" */;
+			buildPhases = (
+				7780A8660D4D4B947ED8CEB9D432BAAC /* Headers */,
+				DC45CB35202D2850B58BC5349B76EE19 /* Sources */,
+				3E963EEE646B2298E02C93DC0743B39A /* Frameworks */,
+				1DD20793447D49C6C07546B2DB4283B0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-Theia";
+			productName = Pods_Theia;
+			productReference = 666BB8C9C3FB6FC75863F9C4AEF44F0B /* Pods-Theia */;
+			productType = "com.apple.product-type.framework";
+		};
+		BBBCC8207494252D41BE6E2AE959A6F7 /* Pods-Theia-TheiaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D79E4CB4AF415CFB7A575CE6527ED92 /* Build configuration list for PBXNativeTarget "Pods-Theia-TheiaUITests" */;
+			buildPhases = (
+				E84F1B47BD07B3D826B102363D206BCF /* Headers */,
+				CD4C3F2B4297B0818BB03C3027F998E2 /* Sources */,
+				DB1AC28F891058AD471AB070207CD1A0 /* Frameworks */,
+				95E9EBEA2A5E2D2FAAD1E937900E71AD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-Theia-TheiaUITests";
+			productName = Pods_Theia_TheiaUITests;
+			productReference = 76F7752A72C4F973ECDD8D8913F82AF8 /* Pods-Theia-TheiaUITests */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = A70D9A0EA208DFF922D3DFC23FC736B0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				87793D948C9CCB63AA4E9E743A9B6A03 /* Pods-Theia */,
+				BBBCC8207494252D41BE6E2AE959A6F7 /* Pods-Theia-TheiaUITests */,
+				5EAAFB919A628C73FEDBD25DB589E5BB /* Pods-TheiaTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1DD20793447D49C6C07546B2DB4283B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95E9EBEA2A5E2D2FAAD1E937900E71AD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABDD8B64663D726FB03496D950C82892 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7B09FBF45AE6FCB09603985C01033C1F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC7BA6D02CD2517D36E6FA30D0B9CCFC /* Pods-TheiaTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD4C3F2B4297B0818BB03C3027F998E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF6913BDB0CA08869A4D46AC2FDFC22D /* Pods-Theia-TheiaUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DC45CB35202D2850B58BC5349B76EE19 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BBD1ABDA6A1F2209109A507C5E4C3E8 /* Pods-Theia-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A16402F802A91B128BFC768750CC501F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Theia";
+			target = 87793D948C9CCB63AA4E9E743A9B6A03 /* Pods-Theia */;
+			targetProxy = 73E4E61114AEA97E6F76FFE474FA43C5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0B44D26D7913D28A5277F9952544B1CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB384C32E83A820A133C59B9639DC520 /* Pods-Theia.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Theia/Pods-Theia-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Theia/Pods-Theia.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 15.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		327FD0992A5D0CA9C06211FA579758A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+				TVOS_DEPLOYMENT_TARGET = 15.0;
+			};
+			name = Debug;
+		};
+		5927C911C6C223B33294DF5DC1B5B082 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D650A5E61E8AE1456DEFD9A4B904050 /* Pods-Theia-TheiaUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Theia-TheiaUITests/Pods-Theia-TheiaUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Theia-TheiaUITests/Pods-Theia-TheiaUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 15.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		7D1158C362C9AA621EEC0B6F1DBF291D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B44D50E2C0510EE0C75A08DE1C85E028 /* Pods-TheiaTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-TheiaTests/Pods-TheiaTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-TheiaTests/Pods-TheiaTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 15.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		83146BA4A1AFF74168826AC5AF271EFB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02053170ECAF3974DA4457EEE72E0587 /* Pods-TheiaTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-TheiaTests/Pods-TheiaTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-TheiaTests/Pods-TheiaTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 15.0;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		DB23B62F6E7A52EF67F284E1180F61C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0760FA5290F5B7B08D5EC0439F007C6 /* Pods-Theia-TheiaUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Theia-TheiaUITests/Pods-Theia-TheiaUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Theia-TheiaUITests/Pods-Theia-TheiaUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 15.0;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E2E5DC71EEA3C7F03A3020D831B25C58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FAE74BE79768B3758842A87D7B09436 /* Pods-Theia.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Theia/Pods-Theia-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Theia/Pods-Theia.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 15.0;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E4EE50445F2B1DDBF425201F7A51A34F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+				TVOS_DEPLOYMENT_TARGET = 15.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		14DB4AD34B0AAEAD9C1017F57871EB0D /* Build configuration list for PBXNativeTarget "Pods-Theia" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0B44D26D7913D28A5277F9952544B1CE /* Debug */,
+				E2E5DC71EEA3C7F03A3020D831B25C58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				327FD0992A5D0CA9C06211FA579758A2 /* Debug */,
+				E4EE50445F2B1DDBF425201F7A51A34F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6D79E4CB4AF415CFB7A575CE6527ED92 /* Build configuration list for PBXNativeTarget "Pods-Theia-TheiaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5927C911C6C223B33294DF5DC1B5B082 /* Debug */,
+				DB23B62F6E7A52EF67F284E1180F61C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C7424FA4AA823D55C33776706295D1EE /* Build configuration list for PBXNativeTarget "Pods-TheiaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7D1158C362C9AA621EEC0B6F1DBF291D /* Debug */,
+				83146BA4A1AFF74168826AC5AF271EFB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
