@@ -13,6 +13,7 @@
 
 @implementation ViewController
 
+AVURLAsset *asset;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,11 +42,23 @@
 }
 
 - (void)playMedia:(NSURL *)url {
-    AVPlayer *player = [AVPlayer playerWithURL:url];
+    AVURLAsset *mediaAsset = [self retrieveMediaAsset:url];
+    AVPlayerItem *mediaItem = [[AVPlayerItem alloc] initWithAsset:mediaAsset];
+    AVPlayer *player = [[AVPlayer alloc] initWithPlayerItem:mediaItem];
     AVPlayerViewController *controller = [[AVPlayerViewController alloc] init];
     [self presentViewController: controller animated: YES completion: nil];
     controller.player = player;
     [player play];
+}
+
+- (AVURLAsset*)retrieveMediaAsset:(NSURL *)url {
+    if (!asset) {
+        NSLog(@"New asset!");
+        asset = [[AVURLAsset alloc] initWithURL:url options:nil];
+    } else {
+        NSLog(@"Already exists!");
+    }
+    return asset;
 }
 
 @end
