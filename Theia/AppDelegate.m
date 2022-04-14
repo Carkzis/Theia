@@ -16,6 +16,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    [audioSession setCategory:AVAudioSessionCategoryPlayback
+                         mode:AVAudioSessionModeMoviePlayback
+                      options:AVAudioSessionCategoryOptionInterruptSpokenAudioAndMixWithOthers
+                        error:nil];
     return YES;
 }
 

@@ -14,6 +14,9 @@
 @implementation ViewController
 
 AVURLAsset *asset;
+AVPlayer *player;
+AVPlayerViewController *controller;
+BOOL isMuted;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,30 +38,52 @@ AVURLAsset *asset;
 }
 
 - (void)playMovie:(UIButton *)playButton {
-    NSLog(@"The play button has been pressed!");
     NSURL *url = [[NSURL alloc]
                   initWithString:@"https://ia800300.us.archive.org/1/items/night_of_the_living_dead/night_of_the_living_dead_512kb.mp4"];
-    [self playMedia:url];
+    AVURLAsset *mediaAsset = [self retrieveMediaAsset:url];
+    [self playMedia:mediaAsset];
 }
 
-- (void)playMedia:(NSURL *)url {
-    AVURLAsset *mediaAsset = [self retrieveMediaAsset:url];
+- (void)playMedia:(AVURLAsset *)mediaAsset {
     AVPlayerItem *mediaItem = [[AVPlayerItem alloc] initWithAsset:mediaAsset];
-    AVPlayer *player = [[AVPlayer alloc] initWithPlayerItem:mediaItem];
-    AVPlayerViewController *controller = [[AVPlayerViewController alloc] init];
-    [self presentViewController: controller animated: YES completion: nil];
-    controller.player = player;
+    player = [[AVPlayer alloc] initWithPlayerItem:mediaItem];
+    [self setUpAVPlayerController];
+    [self setUpRemoteCommandCentre];
     [player play];
 }
 
 - (AVURLAsset*)retrieveMediaAsset:(NSURL *)url {
     if (!asset) {
-        NSLog(@"New asset!");
         asset = [[AVURLAsset alloc] initWithURL:url options:nil];
-    } else {
-        NSLog(@"Already exists!");
     }
     return asset;
+}
+
+- (void)muteToggle {
+    isMuted = !isMuted;
+    player.muted = isMuted;
+}
+
+- (void)setUpAVPlayerController {
+    controller = [[AVPlayerViewController alloc] init];
+    controller.player = player;
+    [self presentViewController: controller animated: YES completion: nil];
+}
+
+- (void)setUpRemoteCommandCentre {
+    // Gesture to handle play pause status.
+    // TODO: This needs to be a toggle.
+    UITapGestureRecognizer *playGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playCommand)];
+    playGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypePlayPause], [NSNumber numberWithInteger:UIPressTypeSelect]];
+    [[controller view] addGestureRecognizer:playGesture];
+    
+    MPRemoteCommandCenter *remoteCommandCentre = [MPRemoteCommandCenter sharedCommandCenter];
+    [[remoteCommandCentre playCommand]addTarget:self action:@selector(playCommand)];
+}
+
+- (MPRemoteCommandHandlerStatus)playCommand {
+    [player play];
+    return MPRemoteCommandHandlerStatusSuccess;
 }
 
 @end
