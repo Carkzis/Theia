@@ -17,6 +17,7 @@ AVURLAsset *asset;
 AVPlayer *player;
 AVPlayerViewController *controller;
 BOOL isMuted;
+BOOL isPlaying;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,6 +39,7 @@ BOOL isMuted;
 }
 
 - (void)playMovie:(UIButton *)playButton {
+    // TODO: This should have an option to use a provided URL.
     NSURL *url = [[NSURL alloc]
                   initWithString:@"https://ia800300.us.archive.org/1/items/night_of_the_living_dead/night_of_the_living_dead_512kb.mp4"];
     AVURLAsset *mediaAsset = [self retrieveMediaAsset:url];
@@ -50,6 +52,7 @@ BOOL isMuted;
     [self setUpAVPlayerController];
     [self setUpRemoteCommandCentre];
     [player play];
+    isPlaying = true;
 }
 
 - (AVURLAsset*)retrieveMediaAsset:(NSURL *)url {
@@ -72,17 +75,37 @@ BOOL isMuted;
 
 - (void)setUpRemoteCommandCentre {
     // Gesture to handle play pause status.
-    // TODO: This needs to be a toggle.
-    UITapGestureRecognizer *playGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playCommand)];
-    playGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypePlayPause], [NSNumber numberWithInteger:UIPressTypeSelect]];
-    [[controller view] addGestureRecognizer:playGesture];
+    UITapGestureRecognizer *playPauseToggleGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playPauseToggleCommand)];
+    playPauseToggleGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypePlayPause], [NSNumber numberWithInteger:UIPressTypeSelect]];
+    [[controller view] addGestureRecognizer:playPauseToggleGesture];
+    
+    UITapGestureRecognizer *pressRightGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(seekForwardCommand)];
+    pressRightGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeRightArrow]];
+    [[controller view] addGestureRecognizer:pressRightGesture];
+    
+    UITapGestureRecognizer *pressLeftGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(seekBackwardCommand)];
+    pressRightGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeLeftArrow]];
+    [[controller view] addGestureRecognizer:pressLeftGesture];
     
     MPRemoteCommandCenter *remoteCommandCentre = [MPRemoteCommandCenter sharedCommandCenter];
-    [[remoteCommandCentre playCommand]addTarget:self action:@selector(playCommand)];
+    [[remoteCommandCentre playCommand]addTarget:self action:@selector(playPauseToggleCommand)];
 }
 
-- (MPRemoteCommandHandlerStatus)playCommand {
-    [player play];
+- (MPRemoteCommandHandlerStatus)playPauseToggleCommand {
+    if (isPlaying) {
+        [player play];
+    } else {
+        [player pause];
+    }
+    isPlaying = !isPlaying;
+    return MPRemoteCommandHandlerStatusSuccess;
+}
+
+- (MPRemoteCommandHandlerStatus)seekForwardCommand {
+    return MPRemoteCommandHandlerStatusSuccess;
+}
+
+- (MPRemoteCommandHandlerStatus)seekBackwardCommand {
     return MPRemoteCommandHandlerStatusSuccess;
 }
 
