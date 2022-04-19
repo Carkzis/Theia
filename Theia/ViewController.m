@@ -103,6 +103,11 @@ BOOL isPlaying;
     [[controller view] addGestureRecognizer:selectGesture];
 }
 
+/**
+ Notes:
+    These only work when the player bar is not in focus.
+    Consider using listeners for responding to skipping, as skipping itself is functional.
+ */
 - (void)setUpDirectionalButtonTapGestures {
     UITapGestureRecognizer *pressRightGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(skipForwardCommand)];
     pressRightGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeRightArrow]];
@@ -111,16 +116,14 @@ BOOL isPlaying;
     UITapGestureRecognizer *pressLeftGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(skipBackwardCommand)];
     pressLeftGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeLeftArrow]];
     [[controller view] addGestureRecognizer:pressLeftGesture];
-    
-//    UITapGestureRecognizer *pressDownGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(muteCommand)];
-//    pressDownGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeDownArrow]];
-//    [[controller view] addGestureRecognizer:pressDownGesture];
-//
-//    UITapGestureRecognizer *pressUpGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(unmuteCommand)];
-//    pressUpGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeUpArrow]];
-//    [[controller view] addGestureRecognizer:pressUpGesture];
 }
 
+/**
+ Notes:
+    These only work when the player bar is not in focus. This is particularly a problem for the mute/unmute.
+    Consider using listeners for responding to seeking, as seeking itself is functional.
+    Consider alternative methods of muting.
+ */
 - (void)setUpDirectionalButtonLongPressGestures {
     UILongPressGestureRecognizer *longPressRightGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(seekForwardCommand)];
     longPressRightGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeRightArrow]];
@@ -140,7 +143,10 @@ BOOL isPlaying;
 }
 
 /**
- Note: Up and down swipe gestures do not seem to be allowed within the selected views.
+ Notes:
+    Up and down swipe gestures do not seem to be allowed within the selected views.
+    Left swipe gesture not registering.
+    Consider using listeners for skipping, as skipping itself is functional.
  */
 - (void)setUpSwipeGestures {
     UISwipeGestureRecognizer *rightSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(skipForwardCommand)];
@@ -164,13 +170,13 @@ BOOL isPlaying;
 
 - (MPRemoteCommandHandlerStatus)pauseCommand {
     NSLog(@"Pause.");
-    //[player pause];
+    [player pause];
     return MPRemoteCommandHandlerStatusSuccess;
 }
 
 - (MPRemoteCommandHandlerStatus)playCommand {
     NSLog(@"Play.");
-    //[player play];
+    [player play];
     return MPRemoteCommandHandlerStatusSuccess;
 }
 
