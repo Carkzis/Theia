@@ -77,31 +77,12 @@ BOOL isPlaying;
 
 - (void)setUpRemoteCommandCentre {
     // This is what actions will be taken when carrying out actions on the remote.
-    UITapGestureRecognizer *playPauseToggleGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playPauseToggleCommand)];
-    playPauseToggleGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypePlayPause]];
-    [[controller view] addGestureRecognizer:playPauseToggleGesture];
-
-    UITapGestureRecognizer *selectGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectCommand)];
-    selectGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeSelect]];
-    [[controller view] addGestureRecognizer:selectGesture];
-
-    UITapGestureRecognizer *pressRightGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(skipForwardCommand)];
-    pressRightGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeRightArrow]];
-    [[controller view] addGestureRecognizer:pressRightGesture];
-
-    UITapGestureRecognizer *pressLeftGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(skipBackwardCommand)];
-    pressLeftGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeLeftArrow]];
-    [[controller view] addGestureRecognizer:pressLeftGesture];
-
-    UILongPressGestureRecognizer *longPressRightGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(seekForwardCommand)];
-    longPressRightGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeRightArrow]];
-    [[controller view] addGestureRecognizer:longPressRightGesture];
-
-    UILongPressGestureRecognizer *longPressLeftGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(seekBackwardCommand)];
-    longPressLeftGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeRightArrow]];
-    [[controller view] addGestureRecognizer:longPressLeftGesture];
+    [self setUpPlayPauseAndSelectGestures];
+    [self setUpDirectionalButtonTapGestures];
+    [self setUpDirectionalButtonLongPressGestures];
+    [self setUpSwipeGestures];
     
-    // This is what actions will be taken when carrying out actions on the remote.
+    // Not currently sure what these are used for.
     MPRemoteCommandCenter *remoteCommandCentre = [MPRemoteCommandCenter sharedCommandCenter];
     [[remoteCommandCentre playCommand]addTarget:self action:@selector(playCommand)];
     [[remoteCommandCentre pauseCommand]addTarget:self action:@selector(pauseCommand)];
@@ -110,6 +91,65 @@ BOOL isPlaying;
     [[remoteCommandCentre seekBackwardCommand]addTarget:self action:@selector(seekBackwardCommand)];
     [[remoteCommandCentre skipForwardCommand]addTarget:self action:@selector(skipForwardCommand)];
     [[remoteCommandCentre skipBackwardCommand]addTarget:self action:@selector(skipBackwardCommand)];
+}
+
+- (void)setUpPlayPauseAndSelectGestures {
+    UITapGestureRecognizer *playPauseToggleGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playPauseToggleCommand)];
+    playPauseToggleGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypePlayPause]];
+    [[controller view] addGestureRecognizer:playPauseToggleGesture];
+
+    UITapGestureRecognizer *selectGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectCommand)];
+    selectGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeSelect]];
+    [[controller view] addGestureRecognizer:selectGesture];
+}
+
+- (void)setUpDirectionalButtonTapGestures {
+    UITapGestureRecognizer *pressRightGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(skipForwardCommand)];
+    pressRightGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeRightArrow]];
+    [[controller view] addGestureRecognizer:pressRightGesture];
+
+    UITapGestureRecognizer *pressLeftGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(skipBackwardCommand)];
+    pressLeftGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeLeftArrow]];
+    [[controller view] addGestureRecognizer:pressLeftGesture];
+    
+//    UITapGestureRecognizer *pressDownGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(muteCommand)];
+//    pressDownGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeDownArrow]];
+//    [[controller view] addGestureRecognizer:pressDownGesture];
+//
+//    UITapGestureRecognizer *pressUpGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(unmuteCommand)];
+//    pressUpGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeUpArrow]];
+//    [[controller view] addGestureRecognizer:pressUpGesture];
+}
+
+- (void)setUpDirectionalButtonLongPressGestures {
+    UILongPressGestureRecognizer *longPressRightGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(seekForwardCommand)];
+    longPressRightGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeRightArrow]];
+    [[controller view] addGestureRecognizer:longPressRightGesture];
+
+    UILongPressGestureRecognizer *longPressLeftGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(seekBackwardCommand)];
+    longPressLeftGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeRightArrow]];
+    [[controller view] addGestureRecognizer:longPressLeftGesture];
+    
+    UILongPressGestureRecognizer *longPressDownGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(muteCommand)];
+    longPressDownGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeDownArrow]];
+    [[controller view] addGestureRecognizer:longPressDownGesture];
+
+    UILongPressGestureRecognizer *longPressUpGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(unmuteCommand)];
+    longPressUpGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeUpArrow]];
+    [[controller view] addGestureRecognizer:longPressUpGesture];
+}
+
+/**
+ Note: Up and down swipe gestures do not seem to be allowed within the selected views.
+ */
+- (void)setUpSwipeGestures {
+    UISwipeGestureRecognizer *rightSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(skipForwardCommand)];
+    rightSwipe.allowedTouchTypes = @[[NSNumber numberWithInteger:UISwipeGestureRecognizerDirectionRight]];
+    [[controller view] addGestureRecognizer:rightSwipe];
+    
+    UISwipeGestureRecognizer *leftSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(skipBackwardCommand)];
+    leftSwipe.allowedTouchTypes = @[[NSNumber numberWithInteger:UISwipeGestureRecognizerDirectionLeft]];
+    [[controller view] addGestureRecognizer:leftSwipe];
 }
 
 - (MPRemoteCommandHandlerStatus)playPauseToggleCommand {
@@ -124,13 +164,13 @@ BOOL isPlaying;
 
 - (MPRemoteCommandHandlerStatus)pauseCommand {
     NSLog(@"Pause.");
-    [player pause];
+    //[player pause];
     return MPRemoteCommandHandlerStatusSuccess;
 }
 
 - (MPRemoteCommandHandlerStatus)playCommand {
     NSLog(@"Play.");
-    [player play];
+    //[player play];
     return MPRemoteCommandHandlerStatusSuccess;
 }
 
@@ -160,7 +200,18 @@ BOOL isPlaying;
 
 - (MPRemoteCommandHandlerStatus)skipBackwardCommand {
     NSLog(@"Skip backward pressed.");
+    return MPRemoteCommandHandlerStatusSuccess;
+}
+
+- (MPRemoteCommandHandlerStatus)muteCommand {
+    NSLog(@"Mute.");
     [player setMuted:YES];
+    return MPRemoteCommandHandlerStatusSuccess;
+}
+
+- (MPRemoteCommandHandlerStatus)unmuteCommand {
+    NSLog(@"Unmute");
+    [player setMuted:NO];
     return MPRemoteCommandHandlerStatusSuccess;
 }
 
