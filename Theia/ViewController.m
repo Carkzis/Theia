@@ -34,17 +34,14 @@ BOOL isPlaying;
     
     // Add a target method to the button for when it is clicked.
     [playButton addTarget:self action:@selector(playMovie:) forControlEvents:UIControlEventPrimaryActionTriggered];
-    
     [self.view addSubview:playButton];
 }
 
 - (void)playMovie:(UIButton *)playButton {
     // TODO: This should have an option to use a provided URL.
-    /*
-     "https://ia800300.us.archive.org/1/items/night_of_the_living_dead/night_of_the_living_dead_512kb.mp4"
-     */
+    // "https://ia800300.us.archive.org/1/items/night_of_the_living_dead/night_of_the_living_dead_512kb.mp4"
     NSURL *url = [[NSURL alloc]
-                  initWithString:@"https://vod-hls-uk-live.akamaized.net/usp/auth/vod/piff_abr_full_hd/efd8aa-m000crsj/vf_m000crsj_d8ecfb25-9648-4ca8-8b19-664f28c3344a.ism/mobile_wifi_main_sd_abr_v2_hls_master.m3u8?__gda__=1650377428_cad4de8c3fea760109c2c26f3427cf5e"];
+                  initWithString:@"https://vod-hls-uk-live.akamaized.net/usp/auth/vod/piff_abr_full_hd/efd8aa-m000crsj/vf_m000crsj_d8ecfb25-9648-4ca8-8b19-664f28c3344a.ism/mobile_wifi_main_sd_abr_v2_hls_master.m3u8?__gda__=1650399148_aa0c912b398a6c552f95a340329f9c2d"];
     AVURLAsset *mediaAsset = [self retrieveMediaAsset:url];
     [self playMedia:mediaAsset];
 }
@@ -72,7 +69,20 @@ BOOL isPlaying;
 - (void)setUpAVPlayerController {
     controller = [[AVPlayerViewController alloc] init];
     controller.player = player;
+    [self setRandomActionToTransportBar];
     [self presentViewController: controller animated: YES completion: nil];
+}
+
+/**
+ TODO: This will do a random action when clicked.
+ TODO: Could add a mute button here.
+ */
+- (void)setRandomActionToTransportBar {
+    UIImage *image = [UIImage systemImageNamed:@"questionmark.diamond"];
+    UIAction *randomAction = [UIAction actionWithTitle:@"Random" image:image identifier:nil handler:^(UIAction *action) {
+        NSLog(@"A random event occured.");
+    }];
+    controller.transportBarCustomMenuItems = @[randomAction];
 }
 
 - (void)setUpRemoteCommandCentre {
@@ -98,6 +108,7 @@ BOOL isPlaying;
     playPauseToggleGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypePlayPause]];
     [[controller view] addGestureRecognizer:playPauseToggleGesture];
 
+    // Consider treating this as "special" button.
     UITapGestureRecognizer *selectGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectCommand)];
     selectGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeSelect]];
     [[controller view] addGestureRecognizer:selectGesture];
@@ -107,10 +118,12 @@ BOOL isPlaying;
  Notes:
     These only work when the player bar is not in focus.
     Consider using listeners for responding to skipping, as skipping itself is functional.
+    TODO: These will do... something else when clicked in transport bar.
  */
 - (void)setUpDirectionalButtonTapGestures {
     UITapGestureRecognizer *pressRightGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(skipForwardCommand)];
     pressRightGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeRightArrow]];
+    pressRightGesture.cancelsTouchesInView = YES;
     [[controller view] addGestureRecognizer:pressRightGesture];
 
     UITapGestureRecognizer *pressLeftGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(skipBackwardCommand)];
@@ -147,6 +160,7 @@ BOOL isPlaying;
     Up and down swipe gestures do not seem to be allowed within the selected views.
     Left swipe gesture not registering.
     Consider using listeners for skipping, as skipping itself is functional.
+    TODO: Consider removing.
  */
 - (void)setUpSwipeGestures {
     UISwipeGestureRecognizer *rightSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(skipForwardCommand)];
