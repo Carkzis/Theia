@@ -13,6 +13,9 @@
     @property (strong, nonatomic) AVPlayerViewController *controller;
     @property (nonatomic) BOOL isMuted;
     @property (nonatomic) BOOL isPlaying;
+
+    @property (strong, nonatomic) UIAction *randomAction;
+    @property (strong, nonatomic) UIAction *muteAction;
 @end
 
 @implementation ViewController
@@ -71,37 +74,53 @@
 }
 
 - (void)setUpTransportBar {
-    UIAction *randomAction = [self setUpAndRetreiveRandomActionForTransportBar];
-    UIAction *muteAction = [self setUpAndRetrieveMuteActionForTransportBar];
-    _controller.transportBarCustomMenuItems = @[randomAction, muteAction];
+    /*
+     I am setting the actions as properties, as I want different actions to access each other.
+     */
+    _randomAction = [self setUpAndRetreiveRandomActionForTransportBar];
+    _muteAction = [self setUpAndRetrieveMuteActionForTransportBar];
+    _controller.transportBarCustomMenuItems = @[_randomAction, _muteAction];
 }
 
 - (UIAction *)setUpAndRetreiveRandomActionForTransportBar {
     UIImage *image = [UIImage systemImageNamed:@"questionmark.diamond"];
     UIAction *randomAction = [UIAction actionWithTitle:@"Random" image:image identifier:nil handler:^(UIAction *action) {
         NSLog(@"A random event occured.");
+        self.muteAction.image = [UIImage systemImageNamed:@"questionmark.diamond"];
     }];
     return randomAction;
 }
 
 // FIXME: When you click mute, the cursor goes to the rightmost action button in the transport bar.
 - (UIAction *)setUpAndRetrieveMuteActionForTransportBar {
-    UIImage *mutedImage = [UIImage systemImageNamed:@"speaker.slash.fill"];
-    UIImage *unmutedImage = [UIImage systemImageNamed:@"speaker.slash"];
+    UIImage *mutedImage = [UIImage systemImageNamed:@"speaker.zzz.fill"];
+    UIImage *unmutedImage = [UIImage systemImageNamed:@"speaker.wave.2.fill"];
     UIImage *muteStateImage = _player.muted ? mutedImage : unmutedImage;
     UIAction *muteAction = [UIAction actionWithTitle:@"Mute" image:muteStateImage identifier:nil handler:^(__weak UIAction *action) {
         if (!self.player.muted) {
             NSLog(@"Mute");
-            action.image = mutedImage;
+            self.muteAction.image = mutedImage;
             [self.player setMuted:YES];
         } else {
             NSLog(@"Unmute");
-            action.image = unmutedImage;
+            self.muteAction.image = unmutedImage;
             [self.player setMuted:NO];
         }
     }];
     
     return muteAction;
+}
+
+- (UIAction *)setUpAndRetrieveSpeedActionForTransportBar {
+    UIImage *fastImage = [UIImage systemImageNamed:@"pawprint.fill"];
+    UIImage *notSoFastImage = [UIImage systemImageNamed:@"hare.fill"];
+    UIImage *slowImage = [UIImage systemImageNamed:@"tortoise.fill"];
+    UIImage *notSoSlowImage = [UIImage systemImageNamed:@"ant.fill"];
+    UIImage *timeImage = [UIImage systemImageNamed:@"figure.walk"];
+    UIAction *speedAction = [UIAction actionWithTitle:@"Speed" image:timeImage identifier:nil handler:^(__weak UIAction *action) {
+        
+    }];
+    return speedAction;
 }
 
 - (void)setUpGestures {
