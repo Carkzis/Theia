@@ -8,16 +8,14 @@
 #import "ViewController.h"
 
 @interface ViewController ()
-
+    @property (strong, nonatomic) AVURLAsset *asset;
+    @property (strong, nonatomic) AVPlayer *player;
+    @property (strong, nonatomic) AVPlayerViewController *controller;
+    @property (nonatomic) BOOL isMuted;
+    @property (nonatomic) BOOL isPlaying;
 @end
 
 @implementation ViewController
-
-AVURLAsset *asset;
-AVPlayer *player;
-AVPlayerViewController *controller;
-BOOL isMuted;
-BOOL isPlaying;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,7 +36,7 @@ BOOL isPlaying;
 }
 
 - (void)playMovie:(UIButton *)playButton {
-    // TODO: This should have an option to use a provided URL.
+    // "https://ia800300.us.archive.org/1/items/night_of_the_living_dead/night_of_the_living_dead_512kb.mp4"
     NSURL *url = [[NSURL alloc]
                   initWithString:@"https://ia800300.us.archive.org/1/items/night_of_the_living_dead/night_of_the_living_dead_512kb.mp4"];
     AVURLAsset *mediaAsset = [self retrieveMediaAsset:url];
@@ -47,41 +45,63 @@ BOOL isPlaying;
 
 - (void)playMedia:(AVURLAsset *)mediaAsset {
     AVPlayerItem *mediaItem = [[AVPlayerItem alloc] initWithAsset:mediaAsset];
-    player = [[AVPlayer alloc] initWithPlayerItem:mediaItem];
+    _player = [[AVPlayer alloc] initWithPlayerItem:mediaItem];
     [self setUpAVPlayerController];
     [self setUpGestures];
-    [player play];
+    [_player play];
 }
 
 - (AVURLAsset*)retrieveMediaAsset:(NSURL *)url {
-    if (!asset) {
-        asset = [[AVURLAsset alloc] initWithURL:url options:nil];
+    if (!_asset) {
+        _asset = [[AVURLAsset alloc] initWithURL:url options:nil];
     }
-    return asset;
+    return _asset;
 }
 
 - (void)muteToggle {
-    isMuted = !isMuted;
-    player.muted = isMuted;
+    _isMuted = !_isMuted;
+    _player.muted = _isMuted;
 }
 
 - (void)setUpAVPlayerController {
-    controller = [[AVPlayerViewController alloc] init];
-    controller.player = player;
+    _controller = [[AVPlayerViewController alloc] init];
+    _controller.player = _player;
     [self setUpTransportBar];
-    [self presentViewController: controller animated: YES completion: nil];
+    [self presentViewController: _controller animated: YES completion: nil];
 }
 
 - (void)setUpTransportBar {
-    [self setRandomActionToTransportBar];
+    UIAction *randomAction = [self setUpAndRetreiveRandomActionForTransportBar];
+    UIAction *muteAction = [self setUpAndRetrieveMuteActionForTransportBar];
+    _controller.transportBarCustomMenuItems = @[randomAction, muteAction];
 }
 
-- (void)setRandomActionToTransportBar {
+- (UIAction *)setUpAndRetreiveRandomActionForTransportBar {
     UIImage *image = [UIImage systemImageNamed:@"questionmark.diamond"];
     UIAction *randomAction = [UIAction actionWithTitle:@"Random" image:image identifier:nil handler:^(UIAction *action) {
         NSLog(@"A random event occured.");
     }];
-    controller.transportBarCustomMenuItems = @[randomAction];
+    return randomAction;
+}
+
+// FIXME: When you click mute, the cursor goes to the rightmost action button in the transport bar.
+- (UIAction *)setUpAndRetrieveMuteActionForTransportBar {
+    UIImage *mutedImage = [UIImage systemImageNamed:@"speaker.slash.fill"];
+    UIImage *unmutedImage = [UIImage systemImageNamed:@"speaker.slash"];
+    UIImage *muteStateImage = _player.muted ? mutedImage : unmutedImage;
+    UIAction *muteAction = [UIAction actionWithTitle:@"Mute" image:muteStateImage identifier:nil handler:^(__weak UIAction *action) {
+        if (!self.player.muted) {
+            NSLog(@"Mute");
+            action.image = mutedImage;
+            [self.player setMuted:YES];
+        } else {
+            NSLog(@"Unmute");
+            action.image = unmutedImage;
+            [self.player setMuted:NO];
+        }
+    }];
+    
+    return muteAction;
 }
 
 - (void)setUpGestures {
@@ -94,11 +114,11 @@ BOOL isPlaying;
 - (void)setUpPlayPauseGestures {
     UITapGestureRecognizer *playPauseToggleGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playPauseToggleHandler)];
     playPauseToggleGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypePlayPause]];
-    [[controller view] addGestureRecognizer:playPauseToggleGesture];
+    [[_controller view] addGestureRecognizer:playPauseToggleGesture];
     
     UILongPressGestureRecognizer *longPlayPauseToggleGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPlayPauseToggleHandler:)];
     longPlayPauseToggleGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypePlayPause]];
-    [[controller view] addGestureRecognizer:longPlayPauseToggleGesture];
+    [[_controller view] addGestureRecognizer:longPlayPauseToggleGesture];
 }
 
 /**
@@ -108,15 +128,15 @@ BOOL isPlaying;
     UITapGestureRecognizer *pressRightGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goRightHandler)];
     pressRightGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeRightArrow]];
     //pressRightGesture.cancelsTouchesInView = YES;
-    [[controller view] addGestureRecognizer:pressRightGesture];
+    [[_controller view] addGestureRecognizer:pressRightGesture];
 
     UITapGestureRecognizer *pressLeftGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goLeftHandler)];
     pressLeftGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeLeftArrow]];
-    [[controller view] addGestureRecognizer:pressLeftGesture];
+    [[_controller view] addGestureRecognizer:pressLeftGesture];
     
     UITapGestureRecognizer *pressUpGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goUpHandler)];
     pressUpGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeUpArrow]];
-    [[controller view] addGestureRecognizer:pressUpGesture];
+    [[_controller view] addGestureRecognizer:pressUpGesture];
 }
 
 /**
@@ -125,22 +145,22 @@ BOOL isPlaying;
 - (void)setUpDirectionalButtonLongPressGestures {
     UILongPressGestureRecognizer *longPressRightGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longGoRightHandler:)];
     longPressRightGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeRightArrow]];
-    [[controller view] addGestureRecognizer:longPressRightGesture];
+    [[_controller view] addGestureRecognizer:longPressRightGesture];
 
     UILongPressGestureRecognizer *longPressLeftGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longGoLeftHandler:)];
     longPressLeftGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeLeftArrow]];
-    [[controller view] addGestureRecognizer:longPressLeftGesture];
+    [[_controller view] addGestureRecognizer:longPressLeftGesture];
 
     UILongPressGestureRecognizer *longPressUpGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longGoUpHandler:)];
     longPressUpGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeUpArrow]];
-    [[controller view] addGestureRecognizer:longPressUpGesture];
+    [[_controller view] addGestureRecognizer:longPressUpGesture];
 }
 
 - (MPRemoteCommandHandlerStatus)playPauseToggleHandler {
     NSLog(@"Play/Pause pressed.");
-    if (player.timeControlStatus == AVPlayerTimeControlStatusPlaying) {
+    if (_player.timeControlStatus == AVPlayerTimeControlStatusPlaying) {
         return self.pauseHandler;
-    } else if (player.timeControlStatus == AVPlayerTimeControlStatusPaused) {
+    } else if (_player.timeControlStatus == AVPlayerTimeControlStatusPaused) {
         return self.playHandler;
     }
     return MPRemoteCommandHandlerStatusCommandFailed;
@@ -148,13 +168,13 @@ BOOL isPlaying;
 
 - (MPRemoteCommandHandlerStatus)pauseHandler {
     NSLog(@"Pause.");
-    [player pause];
+    [_player pause];
     return MPRemoteCommandHandlerStatusSuccess;
 }
 
 - (MPRemoteCommandHandlerStatus)playHandler {
     NSLog(@"Play.");
-    [player play];
+    [_player play];
     return MPRemoteCommandHandlerStatusSuccess;
 }
 
@@ -223,18 +243,6 @@ BOOL isPlaying;
         default:
             break;
     }
-    return MPRemoteCommandHandlerStatusSuccess;
-}
-
-- (MPRemoteCommandHandlerStatus)muteCommand {
-    NSLog(@"Mute.");
-    [player setMuted:YES];
-    return MPRemoteCommandHandlerStatusSuccess;
-}
-
-- (MPRemoteCommandHandlerStatus)unmuteCommand {
-    NSLog(@"Unmute");
-    [player setMuted:NO];
     return MPRemoteCommandHandlerStatusSuccess;
 }
 
