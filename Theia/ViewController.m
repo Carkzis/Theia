@@ -39,9 +39,8 @@ BOOL isPlaying;
 
 - (void)playMovie:(UIButton *)playButton {
     // TODO: This should have an option to use a provided URL.
-    // "https://ia800300.us.archive.org/1/items/night_of_the_living_dead/night_of_the_living_dead_512kb.mp4"
     NSURL *url = [[NSURL alloc]
-                  initWithString:@"https://vod-hls-uk-live.akamaized.net/usp/auth/vod/piff_abr_full_hd/efd8aa-m000crsj/vf_m000crsj_d8ecfb25-9648-4ca8-8b19-664f28c3344a.ism/mobile_wifi_main_sd_abr_v2_hls_master.m3u8?__gda__=1650399148_aa0c912b398a6c552f95a340329f9c2d"];
+                  initWithString:@"https://ia800300.us.archive.org/1/items/night_of_the_living_dead/night_of_the_living_dead_512kb.mp4"];
     AVURLAsset *mediaAsset = [self retrieveMediaAsset:url];
     [self playMedia:mediaAsset];
 }
@@ -50,7 +49,7 @@ BOOL isPlaying;
     AVPlayerItem *mediaItem = [[AVPlayerItem alloc] initWithAsset:mediaAsset];
     player = [[AVPlayer alloc] initWithPlayerItem:mediaItem];
     [self setUpAVPlayerController];
-    [self setUpRemoteCommandCentre];
+    [self setUpGestures];
     [player play];
 }
 
@@ -69,14 +68,14 @@ BOOL isPlaying;
 - (void)setUpAVPlayerController {
     controller = [[AVPlayerViewController alloc] init];
     controller.player = player;
-    [self setRandomActionToTransportBar];
+    [self setUpTransportBar];
     [self presentViewController: controller animated: YES completion: nil];
 }
 
-/**
- TODO: This will do a random action when clicked.
- TODO: Could add a mute button here.
- */
+- (void)setUpTransportBar {
+    [self setRandomActionToTransportBar];
+}
+
 - (void)setRandomActionToTransportBar {
     UIImage *image = [UIImage systemImageNamed:@"questionmark.diamond"];
     UIAction *randomAction = [UIAction actionWithTitle:@"Random" image:image identifier:nil handler:^(UIAction *action) {
@@ -85,141 +84,145 @@ BOOL isPlaying;
     controller.transportBarCustomMenuItems = @[randomAction];
 }
 
-- (void)setUpRemoteCommandCentre {
+- (void)setUpGestures {
     // This is what actions will be taken when carrying out actions on the remote.
-    [self setUpPlayPauseAndSelectGestures];
+    [self setUpPlayPauseGestures];
     [self setUpDirectionalButtonTapGestures];
     [self setUpDirectionalButtonLongPressGestures];
-    [self setUpSwipeGestures];
-    
-    // Not currently sure what these are used for.
-    MPRemoteCommandCenter *remoteCommandCentre = [MPRemoteCommandCenter sharedCommandCenter];
-    [[remoteCommandCentre playCommand]addTarget:self action:@selector(playCommand)];
-    [[remoteCommandCentre pauseCommand]addTarget:self action:@selector(pauseCommand)];
-    [[remoteCommandCentre togglePlayPauseCommand]addTarget:self action:@selector(playPauseToggleCommand)];
-    [[remoteCommandCentre seekForwardCommand]addTarget:self action:@selector(seekForwardCommand)];
-    [[remoteCommandCentre seekBackwardCommand]addTarget:self action:@selector(seekBackwardCommand)];
-    [[remoteCommandCentre skipForwardCommand]addTarget:self action:@selector(skipForwardCommand)];
-    [[remoteCommandCentre skipBackwardCommand]addTarget:self action:@selector(skipBackwardCommand)];
 }
 
-- (void)setUpPlayPauseAndSelectGestures {
-    UITapGestureRecognizer *playPauseToggleGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playPauseToggleCommand)];
+- (void)setUpPlayPauseGestures {
+    UITapGestureRecognizer *playPauseToggleGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playPauseToggleHandler)];
     playPauseToggleGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypePlayPause]];
     [[controller view] addGestureRecognizer:playPauseToggleGesture];
-
-    // Consider treating this as "special" button.
-    UITapGestureRecognizer *selectGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectCommand)];
-    selectGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeSelect]];
-    [[controller view] addGestureRecognizer:selectGesture];
+    
+    UILongPressGestureRecognizer *longPlayPauseToggleGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPlayPauseToggleHandler:)];
+    longPlayPauseToggleGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypePlayPause]];
+    [[controller view] addGestureRecognizer:longPlayPauseToggleGesture];
 }
 
 /**
- Notes:
-    These only work when the player bar is not in focus.
-    Consider using listeners for responding to skipping, as skipping itself is functional.
-    TODO: These will do... something else when clicked in transport bar.
+ Note: These only work on the transport bar.
  */
 - (void)setUpDirectionalButtonTapGestures {
-    UITapGestureRecognizer *pressRightGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(skipForwardCommand)];
+    UITapGestureRecognizer *pressRightGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goRightHandler)];
     pressRightGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeRightArrow]];
-    pressRightGesture.cancelsTouchesInView = YES;
+    //pressRightGesture.cancelsTouchesInView = YES;
     [[controller view] addGestureRecognizer:pressRightGesture];
 
-    UITapGestureRecognizer *pressLeftGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(skipBackwardCommand)];
+    UITapGestureRecognizer *pressLeftGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goLeftHandler)];
     pressLeftGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeLeftArrow]];
     [[controller view] addGestureRecognizer:pressLeftGesture];
+    
+    UITapGestureRecognizer *pressUpGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goUpHandler)];
+    pressUpGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeUpArrow]];
+    [[controller view] addGestureRecognizer:pressUpGesture];
 }
 
 /**
- Notes:
-    These only work when the player bar is not in focus. This is particularly a problem for the mute/unmute.
-    Consider using listeners for responding to seeking, as seeking itself is functional.
-    Consider alternative methods of muting.
+ Note: These only work on the transport bar.
  */
 - (void)setUpDirectionalButtonLongPressGestures {
-    UILongPressGestureRecognizer *longPressRightGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(seekForwardCommand)];
+    UILongPressGestureRecognizer *longPressRightGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longGoRightHandler:)];
     longPressRightGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeRightArrow]];
     [[controller view] addGestureRecognizer:longPressRightGesture];
 
-    UILongPressGestureRecognizer *longPressLeftGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(seekBackwardCommand)];
-    longPressLeftGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeRightArrow]];
+    UILongPressGestureRecognizer *longPressLeftGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longGoLeftHandler:)];
+    longPressLeftGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeLeftArrow]];
     [[controller view] addGestureRecognizer:longPressLeftGesture];
-    
-    UILongPressGestureRecognizer *longPressDownGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(muteCommand)];
-    longPressDownGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeDownArrow]];
-    [[controller view] addGestureRecognizer:longPressDownGesture];
 
-    UILongPressGestureRecognizer *longPressUpGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(unmuteCommand)];
+    UILongPressGestureRecognizer *longPressUpGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longGoUpHandler:)];
     longPressUpGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeUpArrow]];
     [[controller view] addGestureRecognizer:longPressUpGesture];
 }
 
-/**
- Notes:
-    Up and down swipe gestures do not seem to be allowed within the selected views.
-    Left swipe gesture not registering.
-    Consider using listeners for skipping, as skipping itself is functional.
-    TODO: Consider removing.
- */
-- (void)setUpSwipeGestures {
-    UISwipeGestureRecognizer *rightSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(skipForwardCommand)];
-    rightSwipe.allowedTouchTypes = @[[NSNumber numberWithInteger:UISwipeGestureRecognizerDirectionRight]];
-    [[controller view] addGestureRecognizer:rightSwipe];
-    
-    UISwipeGestureRecognizer *leftSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(skipBackwardCommand)];
-    leftSwipe.allowedTouchTypes = @[[NSNumber numberWithInteger:UISwipeGestureRecognizerDirectionLeft]];
-    [[controller view] addGestureRecognizer:leftSwipe];
-}
-
-- (MPRemoteCommandHandlerStatus)playPauseToggleCommand {
+- (MPRemoteCommandHandlerStatus)playPauseToggleHandler {
     NSLog(@"Play/Pause pressed.");
     if (player.timeControlStatus == AVPlayerTimeControlStatusPlaying) {
-        return self.pauseCommand;
+        return self.pauseHandler;
     } else if (player.timeControlStatus == AVPlayerTimeControlStatusPaused) {
-        return self.playCommand;
+        return self.playHandler;
     }
     return MPRemoteCommandHandlerStatusCommandFailed;
 }
 
-- (MPRemoteCommandHandlerStatus)pauseCommand {
+- (MPRemoteCommandHandlerStatus)pauseHandler {
     NSLog(@"Pause.");
     [player pause];
     return MPRemoteCommandHandlerStatusSuccess;
 }
 
-- (MPRemoteCommandHandlerStatus)playCommand {
+- (MPRemoteCommandHandlerStatus)playHandler {
     NSLog(@"Play.");
     [player play];
     return MPRemoteCommandHandlerStatusSuccess;
 }
 
-/**
- I have separated this from the pause and play for the time being,
- as due to race conditions it is causing pause/play to toggle on and off whenever it is selected.
- */
-- (MPRemoteCommandHandlerStatus)selectCommand {
-    NSLog(@"Select.");
+- (MPRemoteCommandHandlerStatus)goRightHandler {
+    NSLog(@"Right pressed.");
     return MPRemoteCommandHandlerStatusSuccess;
 }
 
-- (MPRemoteCommandHandlerStatus)seekForwardCommand {
-    NSLog(@"Seek forward long pressed.");
+- (MPRemoteCommandHandlerStatus)goLeftHandler {
+    NSLog(@"Left pressed.");
     return MPRemoteCommandHandlerStatusSuccess;
 }
 
-- (MPRemoteCommandHandlerStatus)seekBackwardCommand {
-    NSLog(@"Seek backward long pressed.");
+- (MPRemoteCommandHandlerStatus)goUpHandler {
+    NSLog(@"Up pressed.");
     return MPRemoteCommandHandlerStatusSuccess;
 }
 
-- (MPRemoteCommandHandlerStatus)skipForwardCommand {
-    NSLog(@"Skip forward pressed.");
+- (MPRemoteCommandHandlerStatus)longPlayPauseToggleHandler:(UILongPressGestureRecognizer *)longPressGesture {
+    switch (longPressGesture.state) {
+        case UIGestureRecognizerStateBegan:
+            NSLog(@"Long play press begins!");
+            break;
+        case UIGestureRecognizerStateEnded:
+            NSLog(@"Long play press ends!");
+        default:
+            break;
+    }
     return MPRemoteCommandHandlerStatusSuccess;
 }
 
-- (MPRemoteCommandHandlerStatus)skipBackwardCommand {
-    NSLog(@"Skip backward pressed.");
+- (MPRemoteCommandHandlerStatus)longGoRightHandler:(UILongPressGestureRecognizer *)longPressGesture {
+    switch (longPressGesture.state) {
+        case UIGestureRecognizerStateBegan:
+            NSLog(@"Long right begins!");
+            break;
+        case UIGestureRecognizerStateEnded:
+            NSLog(@"Long right ends!");
+        default:
+            break;
+    }
+
+    return MPRemoteCommandHandlerStatusSuccess;
+}
+
+- (MPRemoteCommandHandlerStatus)longGoLeftHandler:(UILongPressGestureRecognizer *)longPressGesture {
+    switch (longPressGesture.state) {
+        case UIGestureRecognizerStateBegan:
+            NSLog(@"Long left begins!");
+            break;
+        case UIGestureRecognizerStateEnded:
+            NSLog(@"Long left ends!");
+        default:
+            break;
+    }
+    return MPRemoteCommandHandlerStatusSuccess;
+}
+
+- (MPRemoteCommandHandlerStatus)longGoUpHandler:(UILongPressGestureRecognizer *)longPressGesture {
+    switch (longPressGesture.state) {
+        case UIGestureRecognizerStateBegan:
+            NSLog(@"Long up begins!");
+            break;
+        case UIGestureRecognizerStateEnded:
+            NSLog(@"Long up ends!");
+        default:
+            break;
+    }
     return MPRemoteCommandHandlerStatusSuccess;
 }
 
