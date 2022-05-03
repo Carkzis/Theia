@@ -14,8 +14,6 @@
     @property (strong, nonatomic) AVPlayerViewController *controller;
     @property (strong, nonatomic) GestureController *gestures;
 
-    @property (nonatomic) BOOL isMuted;
-
     @property (strong, nonatomic) UIAction *randomAction;
     @property (strong, nonatomic) UIAction *muteAction;
     @property (strong, nonatomic) UIAction *speedAction;
@@ -42,9 +40,8 @@
 }
 
 - (void)playMovie:(UIButton *)playButton {
-    // "https://ia800300.us.archive.org/1/items/night_of_the_living_dead/night_of_the_living_dead_512kb.mp4"
     NSURL *url = [[NSURL alloc]
-                  initWithString:@"https://vod-hls-uk-live.akamaized.net/usp/auth/vod/piff_abr_full_hd/efd8aa-m000crsj/vf_m000crsj_d8ecfb25-9648-4ca8-8b19-664f28c3344a.ism/mobile_wifi_main_sd_abr_v2_hls_master.m3u8?__gda__=1651587456_daf948a74e72531f3c904cb9c6bec82f"];
+                  initWithString:@"NOTANURL"];
     AVURLAsset *mediaAsset = [self retrieveMediaAsset:url];
     [self playMedia:mediaAsset];
 }
@@ -62,11 +59,6 @@
         _asset = [[AVURLAsset alloc] initWithURL:url options:nil];
     }
     return _asset;
-}
-
-- (void)muteToggle {
-    _isMuted = !_isMuted;
-    _player.muted = _isMuted;
 }
 
 - (void)setUpAVPlayerController {
@@ -148,6 +140,8 @@
 - (void)setUpGestures {
     _gestures = [[GestureController alloc] initWithPlayer:_player controller:_controller];
     [_gestures setUpGestures];
+    
+    
 }
 
 @end
