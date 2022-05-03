@@ -12,7 +12,7 @@
     @property (strong, nonatomic) AVPlayer *player;
     @property (strong, nonatomic) AVPlayerViewController *controller;
     @property (nonatomic) BOOL isMuted;
-    @property (nonatomic) BOOL isPlaying;
+    @property (nonatomic) BOOL isPlaying; // Not in use.
 
     @property (strong, nonatomic) UIAction *randomAction;
     @property (strong, nonatomic) UIAction *muteAction;
@@ -42,7 +42,7 @@
 - (void)playMovie:(UIButton *)playButton {
     // "https://ia800300.us.archive.org/1/items/night_of_the_living_dead/night_of_the_living_dead_512kb.mp4"
     NSURL *url = [[NSURL alloc]
-                  initWithString:@"https://vod-hls-uk.live.cf.md.bbci.co.uk/usp/auth/vod/piff_abr_full_hd/efd8aa-m000crsj/vf_m000crsj_d8ecfb25-9648-4ca8-8b19-664f28c3344a.ism/mobile_wifi_main_sd_abr_v2_hls_master.m3u8?Expires=1651271537&Signature=K~R~FZvXVDllOZS6D6DUl5oc65leUpVRULm2~UeAemoHYOrpNu2X62ZA46wLYZ8MuAGZpYab1gAVg3oeoJQ8CJLTxEGp0GLhQnsEFZ4kwIQdq6sbbmPHZ0HzFdXutH-brvFRgkcqGyOTnO2~UOOmVC2boXVX196tE7P4U49Pj~QHaN8rBn-mMSI867PmvjI0evkmvWOgdA46VKmpEUX18zz306pB~mjDSDJKS5KRWeAj478wT6mc~pYX14ejmxdQPd-sn6W0DlMVlPGEyVoIUdv5hKFBpjLLMvqVygUoVxT~1I8m4DCvEL7oc-Js8Y324wvLyzHzArHiXuK~Hc5FYw__&Key-Pair-Id=K2VWLYKQ4HU1FJ"];
+                  initWithString:@"https://vod-hls-uk-live.akamaized.net/usp/auth/vod/piff_abr_full_hd/efd8aa-m000crsj/vf_m000crsj_d8ecfb25-9648-4ca8-8b19-664f28c3344a.ism/mobile_wifi_main_sd_abr_v2_hls_master.m3u8?__gda__=1651587456_daf948a74e72531f3c904cb9c6bec82f"];
     AVURLAsset *mediaAsset = [self retrieveMediaAsset:url];
     [self playMedia:mediaAsset];
 }
@@ -92,7 +92,7 @@
     return randomAction;
 }
 
-// FIXME: When you click mute, the cursor goes to the rightmost action button in the transport bar.
+// FIXME: When you click mute AND cause the image to change, the cursor goes to the rightmost action button in the transport bar.
 - (UIAction *)setUpAndRetrieveMuteActionForTransportBar {
     UIImage *mutedImage = [UIImage systemImageNamed:@"speaker.zzz.fill"];
     UIImage *unmutedImage = [UIImage systemImageNamed:@"speaker.wave.2.fill"];
@@ -145,6 +145,9 @@
 
 - (void)setUpGestures {
     // This is what actions will be taken when carrying out actions on the remote.
+    // FIXME: Need to share properties across classes.
+//    GestureController *gestureController = [[GestureController alloc] initWithPlayer:_player controller:_controller];
+//    [gestureController setUpGestures];
     [self setUpPlayPauseGestures];
     [self setUpDirectionalButtonTapGestures];
     [self setUpDirectionalButtonLongPressGestures];

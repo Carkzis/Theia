@@ -9,6 +9,7 @@
 #import <AVKit/AVKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import "GestureController.h"
 
 @interface ViewController : UIViewController
 
