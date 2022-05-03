@@ -15,7 +15,7 @@
 @implementation GestureController
 
 - (instancetype)initWithPlayer:(AVPlayer *)player
-                    controller:(AVPlayerViewController *)controller
+                    controller:(AVPlayerViewController *)controller // Pass this through to the setUpGestures?
 {
     if ((self = [super init])) {
         _player = player;
