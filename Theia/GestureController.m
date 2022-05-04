@@ -15,7 +15,7 @@
 @implementation GestureController
 
 - (instancetype)initWithPlayer:(AVPlayer *)player
-                    controller:(AVPlayerViewController *)controller // Pass this through to the setUpGestures?
+                    controller:(AVPlayerViewController *)controller
 {
     if ((self = [super init])) {
         _player = player;
@@ -25,12 +25,14 @@
 }
 
 - (void)setUpGestures {
-    // This is what actions will be taken when carrying out actions on the remote.
     [self setUpPlayPauseGestures];
     [self setUpDirectionalButtonTapGestures];
     [self setUpDirectionalButtonLongPressGestures];
 }
 
+/**
+ Note: The normal pause/play gesture only works on the scrub bar, not the transport bar.
+ */
 - (void)setUpPlayPauseGestures {
     UITapGestureRecognizer *playPauseToggleGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playPauseToggleHandler)];
     playPauseToggleGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypePlayPause]];
@@ -47,7 +49,6 @@
 - (void)setUpDirectionalButtonTapGestures {
     UITapGestureRecognizer *pressRightGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goRightHandler)];
     pressRightGesture.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeRightArrow]];
-    //pressRightGesture.cancelsTouchesInView = YES;
     [[_controller view] addGestureRecognizer:pressRightGesture];
 
     UITapGestureRecognizer *pressLeftGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goLeftHandler)];

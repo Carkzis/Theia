@@ -1,72 +1,32 @@
 //
-//  ViewController.m
+//  ActionController.m
 //  Theia
 //
-//  Created by Marc Jowett on 14/04/2022.
+//  Created by Marc Jowett on 03/05/2022.
 //
 
-#import "ViewController.h"
-#import "GestureController.h"
 #import "ActionController.h"
 
-@interface ViewController ()
-    @property (strong, nonatomic) AVURLAsset *asset;
+@interface ActionController()
     @property (strong, nonatomic) AVPlayer *player;
     @property (strong, nonatomic) AVPlayerViewController *controller;
-    @property (strong, nonatomic) GestureController *gestures;
-    @property (strong, nonatomic) ActionController *actions;
 
     @property (strong, nonatomic) UIAction *randomAction;
     @property (strong, nonatomic) UIAction *muteAction;
     @property (strong, nonatomic) UIAction *speedAction;
 @end
 
-@implementation ViewController
+@implementation ActionController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    [self setUpPlayButton];
-}
-
-- (void)setUpPlayButton {
-    UIButton *playButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [playButton setTitle:@"Play" forState:UIControlStateNormal];
-    [playButton sizeToFit];
-    playButton.center = self.view.center;
-    
-    // Add a target method to the button for when it is clicked.
-    [playButton addTarget:self action:@selector(playMovie:) forControlEvents:UIControlEventPrimaryActionTriggered];
-    [self.view addSubview:playButton];
-}
-
-- (void)playMovie:(UIButton *)playButton {
-    NSURL *url = [[NSURL alloc]
-                  initWithString:@"NOTANURL"];
-    AVURLAsset *mediaAsset = [self retrieveMediaAsset:url];
-    [self playMedia:mediaAsset];
-}
-
-- (void)playMedia:(AVURLAsset *)mediaAsset {
-    AVPlayerItem *mediaItem = [[AVPlayerItem alloc] initWithAsset:mediaAsset];
-    _player = [[AVPlayer alloc] initWithPlayerItem:mediaItem];
-    [self setUpAVPlayerController];
-    [self setUpGestures];
-    [_player play];
-}
-
-- (AVURLAsset*)retrieveMediaAsset:(NSURL *)url {
-    if (!_asset) {
-        _asset = [[AVURLAsset alloc] initWithURL:url options:nil];
+- (instancetype)initWithPlayer:(AVPlayer*)player
+                    controller:(AVPlayerViewController*)controller
+{
+    if (self = [super init])
+    {
+        _player = player;
+        _controller = controller;
     }
-    return _asset;
-}
-
-- (void)setUpAVPlayerController {
-    _controller = [[AVPlayerViewController alloc] init];
-    _controller.player = _player;
-    [self setUpTransportBar];
-    [self presentViewController: _controller animated: YES completion: nil];
+    return self;
 }
 
 - (void)setUpTransportBar {
@@ -87,7 +47,10 @@
     return randomAction;
 }
 
-// FIXME: When you click mute AND cause the image to change, the cursor goes to the rightmost action button in the transport bar.
+/*
+ FIXME: When you click a button in the transport bar and cause the image to change, the cursor goes to the rightmost action button in the transport bar.
+ */
+
 - (UIAction *)setUpAndRetrieveMuteActionForTransportBar {
     UIImage *mutedImage = [UIImage systemImageNamed:@"speaker.zzz.fill"];
     UIImage *unmutedImage = [UIImage systemImageNamed:@"speaker.wave.2.fill"];
@@ -136,11 +99,6 @@
         NSLog(@"%@", [[speeds objectForKey:[NSNumber numberWithInteger:randomIndex]] objectAtIndex:2]);
     }];
     return speedAction;
-}
-
-- (void)setUpGestures {
-    _gestures = [[GestureController alloc] initWithPlayer:_player controller:_controller];
-    [_gestures setUpGestures];
 }
 
 @end

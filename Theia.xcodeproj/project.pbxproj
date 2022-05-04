@@ -19,6 +19,7 @@
 		E531D12F2808170800E735BA /* TheiaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E531D12E2808170800E735BA /* TheiaTests.m */; };
 		E531D1392808170800E735BA /* TheiaUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E531D1382808170800E735BA /* TheiaUITests.m */; };
 		E531D13B2808170800E735BA /* TheiaUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E531D13A2808170800E735BA /* TheiaUITestsLaunchTests.m */; };
+		E5D9B30A282188E900833038 /* ActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D9B309282188E900833038 /* ActionController.m */; };
 		E5FB18CD282118440017FD5F /* GestureController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FB18CC282118430017FD5F /* GestureController.m */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,8 @@
 		E531D1342808170800E735BA /* TheiaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheiaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E531D1382808170800E735BA /* TheiaUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TheiaUITests.m; sourceTree = "<group>"; };
 		E531D13A2808170800E735BA /* TheiaUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TheiaUITestsLaunchTests.m; sourceTree = "<group>"; };
+		E5D9B308282188E900833038 /* ActionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActionController.h; sourceTree = "<group>"; };
+		E5D9B309282188E900833038 /* ActionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActionController.m; sourceTree = "<group>"; };
 		E5FB18CB282118430017FD5F /* GestureController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GestureController.h; sourceTree = "<group>"; };
 		E5FB18CC282118430017FD5F /* GestureController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GestureController.m; sourceTree = "<group>"; };
 		E8CB08A3DE9B0CC9A662AD75 /* Pods-TheiaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheiaTests.debug.xcconfig"; path = "Target Support Files/Pods-TheiaTests/Pods-TheiaTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -153,6 +156,8 @@
 				E531D1242808170800E735BA /* main.m */,
 				E5FB18CB282118430017FD5F /* GestureController.h */,
 				E5FB18CC282118430017FD5F /* GestureController.m */,
+				E5D9B308282188E900833038 /* ActionController.h */,
+				E5D9B309282188E900833038 /* ActionController.m */,
 			);
 			path = Theia;
 			sourceTree = "<group>";
@@ -379,6 +384,7 @@
 				E531D11B2808170600E735BA /* ViewController.m in Sources */,
 				E5FB18CD282118440017FD5F /* GestureController.m in Sources */,
 				E531D1252808170800E735BA /* main.m in Sources */,
+				E5D9B30A282188E900833038 /* ActionController.m in Sources */,
 				E531D1182808170600E735BA /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
