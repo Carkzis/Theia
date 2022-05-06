@@ -35,14 +35,14 @@
     [playButton sizeToFit];
     playButton.center = self.view.center;
     
-    // Add a target method to the button for when it is clicked.
     [playButton addTarget:self action:@selector(playMovie:) forControlEvents:UIControlEventPrimaryActionTriggered];
     [self.view addSubview:playButton];
 }
 
 - (void)playMovie:(UIButton *)playButton {
+    NSString *ultimateFunExampleFun = @"http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8";
     NSURL *url = [[NSURL alloc]
-                  initWithString:@"NOTANURL"];
+                  initWithString:ultimateFunExampleFun];
     AVURLAsset *mediaAsset = [self retrieveMediaAsset:url];
     [self playMedia:mediaAsset];
 }

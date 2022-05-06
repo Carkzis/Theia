@@ -64,6 +64,7 @@
 		E531D13A2808170800E735BA /* TheiaUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TheiaUITestsLaunchTests.m; sourceTree = "<group>"; };
 		E5D9B308282188E900833038 /* ActionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActionController.h; sourceTree = "<group>"; };
 		E5D9B309282188E900833038 /* ActionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActionController.m; sourceTree = "<group>"; };
+		E5EAAB212825042E0047248E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E5FB18CB282118430017FD5F /* GestureController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GestureController.h; sourceTree = "<group>"; };
 		E5FB18CC282118430017FD5F /* GestureController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GestureController.m; sourceTree = "<group>"; };
 		E8CB08A3DE9B0CC9A662AD75 /* Pods-TheiaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheiaTests.debug.xcconfig"; path = "Target Support Files/Pods-TheiaTests/Pods-TheiaTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -146,6 +147,7 @@
 		E531D1152808170600E735BA /* Theia */ = {
 			isa = PBXGroup;
 			children = (
+				E5EAAB212825042E0047248E /* Info.plist */,
 				E531D1162808170600E735BA /* AppDelegate.h */,
 				E531D1172808170600E735BA /* AppDelegate.m */,
 				E531D1192808170600E735BA /* ViewController.h */,
@@ -563,6 +565,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2DT5V8584W;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Theia/Info.plist;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
@@ -588,6 +591,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2DT5V8584W;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Theia/Info.plist;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
