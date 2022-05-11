@@ -8,12 +8,25 @@
 #import "ActionController.h"
 
 @interface ActionController()
+
     @property (strong, nonatomic) AVPlayer *player;
     @property (strong, nonatomic) AVPlayerViewController *controller;
 
     @property (strong, nonatomic) UIAction *randomAction;
+
     @property (strong, nonatomic) UIAction *muteAction;
+
     @property (strong, nonatomic) UIAction *speedAction;
+
+    @property (strong, nonatomic) UIAction *teleportAction;
+    @property (nonatomic) NSInteger teleportedFromPosition;
+
+    @property (strong, nonatomic) UIAction *reversiAction;
+    @property (nonatomic) BOOL isReversi;
+
+    @property (strong, nonatomic) UIAction *confusedAction;
+    @property (nonatomic) BOOL isConfused;
+
 @end
 
 @implementation ActionController
@@ -36,20 +49,22 @@
     _randomAction = [self setUpAndRetreiveRandomActionForTransportBar];
     _muteAction = [self setUpAndRetrieveMuteActionForTransportBar];
     _speedAction = [self setUpAndRetrieveSpeedActionForTransportBar];
-    _controller.transportBarCustomMenuItems = @[_randomAction, _muteAction, _speedAction];
+    _teleportAction = [self setUpAndRetrieveTeleportActionForTransportBar];
+    _reversiAction = [self setUpAndRetrieveReversiActionForTransportBar];
+    _confusedAction = [self setUpAndRetrieveConfusedActionForTransportBar];
+    _controller.transportBarCustomMenuItems = @[_randomAction, _muteAction, _speedAction, _teleportAction, _reversiAction];
 }
 
 - (UIAction *)setUpAndRetreiveRandomActionForTransportBar {
     UIImage *image = [UIImage systemImageNamed:@"questionmark.diamond"];
     UIAction *randomAction = [UIAction actionWithTitle:@"Random" image:image identifier:nil handler:^(UIAction *action) {
+        /*
+         TODO: Make a random event occur!
+         */
         NSLog(@"A random event occured.");
     }];
     return randomAction;
 }
-
-/*
- FIXME: When you click a button in the transport bar and cause the image to change, the cursor goes to the rightmost action button in the transport bar.
- */
 
 - (UIAction *)setUpAndRetrieveMuteActionForTransportBar {
     UIImage *mutedImage = [UIImage systemImageNamed:@"speaker.zzz.fill"];
@@ -99,6 +114,77 @@
         NSLog(@"%@", [[speeds objectForKey:[NSNumber numberWithInteger:randomIndex]] objectAtIndex:2]);
     }];
     return speedAction;
+}
+
+- (UIAction *)setUpAndRetrieveTeleportActionForTransportBar {
+    UIImage *returnedImage = [UIImage systemImageNamed:@"lasso.and.sparkles"];
+    UIImage *teleportedImage = [UIImage systemImageNamed:@"sparkles"];
+    _teleportedFromPosition = -1;
+    
+    UIAction *teleportAction = [UIAction actionWithTitle:@"Teleport" image:returnedImage identifier:nil handler:^(__weak UIAction *action) {
+        if (self.teleportedFromPosition < 0) {
+            self.teleportAction.image = teleportedImage;
+            self.teleportedFromPosition = 1;
+            /*
+             TODO: Cache the current position, move to a random new position.
+             */
+        } else {
+            self.teleportAction.image = returnedImage;
+            self.teleportedFromPosition = -1;
+            /*
+             TODO: Return to cached position, reset cached position to be -1/nil.
+             */
+        }
+    }];
+    return teleportAction;
+}
+
+- (UIAction *)setUpAndRetrieveReversiActionForTransportBar {
+    UIImage *forwardsImage = [UIImage systemImageNamed:@"chevron.forward.circle"];
+    UIImage *backwardsImage = [UIImage systemImageNamed:@"chevron.backward.circle"];
+    
+    UIImage *reversiStateImage = _isReversi ? backwardsImage : forwardsImage;
+    UIAction *reversiAction = [UIAction actionWithTitle:@"Reversi" image:reversiStateImage identifier:nil handler:^(__weak UIAction *action) {
+        self.isReversi = !self.isReversi;
+        if (self.isReversi) {
+            self.reversiAction.image = backwardsImage;
+            /*
+             TODO: Make left and right assign to the opposite directions.
+             */
+        } else {
+            self.reversiAction.image = forwardsImage;
+            /*
+             TODO: Make left and right assign to the correct directions.
+             */
+        }
+    }];
+    return reversiAction;
+}
+
+- (UIAction *)setUpAndRetrieveConfusedActionForTransportBar {
+    /*
+     TODO: Make this a confused action, not another reversi action.
+     */
+    UIImage *lucidImage = [UIImage systemImageNamed:@"face.smiling"];
+    UIImage *confusedImage = [UIImage systemImageNamed:@"face.dashed"];
+    
+    UIImage *confusedStateImage = _isConfused ? confusedImage : lucidImage;
+    
+    UIAction *confusedAction = [UIAction actionWithTitle:@"Confused" image:confusedStateImage identifier:nil handler:^(__weak UIAction *action) {
+        self.isConfused = !self.isConfused;
+        if (self.isConfused) {
+            self.confusedAction.image = lucidImage;
+            /*
+             TODO: Make an action that will make it more difficult for inputs to register.
+             */
+        } else {
+            self.confusedAction.image = confusedImage;
+            /*
+             TODO: Make it so inputs register normally.
+             */
+        }
+    }];
+    return confusedAction;
 }
 
 @end
