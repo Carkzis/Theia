@@ -27,6 +27,15 @@
     @property (strong, nonatomic) UIAction *confusedAction;
     @property (nonatomic) BOOL isConfused;
 
+    @property (strong, nonatomic) UIAction *apocalypseAction;
+    // smallcircle.filled.circle
+    // flame.circle
+    // flame.fill
+    // The end.
+
+    @property (strong, nonatomic) UIAction *fixAction;
+    @property (nonatomic) BOOL isBroken;
+
 @end
 
 @implementation ActionController
@@ -52,7 +61,8 @@
     _teleportAction = [self setUpAndRetrieveTeleportActionForTransportBar];
     _reversiAction = [self setUpAndRetrieveReversiActionForTransportBar];
     _confusedAction = [self setUpAndRetrieveConfusedActionForTransportBar];
-    _controller.transportBarCustomMenuItems = @[_randomAction, _muteAction, _speedAction, _teleportAction, _reversiAction];
+    _fixAction = [self setUpAndRetrieveFixActionForTransportBar];
+    _controller.transportBarCustomMenuItems = @[_randomAction, _muteAction, _speedAction, _teleportAction, _reversiAction, _fixAction];
 }
 
 - (UIAction *)setUpAndRetreiveRandomActionForTransportBar {
@@ -185,6 +195,27 @@
         }
     }];
     return confusedAction;
+}
+
+- (UIAction *)setUpAndRetrieveFixActionForTransportBar {
+    UIImage *brokenImage = [UIImage systemImageNamed:@"wrench.and.screwdriver"];
+    UIImage *fixedImage = [UIImage systemImageNamed:@"checkmark.seal"];
+    
+    UIAction *fixAction = [UIAction actionWithTitle:@"Fix" image:fixedImage identifier:nil handler:^(__weak UIAction *action) {
+        self.isBroken = !self.isBroken;
+        if (self.isBroken) {
+            self.fixAction.image = brokenImage;
+            /*
+             TODO: Remove this, this should only be changed as a side effect.
+             */
+        } else {
+            self.fixAction.image = fixedImage;
+            /*
+             TODO: Reset all the items to their original states, including button images.
+             */
+        }
+    }];
+    return fixAction;
 }
 
 @end
