@@ -21,21 +21,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self setUpPlayButton];
 }
 
-- (void)setUpPlayButton {
-    UIButton *playButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [playButton setTitle:@"Play" forState:UIControlStateNormal];
-    [playButton sizeToFit];
-    playButton.center = self.view.center;
-    
-    [playButton addTarget:self action:@selector(playMovie:) forControlEvents:UIControlEventPrimaryActionTriggered];
-    [self.view addSubview:playButton];
-}
-
-- (void)playMovie:(UIButton *)playButton {
+- (IBAction)initialiseMediaPlayer:(id)sender {
     NSString *ultimateFunExampleFun = @"http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8";
     NSURL *url = [[NSURL alloc]
                   initWithString:ultimateFunExampleFun];
