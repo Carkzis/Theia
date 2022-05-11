@@ -28,10 +28,7 @@
     @property (nonatomic) BOOL isConfused;
 
     @property (strong, nonatomic) UIAction *apocalypseAction;
-    // smallcircle.filled.circle
-    // flame.circle
-    // flame.fill
-    // The end.
+    @property (nonatomic) NSInteger uhOhRating;
 
     @property (strong, nonatomic) UIAction *fixAction;
     @property (nonatomic) BOOL isBroken;
@@ -61,8 +58,9 @@
     _teleportAction = [self setUpAndRetrieveTeleportActionForTransportBar];
     _reversiAction = [self setUpAndRetrieveReversiActionForTransportBar];
     _confusedAction = [self setUpAndRetrieveConfusedActionForTransportBar];
+    _apocalypseAction = [self setUpAndRetrieveApocalypseActionForTransportBar];
     _fixAction = [self setUpAndRetrieveFixActionForTransportBar];
-    _controller.transportBarCustomMenuItems = @[_randomAction, _muteAction, _speedAction, _teleportAction, _reversiAction, _fixAction];
+    _controller.transportBarCustomMenuItems = @[_randomAction, _muteAction, _speedAction, _teleportAction, _reversiAction, _fixAction, _apocalypseAction];
 }
 
 - (UIAction *)setUpAndRetreiveRandomActionForTransportBar {
@@ -195,6 +193,38 @@
         }
     }];
     return confusedAction;
+}
+
+- (UIAction *)setUpAndRetrieveApocalypseActionForTransportBar {
+    UIImage *notDyingImage = [UIImage systemImageNamed:@"circle"];
+    UIImage *dyingImage = [UIImage systemImageNamed:@"smallcircle.filled.circle"];
+    UIImage *nearDeathImage = [UIImage systemImageNamed:@"flame.circle"];
+    UIImage *apocalypseImage = [UIImage systemImageNamed:@"flame.fill"];
+    
+    // TODO: This will be replaced by an enum at a later time.
+    _uhOhRating = 0;
+    
+    UIAction *apocalypseAction = [UIAction actionWithTitle:@"Apocalypse" image:notDyingImage identifier:nil handler:^(__weak UIAction *action) {
+        /*
+         TODO: Make this work.
+         */
+        self.uhOhRating++;
+        switch (self.uhOhRating) {
+            case 1:
+                self.apocalypseAction.image = dyingImage;
+                break;
+            case 2:
+                self.apocalypseAction.image = nearDeathImage;
+                break;
+            case 3:
+                self.apocalypseAction.image = apocalypseImage;
+                break;
+            default:
+                self.apocalypseAction.image = notDyingImage;
+                self.uhOhRating = 0;
+        }
+    }];
+    return apocalypseAction;
 }
 
 - (UIAction *)setUpAndRetrieveFixActionForTransportBar {
