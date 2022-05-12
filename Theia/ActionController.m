@@ -10,6 +10,7 @@
 @interface ActionController()
 
     @property (strong, nonatomic) AVPlayer *player;
+    @property (strong, nonatomic) AVPlayerItem *playerItem;
     @property (strong, nonatomic) AVPlayerViewController *controller;
 
     @property (strong, nonatomic) UIAction *randomAction;
@@ -44,6 +45,7 @@
     if (self = [super init])
     {
         _player = player;
+        _playerItem = player.currentItem;
         _controller = controller;
     }
     return self;
@@ -144,28 +146,25 @@
     return teleportAction;
 }
 
-/*
- Consider moving to a PlayerUtils class.
- */
 - (CMTime)getCurrentPlayerTime {
-    AVPlayerItem *currentItem = _player.currentItem;
-    CMTime cachedPosition = currentItem.currentTime;
+    CMTime cachedPosition = _playerItem.currentTime;
     return cachedPosition;
 }
 
 - (void)teleportToRandomPosition {
-    AVPlayerItem *currentItem = _player.currentItem;
-    CMTimeValue timeValue = currentItem.duration.value;
-    CMTimeScale timeScale = currentItem.duration.timescale;
+    CMTimeValue timeValue = _playerItem.duration.value;
+    CMTimeScale timeScale = _playerItem.duration.timescale;
     CMTimeValue randomTimeValue = arc4random() % timeValue;
-    CMTime formattedTeleportTime = CMTimeMake((float)randomTimeValue, timeScale);
-    [self.player seekToTime:formattedTeleportTime];
+    [self formatNewTimeAndSeek:randomTimeValue withScale:timeScale];
 }
 
 - (void)teleportToOriginalPosition {
-    AVPlayerItem *currentItem = _player.currentItem;
-    CMTimeScale timeScale = currentItem.currentTime.timescale;
-    CMTime formattedTeleportTime = CMTimeMake((float)_teleportedFromPosition.value, timeScale);
+    CMTimeScale timeScale = _playerItem.currentTime.timescale;
+    [self formatNewTimeAndSeek:_teleportedFromPosition.value withScale:timeScale];
+}
+
+- (void)formatNewTimeAndSeek:(CMTimeValue)value withScale:(CMTimeScale)scale {
+    CMTime formattedTeleportTime = CMTimeMake((float)value, scale);
     [self.player seekToTime:formattedTeleportTime];
 }
 
