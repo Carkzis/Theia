@@ -19,7 +19,8 @@
     @property (strong, nonatomic) UIAction *speedAction;
 
     @property (strong, nonatomic) UIAction *teleportAction;
-    @property (nonatomic) NSInteger teleportedFromPosition;
+    @property (nonatomic) CMTime teleportedFromPosition;
+    @property (nonatomic) BOOL isTeleported;
 
     @property (strong, nonatomic) UIAction *reversiAction;
     @property (nonatomic) BOOL isReversi;
@@ -127,24 +128,45 @@
 - (UIAction *)setUpAndRetrieveTeleportActionForTransportBar {
     UIImage *returnedImage = [UIImage systemImageNamed:@"lasso.and.sparkles"];
     UIImage *teleportedImage = [UIImage systemImageNamed:@"sparkles"];
-    _teleportedFromPosition = -1;
+    _isTeleported = false;
     
     UIAction *teleportAction = [UIAction actionWithTitle:@"Teleport" image:returnedImage identifier:nil handler:^(__weak UIAction *action) {
-        if (self.teleportedFromPosition < 0) {
+        self.isTeleported = !self.isTeleported;
+        if (self.isTeleported) {
             self.teleportAction.image = teleportedImage;
-            self.teleportedFromPosition = 1;
-            /*
-             TODO: Cache the current position, move to a random new position.
-             */
+            self.teleportedFromPosition = [self getCurrentPlayerTime];
+            [self teleportToRandomPosition];
         } else {
             self.teleportAction.image = returnedImage;
-            self.teleportedFromPosition = -1;
-            /*
-             TODO: Return to cached position, reset cached position to be -1/nil.
-             */
+            [self teleportToOriginalPosition];
         }
     }];
     return teleportAction;
+}
+
+/*
+ Consider moving to a PlayerUtils class.
+ */
+- (CMTime)getCurrentPlayerTime {
+    AVPlayerItem *currentItem = _player.currentItem;
+    CMTime cachedPosition = currentItem.currentTime;
+    return cachedPosition;
+}
+
+- (void)teleportToRandomPosition {
+    AVPlayerItem *currentItem = _player.currentItem;
+    CMTimeValue timeValue = currentItem.duration.value;
+    CMTimeScale timeScale = currentItem.duration.timescale;
+    CMTimeValue randomTimeValue = arc4random() % timeValue;
+    CMTime formattedTeleportTime = CMTimeMake((float)randomTimeValue, timeScale);
+    [self.player seekToTime:formattedTeleportTime];
+}
+
+- (void)teleportToOriginalPosition {
+    AVPlayerItem *currentItem = _player.currentItem;
+    CMTimeScale timeScale = currentItem.currentTime.timescale;
+    CMTime formattedTeleportTime = CMTimeMake((float)_teleportedFromPosition.value, timeScale);
+    [self.player seekToTime:formattedTeleportTime];
 }
 
 - (UIAction *)setUpAndRetrieveReversiActionForTransportBar {
