@@ -7,17 +7,16 @@
 
 #import "SpeedActionState.h"
 
+typedef NS_ENUM(NSUInteger, Speed) {
+    superslow = 0,
+    slow = 1,
+    standard = 2,
+    fast = 3,
+    superfast = 4
+};
+
 @interface SpeedActionState()
     @property (strong, nonatomic) NSMutableDictionary *speeds;
-
-    typedef NS_ENUM(NSUInteger, Speed) {
-        superslow = 0,
-        slow = 1,
-        standard = 2,
-        fast = 3,
-        superfast = 4
-    };
-
 @end
 
 @implementation SpeedActionState

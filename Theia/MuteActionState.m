@@ -7,6 +7,11 @@
 
 #import "MuteActionState.h"
 
+typedef NS_ENUM(NSUInteger, Muteness) {
+    unmuted = 0,
+    muted = 1
+};
+
 @implementation MuteActionState
 
 @synthesize action;
@@ -22,8 +27,8 @@
         self.action.image = defaultImage;
         self.isActive = false;
         self.images = [NSMutableDictionary dictionary];
-        [self.images setObject: [UIImage systemImageNamed:@"speaker.wave.2.fill"] forKey:@"unmuted"];
-        [self.images setObject: [UIImage systemImageNamed:@"speaker.zzz.fill"] forKey:@"muted"];
+        [self.images setObject: [UIImage systemImageNamed:@"speaker.wave.2.fill"] forKey:[NSNumber numberWithInteger:unmuted]];
+        [self.images setObject: [UIImage systemImageNamed:@"speaker.zzz.fill"] forKey:[NSNumber numberWithInteger:muted]];
     }
     return self;
 }
@@ -32,11 +37,11 @@
     isActive = !isActive;
     if (isActive) {
         NSLog(@"Mute");
-        self.action.image = [images objectForKey:@"muted"];
+        self.action.image = [images objectForKey:[NSNumber numberWithInteger:muted]];
         [player setMuted:YES];
     } else {
         NSLog(@"Unmute");
-        self.action.image = [images objectForKey:@"unmuted"];
+        self.action.image = [images objectForKey:[NSNumber numberWithInteger:unmuted]];
         [player setMuted:NO];
     }
 }
