@@ -175,17 +175,8 @@
     UIImage *reversiStateImage = _isReversi ? backwardsImage : forwardsImage;
     UIAction *reversiAction = [UIAction actionWithTitle:@"Reversi" image:reversiStateImage identifier:nil handler:^(__weak UIAction *action) {
         self.isReversi = !self.isReversi;
-        if (self.isReversi) {
-            self.reversiAction.image = backwardsImage;
-            /*
-             TODO: Make left and right assign to the opposite directions.
-             */
-        } else {
-            self.reversiAction.image = forwardsImage;
-            /*
-             TODO: Make left and right assign to the correct directions.
-             */
-        }
+        NSArray *reversedArray = [[self.controller.transportBarCustomMenuItems reverseObjectEnumerator] allObjects];
+        self.controller.transportBarCustomMenuItems = reversedArray;
     }];
     return reversiAction;
 }
@@ -242,6 +233,7 @@
                 break;
             default:
                 self.apocalypseAction.image = notDyingImage;
+                // exit(0);
                 self.uhOhRating = 0;
         }
     }];

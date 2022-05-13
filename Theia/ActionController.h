@@ -13,6 +13,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ActionController : NSObject
+
 - (instancetype)initWithPlayer:(AVPlayer *)player
                     controller:(AVPlayerViewController *)controller;
 - (void)setUpTransportBar;

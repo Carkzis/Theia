@@ -59,7 +59,7 @@
 }
 
 - (void)setUpGestures {
-    _gestures = [[GestureController alloc] initWithPlayer:_player controller:_controller];
+    _gestures = [[GestureController alloc] initWithPlayer:_player controller:_controller actionController:_actions];
     [_gestures setUpGestures];
 }
 

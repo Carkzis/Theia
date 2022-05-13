@@ -9,12 +9,14 @@
 #import <AVKit/AVKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import "ActionController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface GestureController : UIViewController
 - (instancetype)initWithPlayer:(AVPlayer *)player
-                    controller:(AVPlayerViewController *)controller;
+                    controller:(AVPlayerViewController *)controller
+              actionController:(ActionController*)actionController;
 - (void)setUpGestures;
 @end
 

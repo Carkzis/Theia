@@ -10,16 +10,21 @@
 @interface GestureController ()
     @property (strong, nonatomic) AVPlayer *player;
     @property (strong, nonatomic) AVPlayerViewController *controller;
+
+    @property (strong, nonatomic) ActionController *actionController;
 @end
 
 @implementation GestureController
 
 - (instancetype)initWithPlayer:(AVPlayer *)player
                     controller:(AVPlayerViewController *)controller
+              actionController:(ActionController *)actionController;
 {
     if ((self = [super init])) {
         _player = player;
         _controller = controller;
+        // This will get replaced with an state object for all states.
+        _actionController = actionController;
     }
     return self;
 }
