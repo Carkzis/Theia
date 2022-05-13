@@ -14,9 +14,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ActionController : NSObject
 
+@property (nonatomic) BOOL isConfused;
+
 - (instancetype)initWithPlayer:(AVPlayer *)player
                     controller:(AVPlayerViewController *)controller;
 - (void)setUpTransportBar;
+- (void)mayDoUnexpectedActionIfConfused;
 @end
 
 NS_ASSUME_NONNULL_END

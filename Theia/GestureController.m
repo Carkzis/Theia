@@ -23,7 +23,6 @@
     if ((self = [super init])) {
         _player = player;
         _controller = controller;
-        // This will get replaced with an state object for all states.
         _actionController = actionController;
     }
     return self;
@@ -95,27 +94,32 @@
 - (MPRemoteCommandHandlerStatus)pauseHandler {
     NSLog(@"Pause.");
     [_player pause];
+    [_actionController mayDoUnexpectedActionIfConfused];
     return MPRemoteCommandHandlerStatusSuccess;
 }
 
 - (MPRemoteCommandHandlerStatus)playHandler {
     NSLog(@"Play.");
     [_player play];
+    [_actionController mayDoUnexpectedActionIfConfused];
     return MPRemoteCommandHandlerStatusSuccess;
 }
 
 - (MPRemoteCommandHandlerStatus)goRightHandler {
     NSLog(@"Right pressed.");
+    [_actionController mayDoUnexpectedActionIfConfused];
     return MPRemoteCommandHandlerStatusSuccess;
 }
 
 - (MPRemoteCommandHandlerStatus)goLeftHandler {
     NSLog(@"Left pressed.");
+    [_actionController mayDoUnexpectedActionIfConfused];
     return MPRemoteCommandHandlerStatusSuccess;
 }
 
 - (MPRemoteCommandHandlerStatus)goUpHandler {
     NSLog(@"Up pressed.");
+    [_actionController mayDoUnexpectedActionIfConfused];
     return MPRemoteCommandHandlerStatusSuccess;
 }
 
@@ -123,9 +127,11 @@
     switch (longPressGesture.state) {
         case UIGestureRecognizerStateBegan:
             NSLog(@"Long play press begins!");
+            [_actionController mayDoUnexpectedActionIfConfused];
             break;
         case UIGestureRecognizerStateEnded:
             NSLog(@"Long play press ends!");
+            [_actionController mayDoUnexpectedActionIfConfused];
         default:
             break;
     }
@@ -136,9 +142,11 @@
     switch (longPressGesture.state) {
         case UIGestureRecognizerStateBegan:
             NSLog(@"Long right begins!");
+            [_actionController mayDoUnexpectedActionIfConfused];
             break;
         case UIGestureRecognizerStateEnded:
             NSLog(@"Long right ends!");
+            [_actionController mayDoUnexpectedActionIfConfused];
         default:
             break;
     }
@@ -150,9 +158,11 @@
     switch (longPressGesture.state) {
         case UIGestureRecognizerStateBegan:
             NSLog(@"Long left begins!");
+            [_actionController mayDoUnexpectedActionIfConfused];
             break;
         case UIGestureRecognizerStateEnded:
             NSLog(@"Long left ends!");
+            [_actionController mayDoUnexpectedActionIfConfused];
         default:
             break;
     }
@@ -163,9 +173,11 @@
     switch (longPressGesture.state) {
         case UIGestureRecognizerStateBegan:
             NSLog(@"Long up begins!");
+            [_actionController mayDoUnexpectedActionIfConfused];
             break;
         case UIGestureRecognizerStateEnded:
             NSLog(@"Long up ends!");
+            [_actionController mayDoUnexpectedActionIfConfused];
         default:
             break;
     }

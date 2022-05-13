@@ -27,7 +27,6 @@
     @property (nonatomic) BOOL isReversi;
 
     @property (strong, nonatomic) UIAction *confusedAction;
-    @property (nonatomic) BOOL isConfused;
 
     @property (strong, nonatomic) UIAction *apocalypseAction;
     @property (nonatomic) NSInteger uhOhRating;
@@ -63,7 +62,7 @@
     _confusedAction = [self setUpAndRetrieveConfusedActionForTransportBar];
     _apocalypseAction = [self setUpAndRetrieveApocalypseActionForTransportBar];
     _fixAction = [self setUpAndRetrieveFixActionForTransportBar];
-    _controller.transportBarCustomMenuItems = @[_randomAction, _muteAction, _speedAction, _teleportAction, _reversiAction, _fixAction, _apocalypseAction];
+    _controller.transportBarCustomMenuItems = @[_randomAction, _muteAction, _speedAction, _teleportAction, _reversiAction, _confusedAction, _fixAction, _apocalypseAction];
 }
 
 - (UIAction *)setUpAndRetreiveRandomActionForTransportBar {
@@ -175,6 +174,7 @@
     UIImage *reversiStateImage = _isReversi ? backwardsImage : forwardsImage;
     UIAction *reversiAction = [UIAction actionWithTitle:@"Reversi" image:reversiStateImage identifier:nil handler:^(__weak UIAction *action) {
         self.isReversi = !self.isReversi;
+        self.reversiAction.image = self.isReversi ? backwardsImage : forwardsImage;
         NSArray *reversedArray = [[self.controller.transportBarCustomMenuItems reverseObjectEnumerator] allObjects];
         self.controller.transportBarCustomMenuItems = reversedArray;
     }];
@@ -182,29 +182,37 @@
 }
 
 - (UIAction *)setUpAndRetrieveConfusedActionForTransportBar {
-    /*
-     TODO: Make this a confused action, not another reversi action.
-     */
     UIImage *lucidImage = [UIImage systemImageNamed:@"face.smiling"];
     UIImage *confusedImage = [UIImage systemImageNamed:@"face.dashed"];
     
     UIImage *confusedStateImage = _isConfused ? confusedImage : lucidImage;
-    
     UIAction *confusedAction = [UIAction actionWithTitle:@"Confused" image:confusedStateImage identifier:nil handler:^(__weak UIAction *action) {
         self.isConfused = !self.isConfused;
-        if (self.isConfused) {
-            self.confusedAction.image = lucidImage;
-            /*
-             TODO: Make an action that will make it more difficult for inputs to register.
-             */
-        } else {
-            self.confusedAction.image = confusedImage;
-            /*
-             TODO: Make it so inputs register normally.
-             */
-        }
+        self.confusedAction.image = self.isConfused ? confusedImage : lucidImage;
+        [self mayDoUnexpectedActionIfConfused];
     }];
     return confusedAction;
+}
+
+- (void)mayDoUnexpectedActionIfConfused {
+    if (_isConfused) {
+        [self doUnexpectedAction];
+    } else {
+        return;
+    }
+}
+
+- (void)doUnexpectedAction {
+    NSUInteger randomIndex = arc4random() % 100;
+    if (randomIndex < 20) {
+        if (_player.timeControlStatus == AVPlayerTimeControlStatusPlaying) {
+            NSLog(@"Unexpected pause!");
+            [_player pause];
+        } else if (_player.timeControlStatus == AVPlayerTimeControlStatusPaused) {
+            NSLog(@"Unexpected play!");
+            [_player play];
+        }
+    }
 }
 
 - (UIAction *)setUpAndRetrieveApocalypseActionForTransportBar {
