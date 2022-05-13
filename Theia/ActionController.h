@@ -11,6 +11,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "ActionState.h"
 #import "MuteActionState.h"
+#import "SpeedActionState.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

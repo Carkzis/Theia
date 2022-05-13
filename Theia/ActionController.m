@@ -61,7 +61,7 @@
     _muteStateDelegate = [[MuteActionState alloc] initWithAction:_muteAction];
     
     _speedAction = [self setUpAndRetrieveSpeedActionForTransportBar];
-    
+    _speedStateDelegate = [[SpeedActionState alloc] initWithAction:_speedAction];
     
     _teleportAction = [self setUpAndRetrieveTeleportActionForTransportBar];
     _reversiAction = [self setUpAndRetrieveReversiActionForTransportBar];
@@ -87,39 +87,13 @@
         [self setStatusOfPlayerToBroken];
         [self.muteStateDelegate carryOutActionOn:self.player];
     }];
-    
     return muteAction;
 }
 
 - (UIAction *)setUpAndRetrieveSpeedActionForTransportBar {
-    UIImage *superSlowImage = [UIImage systemImageNamed:@"tortoise.fill"];
-    UIImage *slowImage = [UIImage systemImageNamed:@"ant.fill"];
-    UIImage *timeImage = [UIImage systemImageNamed:@"figure.walk"];
-    UIImage *fastImage = [UIImage systemImageNamed:@"hare.fill"];
-    UIImage *superFastImage = [UIImage systemImageNamed:@"pawprint.fill"];
-    
-    typedef NS_ENUM(NSUInteger, Speed) {
-        superslow = 0,
-        slow = 1,
-        standard = 2,
-        fast = 3,
-        superfast = 4
-    };
-    
-    NSMutableDictionary *speeds = [NSMutableDictionary dictionary];
-    [speeds setObject: @[@0.25, superSlowImage, @"Superslow"] forKey: [NSNumber numberWithInteger:superslow]];
-    [speeds setObject: @[@0.5, slowImage, @"Slow"] forKey: [NSNumber numberWithInteger:slow]];
-    [speeds setObject: @[@1.0, timeImage, @"Speed Reset"] forKey: [NSNumber numberWithInteger:standard]];
-    [speeds setObject: @[@1.50, fastImage, @"Fast"] forKey: [NSNumber numberWithInteger:fast]];
-    [speeds setObject: @[@2.0, superFastImage, @"Superfast"] forKey: [NSNumber numberWithInteger:superfast]];
-    
-    UIAction *speedAction = [UIAction actionWithTitle:@"Speed" image:timeImage identifier:nil handler:^(__weak UIAction *action) {
+    UIAction *speedAction = [UIAction actionWithTitle:@"Speed" image:_speedStateDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
         [self setStatusOfPlayerToBroken];
-        
-        NSUInteger randomIndex = arc4random() % speeds.count;
-        self.player.rate = [[[speeds objectForKey:[NSNumber numberWithInteger:randomIndex]] objectAtIndex:0] floatValue];
-        self.speedAction.image = [[speeds objectForKey:[NSNumber numberWithInteger:randomIndex]] objectAtIndex:1];
-        NSLog(@"%@", [[speeds objectForKey:[NSNumber numberWithInteger:randomIndex]] objectAtIndex:2]);
+        [self.speedStateDelegate carryOutActionOn:self.player];
     }];
     return speedAction;
 }
