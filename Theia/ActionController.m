@@ -29,7 +29,7 @@
     @property (strong, nonatomic) UIAction *confusedAction;
 
     @property (strong, nonatomic) UIAction *apocalypseAction;
-    @property (nonatomic) NSInteger uhOhRating;
+    @property (nonatomic) NSInteger apocalypseLevel;
 
     @property (strong, nonatomic) UIAction *fixAction;
     @property (nonatomic) BOOL isBroken;
@@ -221,28 +221,31 @@
     UIImage *nearDeathImage = [UIImage systemImageNamed:@"flame.circle"];
     UIImage *apocalypseImage = [UIImage systemImageNamed:@"flame.fill"];
     
-    // TODO: This will be replaced by an enum at a later time.
-    _uhOhRating = 0;
+    typedef NS_ENUM(NSUInteger, ApocalypseLevel) {
+        notDying = 0,
+        dying = 1,
+        nearDeath = 2,
+        apocalypse = 3,
+        end = 4
+    };
+    
+    _apocalypseLevel = notDying;
     
     UIAction *apocalypseAction = [UIAction actionWithTitle:@"Apocalypse" image:notDyingImage identifier:nil handler:^(__weak UIAction *action) {
-        /*
-         TODO: Make this work.
-         */
-        self.uhOhRating++;
-        switch (self.uhOhRating) {
-            case 1:
+        self.apocalypseLevel++;
+        switch (self.apocalypseLevel) {
+            case dying:
                 self.apocalypseAction.image = dyingImage;
                 break;
-            case 2:
+            case nearDeath:
                 self.apocalypseAction.image = nearDeathImage;
                 break;
-            case 3:
+            case apocalypse:
                 self.apocalypseAction.image = apocalypseImage;
                 break;
-            default:
-                self.apocalypseAction.image = notDyingImage;
-                // exit(0);
-                self.uhOhRating = 0;
+            case end:
+                NSLog(@"Kaboom!");
+                exit(0);
         }
     }];
     return apocalypseAction;
