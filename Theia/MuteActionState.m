@@ -43,7 +43,7 @@
 
 - (void)resetValue:(nonnull AVPlayer *)player {
     isActive = false;
-    self.action.image = [images objectForKey:@"unmuted"];
+    self.action.image = defaultImage;
     [player setMuted:NO];
 }
 

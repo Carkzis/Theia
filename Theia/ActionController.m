@@ -16,9 +16,10 @@
     @property (strong, nonatomic) UIAction *randomAction;
 
     @property (strong, nonatomic) UIAction *muteAction;
-    @property (strong, nonatomic) id<ActionState> muteState;
+    @property (strong, nonatomic) id<ActionState> muteStateDelegate;
 
     @property (strong, nonatomic) UIAction *speedAction;
+    @property (strong, nonatomic) id<ActionState> speedStateDelegate;
 
     @property (strong, nonatomic) UIAction *teleportAction;
     @property (nonatomic) CMTime teleportedFromPosition;
@@ -54,15 +55,14 @@
 }
 
 - (void)setUpTransportBar {
-    /*
-     I am setting the actions as properties, as I want different actions to access each other.
-     */
     _randomAction = [self setUpAndRetreiveRandomActionForTransportBar];
     
     _muteAction = [self setUpAndRetrieveMuteActionForTransportBar];
-    _muteState = [[MuteActionState alloc] initWithAction:_muteAction];
+    _muteStateDelegate = [[MuteActionState alloc] initWithAction:_muteAction];
     
     _speedAction = [self setUpAndRetrieveSpeedActionForTransportBar];
+    
+    
     _teleportAction = [self setUpAndRetrieveTeleportActionForTransportBar];
     _reversiAction = [self setUpAndRetrieveReversiActionForTransportBar];
     _confusedAction = [self setUpAndRetrieveConfusedActionForTransportBar];
@@ -83,9 +83,9 @@
 }
 
 - (UIAction *)setUpAndRetrieveMuteActionForTransportBar {
-    UIAction *muteAction = [UIAction actionWithTitle:@"Mute" image:_muteState.defaultImage identifier:nil handler:^(__weak UIAction *action) {
+    UIAction *muteAction = [UIAction actionWithTitle:@"Mute" image:_muteStateDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
         [self setStatusOfPlayerToBroken];
-        [self.muteState carryOutActionOn:self.player];
+        [self.muteStateDelegate carryOutActionOn:self.player];
     }];
     
     return muteAction;
