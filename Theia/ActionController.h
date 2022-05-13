@@ -9,6 +9,8 @@
 #import <AVKit/AVKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import "ActionState.h"
+#import "MuteActionState.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

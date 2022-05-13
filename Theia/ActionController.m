@@ -16,6 +16,7 @@
     @property (strong, nonatomic) UIAction *randomAction;
 
     @property (strong, nonatomic) UIAction *muteAction;
+    @property (strong, nonatomic) id<ActionState> muteState;
 
     @property (strong, nonatomic) UIAction *speedAction;
 
@@ -57,7 +58,10 @@
      I am setting the actions as properties, as I want different actions to access each other.
      */
     _randomAction = [self setUpAndRetreiveRandomActionForTransportBar];
+    
     _muteAction = [self setUpAndRetrieveMuteActionForTransportBar];
+    _muteState = [[MuteActionState alloc] initWithAction:_muteAction];
+    
     _speedAction = [self setUpAndRetrieveSpeedActionForTransportBar];
     _teleportAction = [self setUpAndRetrieveTeleportActionForTransportBar];
     _reversiAction = [self setUpAndRetrieveReversiActionForTransportBar];
@@ -79,22 +83,9 @@
 }
 
 - (UIAction *)setUpAndRetrieveMuteActionForTransportBar {
-    UIImage *mutedImage = [UIImage systemImageNamed:@"speaker.zzz.fill"];
-    UIImage *unmutedImage = [UIImage systemImageNamed:@"speaker.wave.2.fill"];
-    UIImage *muteStateImage = _player.muted ? mutedImage : unmutedImage;
-    
-    UIAction *muteAction = [UIAction actionWithTitle:@"Mute" image:muteStateImage identifier:nil handler:^(__weak UIAction *action) {
+    UIAction *muteAction = [UIAction actionWithTitle:@"Mute" image:_muteState.defaultImage identifier:nil handler:^(__weak UIAction *action) {
         [self setStatusOfPlayerToBroken];
-        
-        if (!self.player.muted) {
-            NSLog(@"Mute");
-            self.muteAction.image = mutedImage;
-            [self.player setMuted:YES];
-        } else {
-            NSLog(@"Unmute");
-            self.muteAction.image = unmutedImage;
-            [self.player setMuted:NO];
-        }
+        [self.muteState carryOutActionOn:self.player];
     }];
     
     return muteAction;
