@@ -33,6 +33,8 @@
 
     @property (strong, nonatomic) UIAction *fixAction;
     @property (nonatomic) BOOL isBroken;
+    @property (strong, nonatomic) UIImage *brokenImage;
+    @property (strong, nonatomic) UIImage *fixedImage;
 
 @end
 
@@ -80,7 +82,10 @@
     UIImage *mutedImage = [UIImage systemImageNamed:@"speaker.zzz.fill"];
     UIImage *unmutedImage = [UIImage systemImageNamed:@"speaker.wave.2.fill"];
     UIImage *muteStateImage = _player.muted ? mutedImage : unmutedImage;
+    
     UIAction *muteAction = [UIAction actionWithTitle:@"Mute" image:muteStateImage identifier:nil handler:^(__weak UIAction *action) {
+        [self setStatusOfPlayerToBroken];
+        
         if (!self.player.muted) {
             NSLog(@"Mute");
             self.muteAction.image = mutedImage;
@@ -118,6 +123,8 @@
     [speeds setObject: @[@2.0, superFastImage, @"Superfast"] forKey: [NSNumber numberWithInteger:superfast]];
     
     UIAction *speedAction = [UIAction actionWithTitle:@"Speed" image:timeImage identifier:nil handler:^(__weak UIAction *action) {
+        [self setStatusOfPlayerToBroken];
+        
         NSUInteger randomIndex = arc4random() % speeds.count;
         self.player.rate = [[[speeds objectForKey:[NSNumber numberWithInteger:randomIndex]] objectAtIndex:0] floatValue];
         self.speedAction.image = [[speeds objectForKey:[NSNumber numberWithInteger:randomIndex]] objectAtIndex:1];
@@ -132,6 +139,8 @@
     _isTeleported = false;
     
     UIAction *teleportAction = [UIAction actionWithTitle:@"Teleport" image:returnedImage identifier:nil handler:^(__weak UIAction *action) {
+        [self setStatusOfPlayerToBroken];
+        
         self.isTeleported = !self.isTeleported;
         if (self.isTeleported) {
             self.teleportAction.image = teleportedImage;
@@ -173,6 +182,8 @@
     
     UIImage *reversiStateImage = _isReversi ? backwardsImage : forwardsImage;
     UIAction *reversiAction = [UIAction actionWithTitle:@"Reversi" image:reversiStateImage identifier:nil handler:^(__weak UIAction *action) {
+        [self setStatusOfPlayerToBroken];
+        
         self.isReversi = !self.isReversi;
         self.reversiAction.image = self.isReversi ? backwardsImage : forwardsImage;
         NSArray *reversedArray = [[self.controller.transportBarCustomMenuItems reverseObjectEnumerator] allObjects];
@@ -187,6 +198,8 @@
     
     UIImage *confusedStateImage = _isConfused ? confusedImage : lucidImage;
     UIAction *confusedAction = [UIAction actionWithTitle:@"Confused" image:confusedStateImage identifier:nil handler:^(__weak UIAction *action) {
+        [self setStatusOfPlayerToBroken];
+        
         self.isConfused = !self.isConfused;
         self.confusedAction.image = self.isConfused ? confusedImage : lucidImage;
         [self mayDoUnexpectedActionIfConfused];
@@ -232,6 +245,8 @@
     _apocalypseLevel = notDying;
     
     UIAction *apocalypseAction = [UIAction actionWithTitle:@"Apocalypse" image:notDyingImage identifier:nil handler:^(__weak UIAction *action) {
+        [self setStatusOfPlayerToBroken];
+        
         self.apocalypseLevel++;
         switch (self.apocalypseLevel) {
             case dying:
@@ -252,24 +267,39 @@
 }
 
 - (UIAction *)setUpAndRetrieveFixActionForTransportBar {
-    UIImage *brokenImage = [UIImage systemImageNamed:@"wrench.and.screwdriver"];
-    UIImage *fixedImage = [UIImage systemImageNamed:@"checkmark.seal"];
+    _brokenImage = [UIImage systemImageNamed:@"wrench.and.screwdriver"];
+    _fixedImage = [UIImage systemImageNamed:@"checkmark.seal"];
     
-    UIAction *fixAction = [UIAction actionWithTitle:@"Fix" image:fixedImage identifier:nil handler:^(__weak UIAction *action) {
+    UIAction *fixAction = [UIAction actionWithTitle:@"Fix" image:_fixedImage identifier:nil handler:^(__weak UIAction *action) {
         self.isBroken = !self.isBroken;
         if (self.isBroken) {
-            self.fixAction.image = brokenImage;
-            /*
-             TODO: Remove this, this should only be changed as a side effect.
-             */
+            self.fixAction.image = self.brokenImage;
         } else {
-            self.fixAction.image = fixedImage;
-            /*
-             TODO: Reset all the items to their original states, including button images.
-             */
+            self.fixAction.image = self.fixedImage;
+            [self resetPlayerValues];
         }
     }];
     return fixAction;
+}
+
+- (void)setStatusOfPlayerToBroken {
+    _isBroken = true;
+    _fixAction.image = _brokenImage;
+}
+
+- (void)resetPlayerValues {
+    _player.muted = false;
+    _player.rate = (_player.timeControlStatus == AVPlayerTimeControlStatusPlaying) ? 1.0 : 0.0;
+    if (_isTeleported) {
+        [self teleportToOriginalPosition];
+        _isTeleported = false;
+    }
+    _isReversi = false;
+    _isConfused = false;
+    _apocalypseLevel = 0;
+    _isBroken = false;
+    
+    [self setUpTransportBar];
 }
 
 @end
