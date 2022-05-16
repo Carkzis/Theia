@@ -23,8 +23,6 @@
 
     @property (strong, nonatomic) UIAction *teleportAction;
     @property (strong, nonatomic) id<ActionState> teleportStateDelegate;
-    @property (nonatomic) CMTime teleportedFromPosition;
-    @property (nonatomic) BOOL isTeleported;
 
     @property (strong, nonatomic) UIAction *reversiAction;
     @property (nonatomic) BOOL isReversi;
@@ -102,46 +100,11 @@
 }
 
 - (UIAction *)setUpAndRetrieveTeleportActionForTransportBar {
-//    UIImage *returnedImage = [UIImage systemImageNamed:@"lasso.and.sparkles"];
-//    UIImage *teleportedImage = [UIImage systemImageNamed:@"sparkles"];
-//    _isTeleported = false;
-    
     UIAction *teleportAction = [UIAction actionWithTitle:@"Teleport" image:_teleportStateDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
         [self setStatusOfPlayerToBroken];
         [self.teleportStateDelegate carryOutActionOn:self.player];
-//        self.isTeleported = !self.isTeleported;
-//        if (self.isTeleported) {
-//            self.teleportAction.image = teleportedImage;
-//            self.teleportedFromPosition = [self getCurrentPlayerTime];
-//            [self teleportToRandomPosition];
-//        } else {
-//            self.teleportAction.image = returnedImage;
-//            [self teleportToOriginalPosition];
-//        }
     }];
     return teleportAction;
-}
-
-- (CMTime)getCurrentPlayerTime {
-    CMTime cachedPosition = _playerItem.currentTime;
-    return cachedPosition;
-}
-
-- (void)teleportToRandomPosition {
-    CMTimeValue timeValue = _playerItem.duration.value;
-    CMTimeScale timeScale = _playerItem.duration.timescale;
-    CMTimeValue randomTimeValue = arc4random() % timeValue;
-    [self formatNewTimeAndSeek:randomTimeValue withScale:timeScale];
-}
-
-- (void)teleportToOriginalPosition {
-    CMTimeScale timeScale = _playerItem.currentTime.timescale;
-    [self formatNewTimeAndSeek:_teleportedFromPosition.value withScale:timeScale];
-}
-
-- (void)formatNewTimeAndSeek:(CMTimeValue)value withScale:(CMTimeScale)scale {
-    CMTime formattedTeleportTime = CMTimeMake((float)value, scale);
-    [self.player seekToTime:formattedTeleportTime];
 }
 
 - (UIAction *)setUpAndRetrieveReversiActionForTransportBar {
@@ -258,10 +221,7 @@
 - (void)resetPlayerValues {
     _player.muted = false;
     _player.rate = (_player.timeControlStatus == AVPlayerTimeControlStatusPlaying) ? 1.0 : 0.0;
-    if (_isTeleported) {
-        [self teleportToOriginalPosition];
-        _isTeleported = false;
-    }
+    [self.teleportStateDelegate resetValue:_player];
     _isReversi = false;
     _isConfused = false;
     _apocalypseLevel = 0;

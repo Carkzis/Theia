@@ -11,9 +11,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TeleportActionState : NSObject <ActionState>
-    - (instancetype)initWithAction:(UIAction *)action;
-    - (void)carryOutActionOn:(nonnull AVPlayer *)player;
-    - (void)resetValue:(nonnull AVPlayer *)player;
+- (instancetype)initWithAction:(UIAction *)action;
+- (void)carryOutActionOn:(nonnull AVPlayer *)player;
+- (void)resetValue:(nonnull AVPlayer *)player;
 @end
 
 NS_ASSUME_NONNULL_END

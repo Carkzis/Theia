@@ -35,23 +35,22 @@ typedef NS_ENUM(NSUInteger, Muteness) {
 }
 
 - (void)setUpImages {
-    self.defaultImage = [UIImage systemImageNamed:@"lasso.and.sparkles"];
-    self.action.image = defaultImage;
+    defaultImage = [UIImage systemImageNamed:@"lasso.and.sparkles"];
+    action.image = defaultImage;
     
     [images setObject: self.defaultImage forKey:[NSNumber numberWithInteger:returned]];
     [images setObject: [UIImage systemImageNamed:@"sparkles"] forKey:[NSNumber numberWithInteger:teleported]];
 }
 
-// TODO: Check that this works.
 - (void)carryOutActionOn:(nonnull AVPlayer *)player {
-    self.isActive = !self.isActive;
-    if (self.isActive) {
-        self.action.image = [images objectForKey:[NSNumber numberWithInteger:teleported]];
-        self.originalPosition = [self getCurrentPlayerItemTime: player.currentItem];
+    isActive = !isActive;
+    if (isActive) {
+        action.image = [images objectForKey:[NSNumber numberWithInteger:teleported]];
+        _originalPosition = [self getCurrentPlayerItemTime: player.currentItem];
         CMTime newRandomPosition = [self generateRandomPlayerPosition:player.currentItem];
         [player seekToTime:newRandomPosition];
     } else {
-        self.action.image = [images objectForKey:[NSNumber numberWithInteger:returned]];
+        action.image = [images objectForKey:[NSNumber numberWithInteger:returned]];
         [player seekToTime:self.originalPosition];
     }
 }
@@ -74,7 +73,11 @@ typedef NS_ENUM(NSUInteger, Muteness) {
 }
 
 - (void)resetValue:(nonnull AVPlayer *)player {
-    // Carry out reset.
+    if (isActive) {
+        [self teleportToPosition:_originalPosition withPlayer:player];
+    }
+    isActive = false;
+    action.image = defaultImage;
 }
 
 @end
