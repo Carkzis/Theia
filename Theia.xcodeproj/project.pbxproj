@@ -22,6 +22,7 @@
 		E5D9B30A282188E900833038 /* ActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D9B309282188E900833038 /* ActionController.m */; };
 		E5F930A6282E905E003AFE6A /* MuteActionState.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F930A5282E905E003AFE6A /* MuteActionState.m */; };
 		E5F930AC282EAD40003AFE6A /* SpeedActionState.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F930AB282EAD40003AFE6A /* SpeedActionState.m */; };
+		E5F930AF2832401B003AFE6A /* TeleportActionState.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F930AE2832401B003AFE6A /* TeleportActionState.m */; };
 		E5FB18CD282118440017FD5F /* GestureController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FB18CC282118430017FD5F /* GestureController.m */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,8 @@
 		E5F930A5282E905E003AFE6A /* MuteActionState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MuteActionState.m; sourceTree = "<group>"; };
 		E5F930AA282EAD40003AFE6A /* SpeedActionState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpeedActionState.h; sourceTree = "<group>"; };
 		E5F930AB282EAD40003AFE6A /* SpeedActionState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpeedActionState.m; sourceTree = "<group>"; };
+		E5F930AD2832401B003AFE6A /* TeleportActionState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeleportActionState.h; sourceTree = "<group>"; };
+		E5F930AE2832401B003AFE6A /* TeleportActionState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeleportActionState.m; sourceTree = "<group>"; };
 		E5FB18CB282118430017FD5F /* GestureController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GestureController.h; sourceTree = "<group>"; };
 		E5FB18CC282118430017FD5F /* GestureController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GestureController.m; sourceTree = "<group>"; };
 		E8CB08A3DE9B0CC9A662AD75 /* Pods-TheiaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheiaTests.debug.xcconfig"; path = "Target Support Files/Pods-TheiaTests/Pods-TheiaTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -172,6 +175,8 @@
 				E5F930A5282E905E003AFE6A /* MuteActionState.m */,
 				E5F930AA282EAD40003AFE6A /* SpeedActionState.h */,
 				E5F930AB282EAD40003AFE6A /* SpeedActionState.m */,
+				E5F930AD2832401B003AFE6A /* TeleportActionState.h */,
+				E5F930AE2832401B003AFE6A /* TeleportActionState.m */,
 			);
 			path = Theia;
 			sourceTree = "<group>";
@@ -401,6 +406,7 @@
 				E531D1252808170800E735BA /* main.m in Sources */,
 				E5D9B30A282188E900833038 /* ActionController.m in Sources */,
 				E5F930A6282E905E003AFE6A /* MuteActionState.m in Sources */,
+				E5F930AF2832401B003AFE6A /* TeleportActionState.m in Sources */,
 				E531D1182808170600E735BA /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,6 +12,7 @@
 #import "ActionState.h"
 #import "MuteActionState.h"
 #import "SpeedActionState.h"
+#import "TeleportActionState.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

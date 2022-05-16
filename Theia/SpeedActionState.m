@@ -30,7 +30,6 @@ typedef NS_ENUM(NSUInteger, Speed) {
     if (self = [super init])
     {
         self.action = action;
-        self.defaultImage = [UIImage systemImageNamed:@"figure.walk"];
         self.action.image = defaultImage;
         self.isActive = false;
         self.images = [NSMutableDictionary dictionary];
@@ -41,9 +40,11 @@ typedef NS_ENUM(NSUInteger, Speed) {
 }
 
 - (void)setUpImages {
+    self.defaultImage = [UIImage systemImageNamed:@"figure.walk"];
+    
     [images setObject: [UIImage systemImageNamed:@"tortoise.fill"] forKey:[NSNumber numberWithInteger:superslow]];
     [images setObject: [UIImage systemImageNamed:@"ant.fill"] forKey:[NSNumber numberWithInteger:slow]];
-    [images setObject: [UIImage systemImageNamed:@"figure.walk"] forKey:[NSNumber numberWithInteger:standard]];
+    [images setObject: self.defaultImage forKey:[NSNumber numberWithInteger:standard]];
     [images setObject: [UIImage systemImageNamed:@"hare.fill"] forKey:[NSNumber numberWithInteger:fast]];
     [images setObject: [UIImage systemImageNamed:@"pawprint.fill"] forKey:[NSNumber numberWithInteger:superfast]];
 }

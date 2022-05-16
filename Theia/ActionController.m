@@ -22,6 +22,7 @@
     @property (strong, nonatomic) id<ActionState> speedStateDelegate;
 
     @property (strong, nonatomic) UIAction *teleportAction;
+    @property (strong, nonatomic) id<ActionState> teleportStateDelegate;
     @property (nonatomic) CMTime teleportedFromPosition;
     @property (nonatomic) BOOL isTeleported;
 
@@ -64,6 +65,8 @@
     _speedStateDelegate = [[SpeedActionState alloc] initWithAction:_speedAction];
     
     _teleportAction = [self setUpAndRetrieveTeleportActionForTransportBar];
+    _teleportStateDelegate = [[TeleportActionState alloc] initWithAction:_teleportAction];
+    
     _reversiAction = [self setUpAndRetrieveReversiActionForTransportBar];
     _confusedAction = [self setUpAndRetrieveConfusedActionForTransportBar];
     _apocalypseAction = [self setUpAndRetrieveApocalypseActionForTransportBar];
@@ -99,22 +102,22 @@
 }
 
 - (UIAction *)setUpAndRetrieveTeleportActionForTransportBar {
-    UIImage *returnedImage = [UIImage systemImageNamed:@"lasso.and.sparkles"];
-    UIImage *teleportedImage = [UIImage systemImageNamed:@"sparkles"];
-    _isTeleported = false;
+//    UIImage *returnedImage = [UIImage systemImageNamed:@"lasso.and.sparkles"];
+//    UIImage *teleportedImage = [UIImage systemImageNamed:@"sparkles"];
+//    _isTeleported = false;
     
-    UIAction *teleportAction = [UIAction actionWithTitle:@"Teleport" image:returnedImage identifier:nil handler:^(__weak UIAction *action) {
+    UIAction *teleportAction = [UIAction actionWithTitle:@"Teleport" image:_teleportStateDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
         [self setStatusOfPlayerToBroken];
-        
-        self.isTeleported = !self.isTeleported;
-        if (self.isTeleported) {
-            self.teleportAction.image = teleportedImage;
-            self.teleportedFromPosition = [self getCurrentPlayerTime];
-            [self teleportToRandomPosition];
-        } else {
-            self.teleportAction.image = returnedImage;
-            [self teleportToOriginalPosition];
-        }
+        [self.teleportStateDelegate carryOutActionOn:self.player];
+//        self.isTeleported = !self.isTeleported;
+//        if (self.isTeleported) {
+//            self.teleportAction.image = teleportedImage;
+//            self.teleportedFromPosition = [self getCurrentPlayerTime];
+//            [self teleportToRandomPosition];
+//        } else {
+//            self.teleportAction.image = returnedImage;
+//            [self teleportToOriginalPosition];
+//        }
     }];
     return teleportAction;
 }
