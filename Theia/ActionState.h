@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <AVKit/AVKit.h>
 
+@class ActionController;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol ActionState <NSObject>
@@ -20,8 +22,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) BOOL isActive;
 
 - (instancetype)initWithAction:(UIAction *)action;
-- (void)carryOutActionOn:(AVPlayer *)player;
-- (void)resetValue:(AVPlayer *)player;
+
+@optional
+- (void)carryOutActionOnPlayer:(AVPlayer *)player;
+- (void)resetValuesIncludingPlayer:(AVPlayer *)player;
+- (void)carryOutActionOnController:(ActionController *)controller;
+- (void)resetValuesIncludingController:(ActionController *)controller;
 
 @end
 

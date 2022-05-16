@@ -33,7 +33,7 @@ typedef NS_ENUM(NSUInteger, Muteness) {
     return self;
 }
 
-- (void)carryOutActionOn:(nonnull AVPlayer *)player {
+- (void)carryOutActionOnPlayer:(nonnull AVPlayer *)player {
     isActive = !isActive;
     if (isActive) {
         NSLog(@"Mute");
@@ -46,7 +46,7 @@ typedef NS_ENUM(NSUInteger, Muteness) {
     }
 }
 
-- (void)resetValue:(nonnull AVPlayer *)player {
+- (void)resetValuesIncludingPlayer:(nonnull AVPlayer *)player {
     isActive = false;
     self.action.image = defaultImage;
     [player setMuted:NO];

@@ -1,5 +1,5 @@
 //
-//  TeleportActionState.h
+//  ReversiActionState.h
 //  Theia
 //
 //  Created by Marc Jowett on 16/05/2022.
@@ -10,10 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TeleportActionState : NSObject <ActionState>
+@interface ReversiActionState : NSObject <ActionState>
 - (instancetype)initWithAction:(UIAction *)action;
-- (void)carryOutActionOnPlayer:(nonnull AVPlayer *)player;
-- (void)resetValuesIncludingPlayer:(nonnull AVPlayer *)player;
+- (void)carryOutActionOnController:(ActionController *)controller;
+- (void)resetValuesIncludingController:(ActionController *)controller;
 @end
 
 NS_ASSUME_NONNULL_END

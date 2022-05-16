@@ -42,7 +42,7 @@ typedef NS_ENUM(NSUInteger, Muteness) {
     [images setObject: [UIImage systemImageNamed:@"sparkles"] forKey:[NSNumber numberWithInteger:teleported]];
 }
 
-- (void)carryOutActionOn:(nonnull AVPlayer *)player {
+- (void)carryOutActionOnPlayer:(nonnull AVPlayer *)player {
     isActive = !isActive;
     if (isActive) {
         action.image = [images objectForKey:[NSNumber numberWithInteger:teleported]];
@@ -72,7 +72,7 @@ typedef NS_ENUM(NSUInteger, Muteness) {
     [player seekToTime:timePosition];
 }
 
-- (void)resetValue:(nonnull AVPlayer *)player {
+- (void)resetValuesIncludingPlayer:(nonnull AVPlayer *)player {
     if (isActive) {
         [self teleportToPosition:_originalPosition withPlayer:player];
     }

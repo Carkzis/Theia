@@ -86,7 +86,7 @@
 - (UIAction *)setUpAndRetrieveMuteActionForTransportBar {
     UIAction *muteAction = [UIAction actionWithTitle:@"Mute" image:_muteStateDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
         [self setStatusOfPlayerToBroken];
-        [self.muteStateDelegate carryOutActionOn:self.player];
+        [self.muteStateDelegate carryOutActionOnPlayer:self.player];
     }];
     return muteAction;
 }
@@ -94,7 +94,7 @@
 - (UIAction *)setUpAndRetrieveSpeedActionForTransportBar {
     UIAction *speedAction = [UIAction actionWithTitle:@"Speed" image:_speedStateDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
         [self setStatusOfPlayerToBroken];
-        [self.speedStateDelegate carryOutActionOn:self.player];
+        [self.speedStateDelegate carryOutActionOnPlayer:self.player];
     }];
     return speedAction;
 }
@@ -102,7 +102,7 @@
 - (UIAction *)setUpAndRetrieveTeleportActionForTransportBar {
     UIAction *teleportAction = [UIAction actionWithTitle:@"Teleport" image:_teleportStateDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
         [self setStatusOfPlayerToBroken];
-        [self.teleportStateDelegate carryOutActionOn:self.player];
+        [self.teleportStateDelegate carryOutActionOnPlayer:self.player];
     }];
     return teleportAction;
 }
@@ -221,7 +221,7 @@
 - (void)resetPlayerValues {
     _player.muted = false;
     _player.rate = (_player.timeControlStatus == AVPlayerTimeControlStatusPlaying) ? 1.0 : 0.0;
-    [self.teleportStateDelegate resetValue:_player];
+    [self.teleportStateDelegate resetValuesIncludingPlayer:_player];
     _isReversi = false;
     _isConfused = false;
     _apocalypseLevel = 0;

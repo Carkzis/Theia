@@ -13,8 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MuteActionState : NSObject <ActionState>
 
 - (instancetype)initWithAction:(UIAction *)action;
-- (void)carryOutActionOn:(nonnull AVPlayer *)player;
-- (void)resetValue:(nonnull AVPlayer *)player;
+- (void)carryOutActionOnPlayer:(nonnull AVPlayer *)player;
+- (void)resetValuesIncludingPlayer:(nonnull AVPlayer *)player;
 
 @end
 

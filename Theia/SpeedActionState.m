@@ -58,7 +58,7 @@ typedef NS_ENUM(NSUInteger, Speed) {
     [_speeds setObject: @[@2.0, @"Superfast"] forKey: [NSNumber numberWithInteger:superfast]];
 }
 
-- (void)carryOutActionOn:(nonnull AVPlayer *)player {
+- (void)carryOutActionOnPlayer:(nonnull AVPlayer *)player {
     isActive = !isActive;
     NSUInteger randomIndex = arc4random() % _speeds.count;
     player.rate = [[[_speeds objectForKey:[NSNumber numberWithInteger:randomIndex]] objectAtIndex:0] floatValue];
@@ -66,7 +66,7 @@ typedef NS_ENUM(NSUInteger, Speed) {
     NSLog(@"%@", [[_speeds objectForKey:[NSNumber numberWithInteger:randomIndex]] objectAtIndex:1]);
 }
 
-- (void)resetValue:(nonnull AVPlayer *)player {
+- (void)resetValuesIncludingPlayer:(nonnull AVPlayer *)player {
     isActive = false;
     action.image = defaultImage;
     if (player.timeControlStatus == AVPlayerTimeControlStatusPlaying) {
