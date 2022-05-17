@@ -14,6 +14,8 @@
 #import "SpeedActionState.h"
 #import "TeleportActionState.h"
 #import "ReversiActionState.h"
+#import "ConfusedActionState.h"
+#import "UnexpectedAction.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -21,11 +23,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic) BOOL isConfused;
 @property (strong, nonatomic) AVPlayerViewController *playerController;
+@property (strong, nonatomic) id<UnexpectedAction> unexpectedAction;
 
 - (instancetype)initWithPlayer:(AVPlayer *)player
                     controller:(AVPlayerViewController *)controller;
 - (void)setUpTransportBar;
-- (void)mayDoUnexpectedActionIfConfused;
 @end
 
 NS_ASSUME_NONNULL_END

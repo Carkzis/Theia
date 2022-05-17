@@ -53,6 +53,7 @@
 		BF9E074849A7A8C077DAB26B /* Pods-Theia-TheiaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Theia-TheiaUITests.release.xcconfig"; path = "Target Support Files/Pods-Theia-TheiaUITests/Pods-Theia-TheiaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C9CA2D75F22FD885DA5F9DFE /* Pods-Theia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Theia.debug.xcconfig"; path = "Target Support Files/Pods-Theia/Pods-Theia.debug.xcconfig"; sourceTree = "<group>"; };
 		E2FE558D0F183B70C3DECA8E /* Pods-Theia-TheiaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Theia-TheiaUITests.debug.xcconfig"; path = "Target Support Files/Pods-Theia-TheiaUITests/Pods-Theia-TheiaUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E50CFAB42833F47B008CB01B /* UnexpectedAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnexpectedAction.h; sourceTree = "<group>"; };
 		E531D1132808170600E735BA /* Theia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Theia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E531D1162808170600E735BA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E531D1172808170600E735BA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -187,6 +188,7 @@
 				E53B4AF12832792E0007DEDC /* ReversiActionState.m */,
 				E589A4192833B66900AF65AD /* ConfusedActionState.h */,
 				E589A41A2833B66900AF65AD /* ConfusedActionState.m */,
+				E50CFAB42833F47B008CB01B /* UnexpectedAction.h */,
 			);
 			path = Theia;
 			sourceTree = "<group>";

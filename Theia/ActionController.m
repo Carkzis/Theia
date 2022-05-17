@@ -27,6 +27,7 @@
     @property (strong, nonatomic) id<ActionState> reversiStateDelegate;
 
     @property (strong, nonatomic) UIAction *confusedAction;
+    @property (strong, nonatomic) id<ActionState> confusedStateDelegate;
 
     @property (strong, nonatomic) UIAction *apocalypseAction;
     @property (nonatomic) NSInteger apocalypseLevel;
@@ -72,6 +73,9 @@
     _reversiStateDelegate = [[ReversiActionState alloc] initWithAction:_reversiAction];
     
     _confusedAction = [self setUpAndRetrieveConfusedActionForTransportBar];
+    _confusedStateDelegate = [[ConfusedActionState alloc] initWithAction:_confusedAction];
+    _unexpectedAction = (id<UnexpectedAction>)_confusedStateDelegate;
+    
     _apocalypseAction = [self setUpAndRetrieveApocalypseActionForTransportBar];
     _fixAction = [self setUpAndRetrieveFixActionForTransportBar];
     _playerController.transportBarCustomMenuItems = @[_randomAction, _muteAction, _speedAction, _teleportAction, _reversiAction, _confusedAction, _fixAction, _apocalypseAction];
@@ -121,40 +125,11 @@
 }
 
 - (UIAction *)setUpAndRetrieveConfusedActionForTransportBar {
-    UIImage *lucidImage = [UIImage systemImageNamed:@"face.smiling"];
-    UIImage *confusedImage = [UIImage systemImageNamed:@"face.dashed"];
-    
-    UIImage *confusedStateImage = _isConfused ? confusedImage : lucidImage;
-    UIAction *confusedAction = [UIAction actionWithTitle:@"Confused" image:confusedStateImage identifier:nil handler:^(__weak UIAction *action) {
+    UIAction *confusedAction = [UIAction actionWithTitle:@"Confused" image:_confusedStateDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
         [self setStatusOfPlayerToBroken];
-        
-        self.isConfused = !self.isConfused;
-        self.confusedAction.image = self.isConfused ? confusedImage : lucidImage;
-        [self mayDoUnexpectedActionIfConfused];
+        [self.confusedStateDelegate carryOutActionOnPlayer:self.player];
     }];
     return confusedAction;
-}
-
-// TODO: Tricky one, GestureController is linked to this!
-- (void)mayDoUnexpectedActionIfConfused {
-    if (_isConfused) {
-        [self doUnexpectedAction];
-    } else {
-        return;
-    }
-}
-
-- (void)doUnexpectedAction {
-    NSUInteger randomIndex = arc4random() % 100;
-    if (randomIndex < 20) {
-        if (_player.timeControlStatus == AVPlayerTimeControlStatusPlaying) {
-            NSLog(@"Unexpected pause!");
-            [_player pause];
-        } else if (_player.timeControlStatus == AVPlayerTimeControlStatusPaused) {
-            NSLog(@"Unexpected play!");
-            [_player play];
-        }
-    }
 }
 
 - (UIAction *)setUpAndRetrieveApocalypseActionForTransportBar {

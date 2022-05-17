@@ -7,10 +7,11 @@
 
 #import <Foundation/Foundation.h>
 #import "ActionState.h"
+#import "UnexpectedAction.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ConfusedActionState : NSObject <ActionState>
+@interface ConfusedActionState : NSObject <ActionState, UnexpectedAction>
 - (instancetype)initWithAction:(UIAction *)action;
 - (void)carryOutActionOnPlayer:(AVPlayer *)player;
 - (void)resetValuesIncludingPlayer:(AVPlayer *)player;

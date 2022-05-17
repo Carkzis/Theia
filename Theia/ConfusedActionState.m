@@ -21,11 +21,11 @@ typedef NS_ENUM(NSUInteger, Muteness) {
 
 - (nonnull instancetype)initWithAction:(nonnull UIAction *)action {
     if (self = [super init]) {
-        action = action;
-        defaultImage = [UIImage systemImageNamed:@"face.smiling"];
-        action.image = defaultImage;
-        isActive = false;
-        images = [NSMutableDictionary dictionary];
+        self.action = action;
+        self.defaultImage = [UIImage systemImageNamed:@"face.smiling"];
+        self.action.image = defaultImage;
+        self.isActive = false;
+        self.images = [NSMutableDictionary dictionary];
         [images setObject: [UIImage systemImageNamed:@"face.smiling"] forKey:[NSNumber numberWithInteger:lucid]];
         [images setObject: [UIImage systemImageNamed:@"face.dashed"] forKey:[NSNumber numberWithInteger:confused]];
     }
