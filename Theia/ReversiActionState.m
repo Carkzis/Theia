@@ -20,13 +20,15 @@ typedef NS_ENUM(NSUInteger, Muteness) {
 @synthesize isActive;
 
 - (nonnull instancetype)initWithAction:(nonnull UIAction *)action {
-    self.action = action;
-    self.defaultImage = [UIImage systemImageNamed:@"chevron.forward.circle"];
-    self.action.image = defaultImage;
-    self.isActive = false;
-    self.images = [NSMutableDictionary dictionary];
-    [self.images setObject: [UIImage systemImageNamed:@"chevron.forward.circle"] forKey:[NSNumber numberWithInteger:versi]];
-    [self.images setObject: [UIImage systemImageNamed:@"chevron.backward.circle"] forKey:[NSNumber numberWithInteger:reversi]];
+    if (self = [super init]) {
+        self.action = action;
+        self.defaultImage = [UIImage systemImageNamed:@"chevron.forward.circle"];
+        self.action.image = defaultImage;
+        self.isActive = false;
+        self.images = [NSMutableDictionary dictionary];
+        [self.images setObject: [UIImage systemImageNamed:@"chevron.forward.circle"] forKey:[NSNumber numberWithInteger:versi]];
+        [self.images setObject: [UIImage systemImageNamed:@"chevron.backward.circle"] forKey:[NSNumber numberWithInteger:reversi]];
+    }
     return self;
 }
 
