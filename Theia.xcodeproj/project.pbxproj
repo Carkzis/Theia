@@ -10,6 +10,8 @@
 		1DB18ACA7881C0C57FBDD9C0 /* Pods_Theia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B863B79F4931C318BF5D9998 /* Pods_Theia.framework */; };
 		761019B55B7E724A764A4F76 /* Pods_Theia_TheiaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 129227D94C7A8083E133E9F3 /* Pods_Theia_TheiaUITests.framework */; };
 		A40D210BE9653CF21B25701C /* Pods_TheiaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE64D5FAC4B2420CEE6CA40 /* Pods_TheiaTests.framework */; };
+		E50CFAB72833F9EA008CB01B /* ApocalypseActionState.m in Sources */ = {isa = PBXBuildFile; fileRef = E50CFAB62833F9EA008CB01B /* ApocalypseActionState.m */; };
+		E50CFABA2833FA02008CB01B /* ApocalypseEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = E50CFAB92833FA02008CB01B /* ApocalypseEnumerator.m */; };
 		E531D1182808170600E735BA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E531D1172808170600E735BA /* AppDelegate.m */; };
 		E531D11B2808170600E735BA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E531D11A2808170600E735BA /* ViewController.m */; };
 		E531D11E2808170600E735BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E531D11C2808170600E735BA /* Main.storyboard */; };
@@ -54,6 +56,10 @@
 		C9CA2D75F22FD885DA5F9DFE /* Pods-Theia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Theia.debug.xcconfig"; path = "Target Support Files/Pods-Theia/Pods-Theia.debug.xcconfig"; sourceTree = "<group>"; };
 		E2FE558D0F183B70C3DECA8E /* Pods-Theia-TheiaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Theia-TheiaUITests.debug.xcconfig"; path = "Target Support Files/Pods-Theia-TheiaUITests/Pods-Theia-TheiaUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E50CFAB42833F47B008CB01B /* UnexpectedAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnexpectedAction.h; sourceTree = "<group>"; };
+		E50CFAB52833F9EA008CB01B /* ApocalypseActionState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApocalypseActionState.h; sourceTree = "<group>"; };
+		E50CFAB62833F9EA008CB01B /* ApocalypseActionState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApocalypseActionState.m; sourceTree = "<group>"; };
+		E50CFAB82833FA02008CB01B /* ApocalypseEnumerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApocalypseEnumerator.h; sourceTree = "<group>"; };
+		E50CFAB92833FA02008CB01B /* ApocalypseEnumerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApocalypseEnumerator.m; sourceTree = "<group>"; };
 		E531D1132808170600E735BA /* Theia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Theia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E531D1162808170600E735BA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E531D1172808170600E735BA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -189,6 +195,10 @@
 				E589A4192833B66900AF65AD /* ConfusedActionState.h */,
 				E589A41A2833B66900AF65AD /* ConfusedActionState.m */,
 				E50CFAB42833F47B008CB01B /* UnexpectedAction.h */,
+				E50CFAB52833F9EA008CB01B /* ApocalypseActionState.h */,
+				E50CFAB62833F9EA008CB01B /* ApocalypseActionState.m */,
+				E50CFAB82833FA02008CB01B /* ApocalypseEnumerator.h */,
+				E50CFAB92833FA02008CB01B /* ApocalypseEnumerator.m */,
 			);
 			path = Theia;
 			sourceTree = "<group>";
@@ -419,6 +429,8 @@
 				E5D9B30A282188E900833038 /* ActionController.m in Sources */,
 				E5F930A6282E905E003AFE6A /* MuteActionState.m in Sources */,
 				E53B4AF22832792E0007DEDC /* ReversiActionState.m in Sources */,
+				E50CFAB72833F9EA008CB01B /* ApocalypseActionState.m in Sources */,
+				E50CFABA2833FA02008CB01B /* ApocalypseEnumerator.m in Sources */,
 				E5F930AF2832401B003AFE6A /* TeleportActionState.m in Sources */,
 				E589A41B2833B66900AF65AD /* ConfusedActionState.m in Sources */,
 				E531D1182808170600E735BA /* AppDelegate.m in Sources */,

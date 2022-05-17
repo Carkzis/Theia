@@ -196,7 +196,7 @@
     [self.speedStateDelegate resetValuesIncludingPlayer:_player];
     [self.teleportStateDelegate resetValuesIncludingPlayer:_player];
     [self.reversiStateDelegate resetValuesIncludingController:self];
-    _isConfused = false;
+    [self.confusedStateDelegate resetValuesIncludingPlayer:_player];
     _apocalypseLevel = 0;
     _isBroken = false;
     
