@@ -18,7 +18,7 @@
 
 - (instancetype)initWithPlayer:(AVPlayer *)player
                     controller:(AVPlayerViewController *)controller
-              actionController:(ActionController *)actionController;
+              actionController:(ActionController *)actionController
 {
     if ((self = [super init])) {
         _player = player;
@@ -184,6 +184,6 @@
     return MPRemoteCommandHandlerStatusSuccess;
 }
 
-// TODO: Grab Lucid/Confused state from ActionController. The Gesture will decide what to do with the info.
+// TODO: Grab Lucid/Confused state from ActionController. The Gesture will decide what to do with the info. Use protocol (e.g. TransportBarActionStateRetrieval)?
 
 @end

@@ -217,8 +217,8 @@
 }
 
 - (void)resetPlayerValues {
-    _player.muted = false;
-    _player.rate = (_player.timeControlStatus == AVPlayerTimeControlStatusPlaying) ? 1.0 : 0.0;
+    [self.muteStateDelegate resetValuesIncludingPlayer:_player];
+    [self.speedStateDelegate resetValuesIncludingPlayer:_player];
     [self.teleportStateDelegate resetValuesIncludingPlayer:_player];
     [self.reversiStateDelegate resetValuesIncludingController:self];
     _isConfused = false;
