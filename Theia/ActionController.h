@@ -13,12 +13,14 @@
 #import "MuteActionState.h"
 #import "SpeedActionState.h"
 #import "TeleportActionState.h"
+#import "ReversiActionState.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ActionController : NSObject
 
 @property (nonatomic) BOOL isConfused;
+@property (strong, nonatomic) AVPlayerViewController *playerController;
 
 - (instancetype)initWithPlayer:(AVPlayer *)player
                     controller:(AVPlayerViewController *)controller;

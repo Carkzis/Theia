@@ -184,4 +184,6 @@
     return MPRemoteCommandHandlerStatusSuccess;
 }
 
+// TODO: Grab Lucid/Confused state from ActionController. The Gesture will decide what to do with the info.
+
 @end

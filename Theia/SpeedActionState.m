@@ -30,7 +30,6 @@ typedef NS_ENUM(NSUInteger, Speed) {
     if (self = [super init])
     {
         self.action = action;
-        self.action.image = defaultImage;
         self.isActive = false;
         self.images = [NSMutableDictionary dictionary];
         [self setUpImages];
@@ -41,6 +40,7 @@ typedef NS_ENUM(NSUInteger, Speed) {
 
 - (void)setUpImages {
     self.defaultImage = [UIImage systemImageNamed:@"figure.walk"];
+    self.action.image = defaultImage;
     
     [images setObject: [UIImage systemImageNamed:@"tortoise.fill"] forKey:[NSNumber numberWithInteger:superslow]];
     [images setObject: [UIImage systemImageNamed:@"ant.fill"] forKey:[NSNumber numberWithInteger:slow]];
@@ -59,7 +59,7 @@ typedef NS_ENUM(NSUInteger, Speed) {
 }
 
 - (void)carryOutActionOnPlayer:(nonnull AVPlayer *)player {
-    isActive = !isActive;
+    isActive = true; // TODO: Set to false if default speed?
     NSUInteger randomIndex = arc4random() % _speeds.count;
     player.rate = [[[_speeds objectForKey:[NSNumber numberWithInteger:randomIndex]] objectAtIndex:0] floatValue];
     action.image = [images objectForKey:[NSNumber numberWithInteger:randomIndex]];

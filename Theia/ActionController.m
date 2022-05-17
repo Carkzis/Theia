@@ -11,7 +11,6 @@
 
     @property (strong, nonatomic) AVPlayer *player;
     @property (strong, nonatomic) AVPlayerItem *playerItem;
-    @property (strong, nonatomic) AVPlayerViewController *controller;
 
     @property (strong, nonatomic) UIAction *randomAction;
 
@@ -25,7 +24,7 @@
     @property (strong, nonatomic) id<ActionState> teleportStateDelegate;
 
     @property (strong, nonatomic) UIAction *reversiAction;
-    @property (nonatomic) BOOL isReversi;
+    @property (strong, nonatomic) id<ActionState> reversiStateDelegate;
 
     @property (strong, nonatomic) UIAction *confusedAction;
 
@@ -39,6 +38,7 @@
 
 @end
 
+// TODO: TransportBarController?
 @implementation ActionController
 
 - (instancetype)initWithPlayer:(AVPlayer*)player
@@ -48,11 +48,14 @@
     {
         _player = player;
         _playerItem = player.currentItem;
-        _controller = controller;
+        _playerController = controller;
     }
     return self;
 }
 
+/**
+ TODO: Xcode 13.3 causes a bug that resets the position everytime you click on something.
+ */
 - (void)setUpTransportBar {
     _randomAction = [self setUpAndRetreiveRandomActionForTransportBar];
     
@@ -66,10 +69,12 @@
     _teleportStateDelegate = [[TeleportActionState alloc] initWithAction:_teleportAction];
     
     _reversiAction = [self setUpAndRetrieveReversiActionForTransportBar];
+    _reversiStateDelegate = [[ReversiActionState alloc] initWithAction:_reversiAction];
+    
     _confusedAction = [self setUpAndRetrieveConfusedActionForTransportBar];
     _apocalypseAction = [self setUpAndRetrieveApocalypseActionForTransportBar];
     _fixAction = [self setUpAndRetrieveFixActionForTransportBar];
-    _controller.transportBarCustomMenuItems = @[_randomAction, _muteAction, _speedAction, _teleportAction, _reversiAction, _confusedAction, _fixAction, _apocalypseAction];
+    _playerController.transportBarCustomMenuItems = @[_randomAction, _muteAction, _speedAction, _teleportAction, _reversiAction, _confusedAction, _fixAction, _apocalypseAction];
 }
 
 - (UIAction *)setUpAndRetreiveRandomActionForTransportBar {
@@ -108,17 +113,9 @@
 }
 
 - (UIAction *)setUpAndRetrieveReversiActionForTransportBar {
-    UIImage *forwardsImage = [UIImage systemImageNamed:@"chevron.forward.circle"];
-    UIImage *backwardsImage = [UIImage systemImageNamed:@"chevron.backward.circle"];
-    
-    UIImage *reversiStateImage = _isReversi ? backwardsImage : forwardsImage;
-    UIAction *reversiAction = [UIAction actionWithTitle:@"Reversi" image:reversiStateImage identifier:nil handler:^(__weak UIAction *action) {
+    UIAction *reversiAction = [UIAction actionWithTitle:@"Reversi" image:_reversiStateDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
         [self setStatusOfPlayerToBroken];
-        
-        self.isReversi = !self.isReversi;
-        self.reversiAction.image = self.isReversi ? backwardsImage : forwardsImage;
-        NSArray *reversedArray = [[self.controller.transportBarCustomMenuItems reverseObjectEnumerator] allObjects];
-        self.controller.transportBarCustomMenuItems = reversedArray;
+        [self.reversiStateDelegate carryOutActionOnController:self];
     }];
     return reversiAction;
 }
@@ -138,6 +135,7 @@
     return confusedAction;
 }
 
+// TODO: Tricky one, GestureController is linked to this!
 - (void)mayDoUnexpectedActionIfConfused {
     if (_isConfused) {
         [self doUnexpectedAction];
@@ -222,7 +220,7 @@
     _player.muted = false;
     _player.rate = (_player.timeControlStatus == AVPlayerTimeControlStatusPlaying) ? 1.0 : 0.0;
     [self.teleportStateDelegate resetValuesIncludingPlayer:_player];
-    _isReversi = false;
+    [self.reversiStateDelegate resetValuesIncludingController:self];
     _isConfused = false;
     _apocalypseLevel = 0;
     _isBroken = false;
