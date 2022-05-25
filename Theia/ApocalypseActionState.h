@@ -6,11 +6,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ActionState.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ApocalypseActionState : NSObject
-
+@interface ApocalypseActionState : NSObject <ActionState>
+- (instancetype)initWithAction:(UIAction *)action;
+- (void)carryOutActionOnPlayer:(AVPlayer *)player;
+- (void)resetValuesIncludingPlayer:(AVPlayer *)player;
 @end
 
 NS_ASSUME_NONNULL_END

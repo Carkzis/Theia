@@ -42,6 +42,7 @@ typedef NS_ENUM(NSUInteger, Muteness) {
 
 - (void)resetValuesIncludingController:(ActionController *)controller {
     if (isActive) {
+        action.image = defaultImage;
         [self reverseTransportBarOnController:controller];
         isActive = false;
     }

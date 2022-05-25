@@ -30,6 +30,8 @@
     @property (strong, nonatomic) id<ActionState> confusedStateDelegate;
 
     @property (strong, nonatomic) UIAction *apocalypseAction;
+    @property (strong, nonatomic) id<ActionState> apocalypseStateDelegate;
+
     @property (nonatomic) NSInteger apocalypseLevel;
 
     @property (strong, nonatomic) UIAction *fixAction;
@@ -56,6 +58,7 @@
 
 /**
  TODO: Xcode 13.3 causes a bug that resets the position everytime you click on something.
+ TODO: Set _ to self if they are properties.
  */
 - (void)setUpTransportBar {
     _randomAction = [self setUpAndRetreiveRandomActionForTransportBar];
@@ -77,6 +80,8 @@
     _unexpectedAction = (id<UnexpectedAction>)_confusedStateDelegate;
     
     _apocalypseAction = [self setUpAndRetrieveApocalypseActionForTransportBar];
+    _apocalypseStateDelegate = [[ApocalypseActionState alloc] initWithAction:_apocalypseAction];
+    
     _fixAction = [self setUpAndRetrieveFixActionForTransportBar];
     _playerController.transportBarCustomMenuItems = @[_randomAction, _muteAction, _speedAction, _teleportAction, _reversiAction, _confusedAction, _fixAction, _apocalypseAction];
 }
@@ -133,39 +138,9 @@
 }
 
 - (UIAction *)setUpAndRetrieveApocalypseActionForTransportBar {
-    UIImage *notDyingImage = [UIImage systemImageNamed:@"circle"];
-    UIImage *dyingImage = [UIImage systemImageNamed:@"smallcircle.filled.circle"];
-    UIImage *nearDeathImage = [UIImage systemImageNamed:@"flame.circle"];
-    UIImage *apocalypseImage = [UIImage systemImageNamed:@"flame.fill"];
-    
-    typedef NS_ENUM(NSUInteger, ApocalypseLevel) {
-        notDying = 0,
-        dying = 1,
-        nearDeath = 2,
-        apocalypse = 3,
-        end = 4
-    };
-    
-    _apocalypseLevel = notDying;
-    
-    UIAction *apocalypseAction = [UIAction actionWithTitle:@"Apocalypse" image:notDyingImage identifier:nil handler:^(__weak UIAction *action) {
+    UIAction *apocalypseAction = [UIAction actionWithTitle:@"Apocalypse" image:_apocalypseStateDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
         [self setStatusOfPlayerToBroken];
-        
-        self.apocalypseLevel++;
-        switch (self.apocalypseLevel) {
-            case dying:
-                self.apocalypseAction.image = dyingImage;
-                break;
-            case nearDeath:
-                self.apocalypseAction.image = nearDeathImage;
-                break;
-            case apocalypse:
-                self.apocalypseAction.image = apocalypseImage;
-                break;
-            case end:
-                NSLog(@"Kaboom!");
-                exit(0);
-        }
+        [self.apocalypseStateDelegate carryOutActionOnPlayer:self.player];
     }];
     return apocalypseAction;
 }
@@ -197,7 +172,7 @@
     [self.teleportStateDelegate resetValuesIncludingPlayer:_player];
     [self.reversiStateDelegate resetValuesIncludingController:self];
     [self.confusedStateDelegate resetValuesIncludingPlayer:_player];
-    _apocalypseLevel = 0;
+    [self.apocalypseStateDelegate resetValuesIncludingPlayer:_player];
     _isBroken = false;
     
     [self setUpTransportBar];

@@ -44,6 +44,7 @@ typedef NS_ENUM(NSUInteger, Muteness) {
 
 - (void)resetValuesIncludingPlayer:(nonnull AVPlayer *)player {
     isActive = false;
+    action.image = defaultImage;
 }
 
 - (void)mayDoUnexpectedActionOnPlayerIfConfused:(nonnull AVPlayer *)player  {
