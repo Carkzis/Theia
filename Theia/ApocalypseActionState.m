@@ -7,16 +7,9 @@
 
 #import "ApocalypseActionState.h"
 
-typedef NS_ENUM(NSUInteger, ApocalypseLevel) {
-    notDying = 0,
-    dying = 1,
-    nearDeath = 2,
-    apocalypse = 3,
-    end = 4
-};
-
 @interface ApocalypseActionState()
     @property (nonatomic) NSInteger apocalypseLevel;
+    @property (strong, nonatomic) ApocalypseEnumerator *enumerator;
 @end
 
 @implementation ApocalypseActionState
@@ -31,6 +24,8 @@ typedef NS_ENUM(NSUInteger, ApocalypseLevel) {
         self.isActive = false;
         self.images = [NSMutableDictionary dictionary];
         [self setUpImages];
+        self.enumerator = [[ApocalypseEnumerator alloc] init];
+        
         _apocalypseLevel = notDying;
     }
     return self;
@@ -46,28 +41,20 @@ typedef NS_ENUM(NSUInteger, ApocalypseLevel) {
     [images setObject: [UIImage systemImageNamed:@"flame.fill"] forKey:[NSNumber numberWithInteger:apocalypse]];
 }
 
-
 - (void)carryOutActionOnPlayer:(nonnull AVPlayer *)player {
     isActive = !isActive;
-    _apocalypseLevel++;
-    switch (self.apocalypseLevel) {
-        case dying:
-            action.image = [images objectForKey:[NSNumber numberWithInteger:dying]];
-            break;
-        case nearDeath:
-            action.image = [images objectForKey:[NSNumber numberWithInteger:nearDeath]];
-            break;
-        case apocalypse:
-            action.image = [images objectForKey:[NSNumber numberWithInteger:apocalypse]];;
-            break;
-        case end:
-            NSLog(@"Kaboom!");
-            exit(0);
+    NSUInteger nextLevel = [_enumerator retrieveNextApocalypseLevel];
+    
+    if (nextLevel == end) {
+        NSLog(@"Kaboom!");
+        exit(0);
+    } else {
+        action.image = [images objectForKey:[NSNumber numberWithInteger:nextLevel]];
     }
 }
 
 - (void)resetValuesIncludingPlayer:(nonnull AVPlayer *)player {
-    _apocalypseLevel = notDying;
+    [_enumerator resetApocalypseLevel];
     self.action.image = defaultImage;
     isActive = false;
 }

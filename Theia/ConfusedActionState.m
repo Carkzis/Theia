@@ -7,7 +7,7 @@
 
 #import "ConfusedActionState.h"
 
-typedef NS_ENUM(NSUInteger, Muteness) {
+typedef NS_ENUM(NSUInteger, Confusedness) {
     lucid = 0,
     confused = 1
 };

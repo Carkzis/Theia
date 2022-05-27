@@ -23,6 +23,7 @@
 		E531D13B2808170800E735BA /* TheiaUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E531D13A2808170800E735BA /* TheiaUITestsLaunchTests.m */; };
 		E53B4AF22832792E0007DEDC /* ReversiActionState.m in Sources */ = {isa = PBXBuildFile; fileRef = E53B4AF12832792E0007DEDC /* ReversiActionState.m */; };
 		E589A41B2833B66900AF65AD /* ConfusedActionState.m in Sources */ = {isa = PBXBuildFile; fileRef = E589A41A2833B66900AF65AD /* ConfusedActionState.m */; };
+		E5B726D52840BB2800B300EA /* FixActionState.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B726D42840BB2800B300EA /* FixActionState.m */; };
 		E5D9B30A282188E900833038 /* ActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D9B309282188E900833038 /* ActionController.m */; };
 		E5F930A6282E905E003AFE6A /* MuteActionState.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F930A5282E905E003AFE6A /* MuteActionState.m */; };
 		E5F930AC282EAD40003AFE6A /* SpeedActionState.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F930AB282EAD40003AFE6A /* SpeedActionState.m */; };
@@ -78,6 +79,9 @@
 		E53B4AF12832792E0007DEDC /* ReversiActionState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReversiActionState.m; sourceTree = "<group>"; };
 		E589A4192833B66900AF65AD /* ConfusedActionState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfusedActionState.h; sourceTree = "<group>"; };
 		E589A41A2833B66900AF65AD /* ConfusedActionState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfusedActionState.m; sourceTree = "<group>"; };
+		E5B726D32840BB2800B300EA /* FixActionState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FixActionState.h; sourceTree = "<group>"; };
+		E5B726D42840BB2800B300EA /* FixActionState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FixActionState.m; sourceTree = "<group>"; };
+		E5B726D62840E4C000B300EA /* FixActionAdditionals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FixActionAdditionals.h; sourceTree = "<group>"; };
 		E5D9B308282188E900833038 /* ActionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActionController.h; sourceTree = "<group>"; };
 		E5D9B309282188E900833038 /* ActionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActionController.m; sourceTree = "<group>"; };
 		E5EAAB212825042E0047248E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -199,6 +203,9 @@
 				E50CFAB62833F9EA008CB01B /* ApocalypseActionState.m */,
 				E50CFAB82833FA02008CB01B /* ApocalypseEnumerator.h */,
 				E50CFAB92833FA02008CB01B /* ApocalypseEnumerator.m */,
+				E5B726D32840BB2800B300EA /* FixActionState.h */,
+				E5B726D42840BB2800B300EA /* FixActionState.m */,
+				E5B726D62840E4C000B300EA /* FixActionAdditionals.h */,
 			);
 			path = Theia;
 			sourceTree = "<group>";
@@ -433,6 +440,7 @@
 				E50CFABA2833FA02008CB01B /* ApocalypseEnumerator.m in Sources */,
 				E5F930AF2832401B003AFE6A /* TeleportActionState.m in Sources */,
 				E589A41B2833B66900AF65AD /* ConfusedActionState.m in Sources */,
+				E5B726D52840BB2800B300EA /* FixActionState.m in Sources */,
 				E531D1182808170600E735BA /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

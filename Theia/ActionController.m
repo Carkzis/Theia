@@ -32,9 +32,10 @@
     @property (strong, nonatomic) UIAction *apocalypseAction;
     @property (strong, nonatomic) id<ActionState> apocalypseStateDelegate;
 
-    @property (nonatomic) NSInteger apocalypseLevel;
-
     @property (strong, nonatomic) UIAction *fixAction;
+    @property (strong, nonatomic) id<ActionState> fixStateDelegate;
+    @property (strong, nonatomic) id<FixActionAdditionals> fixActionAdditionalsDelegate;
+
     @property (nonatomic) BOOL isBroken;
     @property (strong, nonatomic) UIImage *brokenImage;
     @property (strong, nonatomic) UIImage *fixedImage;
@@ -83,6 +84,9 @@
     _apocalypseStateDelegate = [[ApocalypseActionState alloc] initWithAction:_apocalypseAction];
     
     _fixAction = [self setUpAndRetrieveFixActionForTransportBar];
+    _fixStateDelegate = [[FixActionState alloc] initWithAction:_fixAction];
+    _fixActionAdditionalsDelegate = [[FixActionState alloc] initWithAction:_fixAction];
+    
     _playerController.transportBarCustomMenuItems = @[_randomAction, _muteAction, _speedAction, _teleportAction, _reversiAction, _confusedAction, _fixAction, _apocalypseAction];
 }
 
@@ -146,24 +150,28 @@
 }
 
 - (UIAction *)setUpAndRetrieveFixActionForTransportBar {
-    _brokenImage = [UIImage systemImageNamed:@"wrench.and.screwdriver"];
-    _fixedImage = [UIImage systemImageNamed:@"checkmark.seal"];
+//    _brokenImage = [UIImage systemImageNamed:@"wrench.and.screwdriver"];
+//    _fixedImage = [UIImage systemImageNamed:@"checkmark.seal"];
     
-    UIAction *fixAction = [UIAction actionWithTitle:@"Fix" image:_fixedImage identifier:nil handler:^(__weak UIAction *action) {
-        self.isBroken = !self.isBroken;
-        if (self.isBroken) {
-            self.fixAction.image = self.brokenImage;
-        } else {
-            self.fixAction.image = self.fixedImage;
-            [self resetPlayerValues];
-        }
+    UIAction *fixAction = [UIAction actionWithTitle:@"Fix" image:_fixStateDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
+        [self setStatusOfPlayerToBroken];
+        [self.fixStateDelegate carryOutActionOnPlayer:self.player];
+//        self.isBroken = !self.isBroken;
+//        if (self.isBroken) {
+//            self.fixAction.image = self.brokenImage;
+//        } else {
+//            self.fixAction.image = self.fixedImage;
+//            [self resetPlayerValues];
+//        }
     }];
     return fixAction;
 }
 
 - (void)setStatusOfPlayerToBroken {
-    _isBroken = true;
-    _fixAction.image = _brokenImage;
+    // TODO: USE DELEGATE TO CHANGE IMAGE AS WE DON'T HOLD THE IMAGE ANYMORE!
+    [self.fixActionAdditionalsDelegate setPlayerToBroken:self.player];
+    //_isBroken = true;
+    //_fixAction.image = _brokenImage;
 }
 
 - (void)resetPlayerValues {
@@ -177,5 +185,7 @@
     
     [self setUpTransportBar];
 }
+
+// TODO: If response to includingPlayer, if response to includingController.
 
 @end

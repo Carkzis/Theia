@@ -7,7 +7,7 @@
 
 #import "ReversiActionState.h"
 
-typedef NS_ENUM(NSUInteger, Muteness) {
+typedef NS_ENUM(NSUInteger, Reverseness) {
     versi = 0,
     reversi = 1
 };

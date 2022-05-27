@@ -7,7 +7,7 @@
 
 #import "TeleportActionState.h"
 
-typedef NS_ENUM(NSUInteger, Muteness) {
+typedef NS_ENUM(NSUInteger, TeleportStatus) {
     returned = 0,
     teleported = 1
 };

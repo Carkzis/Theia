@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ActionState.h"
+#import "ApocalypseEnumerator.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

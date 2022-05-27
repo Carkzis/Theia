@@ -17,6 +17,8 @@
 #import "ConfusedActionState.h"
 #import "UnexpectedAction.h"
 #import "ApocalypseActionState.h"
+#import "FixActionState.h"
+#import "FixActionAdditionals.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
