@@ -24,9 +24,9 @@
 }
 
 - (IBAction)initialiseMediaPlayer:(id)sender {
-    NSString *ultimateFunExampleFun = @"http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8";
+    //NSString *ultimateFunExampleFun = @"http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8";
     NSURL *url = [[NSURL alloc]
-                  initWithString:ultimateFunExampleFun];
+                  initWithString:VIDEO_URL];
     AVURLAsset *mediaAsset = [self retrieveMediaAsset:url];
     [self playMedia:mediaAsset];
 }

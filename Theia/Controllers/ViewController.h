@@ -10,6 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import "GestureController.h"
+#import "VideoURL.h"
 
 @interface ViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIButton *movieButton;
