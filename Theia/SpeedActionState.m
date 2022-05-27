@@ -59,7 +59,7 @@ typedef NS_ENUM(NSUInteger, Speed) {
 }
 
 - (void)carryOutActionOnPlayer:(nonnull AVPlayer *)player {
-    isActive = true; // TODO: Set to false if default speed?
+    isActive = true;
     NSUInteger randomIndex = arc4random() % _speeds.count;
     player.rate = [[[_speeds objectForKey:[NSNumber numberWithInteger:randomIndex]] objectAtIndex:0] floatValue];
     action.image = [images objectForKey:[NSNumber numberWithInteger:randomIndex]];

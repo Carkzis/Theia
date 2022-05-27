@@ -35,9 +35,11 @@ typedef NS_ENUM(NSUInteger, Confusedness) {
 - (void)carryOutActionOnPlayer:(nonnull AVPlayer *)player {
     isActive = !isActive;
     if (isActive) {
+        NSLog(@"Confused");
         action.image = [images objectForKey:[NSNumber numberWithInteger:confused]];
         [self mayDoUnexpectedActionOnPlayerIfConfused:player];
     } else {
+        NSLog(@"Unconfused");
         action.image = [images objectForKey:[NSNumber numberWithInteger:lucid]];
     }
 }

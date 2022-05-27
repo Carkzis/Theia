@@ -13,6 +13,7 @@
     @property (strong, nonatomic) AVPlayerItem *playerItem;
 
     @property (strong, nonatomic) UIAction *randomAction;
+    @property (strong, nonatomic) RandomAction *randomActionResponder;
 
     @property (strong, nonatomic) UIAction *muteAction;
     @property (strong, nonatomic) id<ActionState> muteStateDelegate;
@@ -36,9 +37,7 @@
     @property (strong, nonatomic) id<ActionState> fixStateDelegate;
     @property (strong, nonatomic) id<FixActionAdditionals> fixActionAdditionalsDelegate;
 
-    @property (nonatomic) BOOL isBroken;
-    @property (strong, nonatomic) UIImage *brokenImage;
-    @property (strong, nonatomic) UIImage *fixedImage;
+    @property (strong, nonatomic) NSArray *delegates;
 
 @end
 
@@ -63,6 +62,7 @@
  */
 - (void)setUpTransportBar {
     _randomAction = [self setUpAndRetreiveRandomActionForTransportBar];
+    _randomActionResponder = [[RandomAction alloc] initWithAction:_randomAction player:_player actionController:self];
     
     _muteAction = [self setUpAndRetrieveMuteActionForTransportBar];
     _muteStateDelegate = [[MuteActionState alloc] initWithAction:_muteAction];
@@ -87,18 +87,17 @@
     FixActionState *sharedFixAction = [[FixActionState alloc] initWithAction:_fixAction];
     _fixStateDelegate = sharedFixAction;
     _fixActionAdditionalsDelegate = sharedFixAction;
-    [_fixActionAdditionalsDelegate passInActionDelegates:@[_muteStateDelegate, _speedStateDelegate, _teleportStateDelegate, _reversiStateDelegate, _confusedStateDelegate, _apocalypseStateDelegate]];
+    
+    _delegates = @[_muteStateDelegate, _speedStateDelegate, _teleportStateDelegate, _reversiStateDelegate, _confusedStateDelegate, _apocalypseStateDelegate];
+    [_fixActionAdditionalsDelegate passInActionDelegates:_delegates];
     
     _playerController.transportBarCustomMenuItems = @[_randomAction, _muteAction, _speedAction, _teleportAction, _reversiAction, _confusedAction, _fixAction, _apocalypseAction];
 }
 
 - (UIAction *)setUpAndRetreiveRandomActionForTransportBar {
-    UIImage *image = [UIImage systemImageNamed:@"questionmark.diamond"];
-    UIAction *randomAction = [UIAction actionWithTitle:@"Random" image:image identifier:nil handler:^(UIAction *action) {
-        /*
-         TODO: Make a random event occur!
-         */
-        NSLog(@"A random event occured.");
+    UIAction *randomAction = [UIAction actionWithTitle:@"Random" image:_randomActionResponder.image identifier:nil handler:^(UIAction *action) {
+        [self.fixActionAdditionalsDelegate setPlayerToBroken:self.player];
+        [self.randomActionResponder carryOutRandomAction:self.delegates];
     }];
     return randomAction;
 }

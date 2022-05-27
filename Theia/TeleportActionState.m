@@ -45,11 +45,13 @@ typedef NS_ENUM(NSUInteger, TeleportStatus) {
 - (void)carryOutActionOnPlayer:(nonnull AVPlayer *)player {
     isActive = !isActive;
     if (isActive) {
+        NSLog(@"Teleport Away");
         action.image = [images objectForKey:[NSNumber numberWithInteger:teleported]];
         _originalPosition = [self getCurrentPlayerItemTime: player.currentItem];
         CMTime newRandomPosition = [self generateRandomPlayerPosition:player.currentItem];
         [player seekToTime:newRandomPosition];
     } else {
+        NSLog(@"Teleport Back");
         action.image = [images objectForKey:[NSNumber numberWithInteger:returned]];
         [player seekToTime:self.originalPosition];
     }

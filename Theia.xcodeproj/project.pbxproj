@@ -24,6 +24,7 @@
 		E53B4AF22832792E0007DEDC /* ReversiActionState.m in Sources */ = {isa = PBXBuildFile; fileRef = E53B4AF12832792E0007DEDC /* ReversiActionState.m */; };
 		E589A41B2833B66900AF65AD /* ConfusedActionState.m in Sources */ = {isa = PBXBuildFile; fileRef = E589A41A2833B66900AF65AD /* ConfusedActionState.m */; };
 		E5B726D52840BB2800B300EA /* FixActionState.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B726D42840BB2800B300EA /* FixActionState.m */; };
+		E5B726D92840F1FF00B300EA /* RandomAction.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B726D82840F1FF00B300EA /* RandomAction.m */; };
 		E5D9B30A282188E900833038 /* ActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D9B309282188E900833038 /* ActionController.m */; };
 		E5F930A6282E905E003AFE6A /* MuteActionState.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F930A5282E905E003AFE6A /* MuteActionState.m */; };
 		E5F930AC282EAD40003AFE6A /* SpeedActionState.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F930AB282EAD40003AFE6A /* SpeedActionState.m */; };
@@ -82,6 +83,8 @@
 		E5B726D32840BB2800B300EA /* FixActionState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FixActionState.h; sourceTree = "<group>"; };
 		E5B726D42840BB2800B300EA /* FixActionState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FixActionState.m; sourceTree = "<group>"; };
 		E5B726D62840E4C000B300EA /* FixActionAdditionals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FixActionAdditionals.h; sourceTree = "<group>"; };
+		E5B726D72840F1FF00B300EA /* RandomAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RandomAction.h; sourceTree = "<group>"; };
+		E5B726D82840F1FF00B300EA /* RandomAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RandomAction.m; sourceTree = "<group>"; };
 		E5D9B308282188E900833038 /* ActionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActionController.h; sourceTree = "<group>"; };
 		E5D9B309282188E900833038 /* ActionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActionController.m; sourceTree = "<group>"; };
 		E5EAAB212825042E0047248E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -206,6 +209,8 @@
 				E5B726D32840BB2800B300EA /* FixActionState.h */,
 				E5B726D42840BB2800B300EA /* FixActionState.m */,
 				E5B726D62840E4C000B300EA /* FixActionAdditionals.h */,
+				E5B726D72840F1FF00B300EA /* RandomAction.h */,
+				E5B726D82840F1FF00B300EA /* RandomAction.m */,
 			);
 			path = Theia;
 			sourceTree = "<group>";
@@ -431,6 +436,7 @@
 			files = (
 				E5F930AC282EAD40003AFE6A /* SpeedActionState.m in Sources */,
 				E531D11B2808170600E735BA /* ViewController.m in Sources */,
+				E5B726D92840F1FF00B300EA /* RandomAction.m in Sources */,
 				E5FB18CD282118440017FD5F /* GestureController.m in Sources */,
 				E531D1252808170800E735BA /* main.m in Sources */,
 				E5D9B30A282188E900833038 /* ActionController.m in Sources */,

@@ -49,6 +49,7 @@
         NSLog(@"Kaboom!");
         exit(0);
     } else {
+        NSLog(@"Apocalypse Level Increased");
         action.image = [images objectForKey:[NSNumber numberWithInteger:nextLevel]];
     }
 }

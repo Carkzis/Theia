@@ -15,7 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithAction:(UIAction *)action;
 - (void)carryOutActionOnPlayer:(nonnull AVPlayer *)player;
 - (void)carryOutActionOnController:(ActionController *)controller;
-- (void)resetValuesIncludingPlayer:(nonnull AVPlayer *)player;
 - (void)passInActionDelegates:(NSArray *)delegates;
 @end
 

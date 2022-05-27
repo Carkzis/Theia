@@ -19,6 +19,7 @@
 #import "ApocalypseActionState.h"
 #import "FixActionState.h"
 #import "FixActionAdditionals.h"
+#import "RandomAction.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -33,9 +33,9 @@ typedef NS_ENUM(NSUInteger, Reverseness) {
 }
 
 - (void)carryOutActionOnController:(ActionController *)controller {
+    NSLog(@"Reverse");
     isActive = !isActive;
     action.image = isActive ? [images objectForKey:[NSNumber numberWithInteger:reversi]] : [images objectForKey:[NSNumber numberWithInteger:versi]];
-    // TODO: Encapsulate transportBarCustomMenuItems within the ActionController.
     [self reverseTransportBarOnController:controller];
     
 }

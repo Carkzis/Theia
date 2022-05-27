@@ -14,6 +14,7 @@ typedef NS_ENUM(NSUInteger, FixStatus) {
 
 @interface FixActionState()
     @property (nonatomic) NSArray *delegates;
+    @property (nonatomic) int resetCompleteCounter;
 @end
 
 @implementation FixActionState
@@ -31,6 +32,7 @@ typedef NS_ENUM(NSUInteger, FixStatus) {
         [self.images setObject: [UIImage systemImageNamed:@"checkmark.seal"] forKey:[NSNumber numberWithInteger:fixed]];
         [self.images setObject: [UIImage systemImageNamed:@"wrench.and.screwdriver"] forKey:[NSNumber numberWithInteger:broken]];
         self.action.image = defaultImage;
+        self.resetCompleteCounter = 0;
     }
     return self;
 }
@@ -56,6 +58,8 @@ typedef NS_ENUM(NSUInteger, FixStatus) {
             [currentAction resetValuesIncludingPlayer:player];
         }
     }
+    _resetCompleteCounter++;
+    [self resetValues];
 }
 
 - (void)resetAllActionsOnController:(ActionController *)controller {
@@ -65,11 +69,17 @@ typedef NS_ENUM(NSUInteger, FixStatus) {
             [currentAction resetValuesIncludingController:controller];
         }
     }
+    _resetCompleteCounter++;
+    [self resetValues];
 }
 
-- (void)resetValuesIncludingPlayer:(nonnull AVPlayer *)player {
-    isActive = false;
-    action.image = defaultImage;
+- (void)resetValues {
+    if (_resetCompleteCounter == 2) {
+        NSLog(@"Fixed");
+        isActive = false;
+        action.image = defaultImage;
+        _resetCompleteCounter = 0L;
+    }
 }
 
 - (void)passInActionDelegates:(NSArray *)delegates {
