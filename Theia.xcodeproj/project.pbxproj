@@ -177,40 +177,13 @@
 		E531D1152808170600E735BA /* Theia */ = {
 			isa = PBXGroup;
 			children = (
+				E5B726DC28410F9B00B300EA /* UI */,
+				E5B726DB28410F5A00B300EA /* Controllers */,
+				E5B726DA28410ED900B300EA /* Actionables */,
 				E5EAAB212825042E0047248E /* Info.plist */,
 				E531D1162808170600E735BA /* AppDelegate.h */,
 				E531D1172808170600E735BA /* AppDelegate.m */,
-				E531D1192808170600E735BA /* ViewController.h */,
-				E531D11A2808170600E735BA /* ViewController.m */,
-				E531D11C2808170600E735BA /* Main.storyboard */,
-				E531D11F2808170800E735BA /* Assets.xcassets */,
-				E531D1212808170800E735BA /* LaunchScreen.storyboard */,
 				E531D1242808170800E735BA /* main.m */,
-				E5FB18CB282118430017FD5F /* GestureController.h */,
-				E5FB18CC282118430017FD5F /* GestureController.m */,
-				E5D9B308282188E900833038 /* TransportBarController.h */,
-				E5D9B309282188E900833038 /* TransportBarController.m */,
-				E5F930A3282E8C34003AFE6A /* Actionable.h */,
-				E5F930A4282E905E003AFE6A /* MuteActionable.h */,
-				E5F930A5282E905E003AFE6A /* MuteActionable.m */,
-				E5F930AA282EAD40003AFE6A /* SpeedActionable.h */,
-				E5F930AB282EAD40003AFE6A /* SpeedActionable.m */,
-				E5F930AD2832401B003AFE6A /* TeleportActionable.h */,
-				E5F930AE2832401B003AFE6A /* TeleportActionable.m */,
-				E53B4AF02832792E0007DEDC /* ReversiActionable.h */,
-				E53B4AF12832792E0007DEDC /* ReversiActionable.m */,
-				E589A4192833B66900AF65AD /* ConfusedActionable.h */,
-				E589A41A2833B66900AF65AD /* ConfusedActionable.m */,
-				E50CFAB42833F47B008CB01B /* UnexpectedAction.h */,
-				E50CFAB52833F9EA008CB01B /* ApocalypseActionable.h */,
-				E50CFAB62833F9EA008CB01B /* ApocalypseActionable.m */,
-				E50CFAB82833FA02008CB01B /* ApocalypseEnumerator.h */,
-				E50CFAB92833FA02008CB01B /* ApocalypseEnumerator.m */,
-				E5B726D32840BB2800B300EA /* FixActionable.h */,
-				E5B726D42840BB2800B300EA /* FixActionable.m */,
-				E5B726D62840E4C000B300EA /* FixActionAdditionals.h */,
-				E5B726D72840F1FF00B300EA /* RandomAction.h */,
-				E5B726D82840F1FF00B300EA /* RandomAction.m */,
 			);
 			path = Theia;
 			sourceTree = "<group>";
@@ -230,6 +203,57 @@
 				E531D13A2808170800E735BA /* TheiaUITestsLaunchTests.m */,
 			);
 			path = TheiaUITests;
+			sourceTree = "<group>";
+		};
+		E5B726DA28410ED900B300EA /* Actionables */ = {
+			isa = PBXGroup;
+			children = (
+				E5F930A3282E8C34003AFE6A /* Actionable.h */,
+				E5F930A4282E905E003AFE6A /* MuteActionable.h */,
+				E5F930A5282E905E003AFE6A /* MuteActionable.m */,
+				E5F930AA282EAD40003AFE6A /* SpeedActionable.h */,
+				E5F930AB282EAD40003AFE6A /* SpeedActionable.m */,
+				E5F930AD2832401B003AFE6A /* TeleportActionable.h */,
+				E5F930AE2832401B003AFE6A /* TeleportActionable.m */,
+				E53B4AF02832792E0007DEDC /* ReversiActionable.h */,
+				E589A4192833B66900AF65AD /* ConfusedActionable.h */,
+				E53B4AF12832792E0007DEDC /* ReversiActionable.m */,
+				E589A41A2833B66900AF65AD /* ConfusedActionable.m */,
+				E50CFAB42833F47B008CB01B /* UnexpectedAction.h */,
+				E50CFAB52833F9EA008CB01B /* ApocalypseActionable.h */,
+				E50CFAB62833F9EA008CB01B /* ApocalypseActionable.m */,
+				E50CFAB82833FA02008CB01B /* ApocalypseEnumerator.h */,
+				E50CFAB92833FA02008CB01B /* ApocalypseEnumerator.m */,
+				E5B726D32840BB2800B300EA /* FixActionable.h */,
+				E5B726D42840BB2800B300EA /* FixActionable.m */,
+				E5B726D62840E4C000B300EA /* FixActionAdditionals.h */,
+				E5B726D72840F1FF00B300EA /* RandomAction.h */,
+				E5B726D82840F1FF00B300EA /* RandomAction.m */,
+			);
+			path = Actionables;
+			sourceTree = "<group>";
+		};
+		E5B726DB28410F5A00B300EA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E5D9B309282188E900833038 /* TransportBarController.m */,
+				E5D9B308282188E900833038 /* TransportBarController.h */,
+				E531D1192808170600E735BA /* ViewController.h */,
+				E531D11A2808170600E735BA /* ViewController.m */,
+				E5FB18CB282118430017FD5F /* GestureController.h */,
+				E5FB18CC282118430017FD5F /* GestureController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E5B726DC28410F9B00B300EA /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E531D11C2808170600E735BA /* Main.storyboard */,
+				E531D11F2808170800E735BA /* Assets.xcassets */,
+				E531D1212808170800E735BA /* LaunchScreen.storyboard */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
