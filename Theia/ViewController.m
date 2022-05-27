@@ -7,14 +7,14 @@
 
 #import "ViewController.h"
 #import "GestureController.h"
-#import "ActionController.h"
+#import "TransportBarController.h"
 
 @interface ViewController ()
     @property (strong, nonatomic) AVURLAsset *asset;
     @property (strong, nonatomic) AVPlayer *player;
     @property (strong, nonatomic) AVPlayerViewController *controller;
     @property (strong, nonatomic) GestureController *gestures;
-    @property (strong, nonatomic) ActionController *actions;
+    @property (strong, nonatomic) TransportBarController *actions;
 @end
 
 @implementation ViewController
@@ -54,7 +54,7 @@
 }
 
 - (void)setUpTransportBar {
-    _actions = [[ActionController alloc] initWithPlayer:_player controller:_controller];
+    _actions = [[TransportBarController alloc] initWithPlayer:_player controller:_controller];
     [_actions setUpTransportBar];
 }
 

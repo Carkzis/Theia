@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface FixActionState : NSObject <ActionState, FixActionAdditionals>
 - (instancetype)initWithAction:(UIAction *)action;
 - (void)carryOutActionOnPlayer:(nonnull AVPlayer *)player;
-- (void)carryOutActionOnController:(ActionController *)controller;
+- (void)carryOutActionOnController:(TransportBarController *)controller;
 - (void)passInActionDelegates:(NSArray *)delegates;
 @end
 

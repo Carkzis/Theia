@@ -1,5 +1,5 @@
 //
-//  ActionController.h
+//  TransportBarController.h
 //  Theia
 //
 //  Created by Marc Jowett on 03/05/2022.
@@ -23,7 +23,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ActionController : NSObject
+@interface TransportBarController : NSObject
 
 @property (nonatomic) BOOL isConfused;
 @property (strong, nonatomic) AVPlayerViewController *playerController;

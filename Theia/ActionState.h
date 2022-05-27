@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <AVKit/AVKit.h>
 
-@class ActionController;
+@class TransportBarController;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -26,8 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 @optional
 - (void)carryOutActionOnPlayer:(AVPlayer *)player;
 - (void)resetValuesIncludingPlayer:(AVPlayer *)player;
-- (void)carryOutActionOnController:(ActionController *)controller;
-- (void)resetValuesIncludingController:(ActionController *)controller;
+- (void)carryOutActionOnController:(TransportBarController *)controller;
+- (void)resetValuesIncludingController:(TransportBarController *)controller;
 
 @end
 

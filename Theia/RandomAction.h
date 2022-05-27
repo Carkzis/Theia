@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
     - (nonnull instancetype)initWithAction:(UIAction *)action
                                     player:(AVPlayer *)player
-                          actionController:(ActionController *)controller;
+                          transportBarController:(TransportBarController *)controller;
     - (void)carryOutRandomAction:(NSArray *)actionDelegates;
 
 @end

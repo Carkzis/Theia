@@ -11,14 +11,14 @@
     @property (strong, nonatomic) AVPlayer *player;
     @property (strong, nonatomic) AVPlayerViewController *controller;
 
-    @property (strong, nonatomic) ActionController *actionController;
+    @property (strong, nonatomic) TransportBarController *actionController;
 @end
 
 @implementation GestureController
 
 - (instancetype)initWithPlayer:(AVPlayer *)player
                     controller:(AVPlayerViewController *)controller
-              actionController:(ActionController *)actionController
+              actionController:(TransportBarController *)actionController
 {
     if ((self = [super init])) {
         _player = player;
@@ -81,49 +81,43 @@
     [[_controller view] addGestureRecognizer:longPressUpGesture];
 }
 
-- (MPRemoteCommandHandlerStatus)playPauseToggleHandler {
+- (void)playPauseToggleHandler {
     NSLog(@"Play/Pause pressed.");
     if (_player.timeControlStatus == AVPlayerTimeControlStatusPlaying) {
-        return self.pauseHandler;
+        [self pauseHandler];
     } else if (_player.timeControlStatus == AVPlayerTimeControlStatusPaused) {
-        return self.playHandler;
+        [self playHandler];
     }
-    return MPRemoteCommandHandlerStatusCommandFailed;
 }
 
-- (MPRemoteCommandHandlerStatus)pauseHandler {
+- (void)pauseHandler {
     NSLog(@"Pause.");
     [_player pause];
     [_actionController.unexpectedAction mayDoUnexpectedActionOnPlayerIfConfused:_player];
-    return MPRemoteCommandHandlerStatusSuccess;
 }
 
-- (MPRemoteCommandHandlerStatus)playHandler {
+- (void)playHandler {
     NSLog(@"Play.");
     [_player play];
     [_actionController.unexpectedAction mayDoUnexpectedActionOnPlayerIfConfused:_player];
-    return MPRemoteCommandHandlerStatusSuccess;
 }
 
-- (MPRemoteCommandHandlerStatus)goRightHandler {
+- (void)goRightHandler {
     NSLog(@"Right pressed.");
     [_actionController.unexpectedAction mayDoUnexpectedActionOnPlayerIfConfused:_player];
-    return MPRemoteCommandHandlerStatusSuccess;
 }
 
-- (MPRemoteCommandHandlerStatus)goLeftHandler {
+- (void)goLeftHandler {
     NSLog(@"Left pressed.");
     [_actionController.unexpectedAction mayDoUnexpectedActionOnPlayerIfConfused:_player];
-    return MPRemoteCommandHandlerStatusSuccess;
 }
 
-- (MPRemoteCommandHandlerStatus)goUpHandler {
+- (void)goUpHandler {
     NSLog(@"Up pressed.");
     [_actionController.unexpectedAction mayDoUnexpectedActionOnPlayerIfConfused:_player];
-    return MPRemoteCommandHandlerStatusSuccess;
 }
 
-- (MPRemoteCommandHandlerStatus)longPlayPauseToggleHandler:(UILongPressGestureRecognizer *)longPressGesture {
+- (void)longPlayPauseToggleHandler:(UILongPressGestureRecognizer *)longPressGesture {
     switch (longPressGesture.state) {
         case UIGestureRecognizerStateBegan:
             NSLog(@"Long play press begins!");
@@ -135,10 +129,9 @@
         default:
             break;
     }
-    return MPRemoteCommandHandlerStatusSuccess;
 }
 
-- (MPRemoteCommandHandlerStatus)longGoRightHandler:(UILongPressGestureRecognizer *)longPressGesture {
+- (void)longGoRightHandler:(UILongPressGestureRecognizer *)longPressGesture {
     switch (longPressGesture.state) {
         case UIGestureRecognizerStateBegan:
             NSLog(@"Long right begins!");
@@ -150,11 +143,9 @@
         default:
             break;
     }
-
-    return MPRemoteCommandHandlerStatusSuccess;
 }
 
-- (MPRemoteCommandHandlerStatus)longGoLeftHandler:(UILongPressGestureRecognizer *)longPressGesture {
+- (void)longGoLeftHandler:(UILongPressGestureRecognizer *)longPressGesture {
     switch (longPressGesture.state) {
         case UIGestureRecognizerStateBegan:
             NSLog(@"Long left begins!");
@@ -166,10 +157,9 @@
         default:
             break;
     }
-    return MPRemoteCommandHandlerStatusSuccess;
 }
 
-- (MPRemoteCommandHandlerStatus)longGoUpHandler:(UILongPressGestureRecognizer *)longPressGesture {
+- (void)longGoUpHandler:(UILongPressGestureRecognizer *)longPressGesture {
     switch (longPressGesture.state) {
         case UIGestureRecognizerStateBegan:
             NSLog(@"Long up begins!");
@@ -181,9 +171,6 @@
         default:
             break;
     }
-    return MPRemoteCommandHandlerStatusSuccess;
 }
-
-// TODO: Grab Lucid/Confused state from ActionController. The Gesture will decide what to do with the info. Use protocol (e.g. TransportBarActionStateRetrieval)?
 
 @end

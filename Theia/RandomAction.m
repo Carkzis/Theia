@@ -10,14 +10,14 @@
 @interface RandomAction()
     @property (strong, nonatomic) UIAction *action;
     @property (strong, nonatomic) AVPlayer *player;
-    @property (strong, nonatomic) ActionController *actionController;
+    @property (strong, nonatomic) TransportBarController *actionController;
 @end
 
 @implementation RandomAction
 
 - (nonnull instancetype)initWithAction:(nonnull UIAction *)action
                                 player:(AVPlayer *)player
-                            actionController:(ActionController *)controller {
+                            transportBarController:(TransportBarController *)controller {
     if (self = [super init]) {
         self.action = action;
         self.player = player;

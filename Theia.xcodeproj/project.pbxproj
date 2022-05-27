@@ -25,7 +25,7 @@
 		E589A41B2833B66900AF65AD /* ConfusedActionState.m in Sources */ = {isa = PBXBuildFile; fileRef = E589A41A2833B66900AF65AD /* ConfusedActionState.m */; };
 		E5B726D52840BB2800B300EA /* FixActionState.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B726D42840BB2800B300EA /* FixActionState.m */; };
 		E5B726D92840F1FF00B300EA /* RandomAction.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B726D82840F1FF00B300EA /* RandomAction.m */; };
-		E5D9B30A282188E900833038 /* ActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D9B309282188E900833038 /* ActionController.m */; };
+		E5D9B30A282188E900833038 /* TransportBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D9B309282188E900833038 /* TransportBarController.m */; };
 		E5F930A6282E905E003AFE6A /* MuteActionState.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F930A5282E905E003AFE6A /* MuteActionState.m */; };
 		E5F930AC282EAD40003AFE6A /* SpeedActionState.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F930AB282EAD40003AFE6A /* SpeedActionState.m */; };
 		E5F930AF2832401B003AFE6A /* TeleportActionState.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F930AE2832401B003AFE6A /* TeleportActionState.m */; };
@@ -85,8 +85,8 @@
 		E5B726D62840E4C000B300EA /* FixActionAdditionals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FixActionAdditionals.h; sourceTree = "<group>"; };
 		E5B726D72840F1FF00B300EA /* RandomAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RandomAction.h; sourceTree = "<group>"; };
 		E5B726D82840F1FF00B300EA /* RandomAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RandomAction.m; sourceTree = "<group>"; };
-		E5D9B308282188E900833038 /* ActionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActionController.h; sourceTree = "<group>"; };
-		E5D9B309282188E900833038 /* ActionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActionController.m; sourceTree = "<group>"; };
+		E5D9B308282188E900833038 /* TransportBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransportBarController.h; sourceTree = "<group>"; };
+		E5D9B309282188E900833038 /* TransportBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransportBarController.m; sourceTree = "<group>"; };
 		E5EAAB212825042E0047248E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E5F930A3282E8C34003AFE6A /* ActionState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActionState.h; sourceTree = "<group>"; };
 		E5F930A4282E905E003AFE6A /* MuteActionState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MuteActionState.h; sourceTree = "<group>"; };
@@ -188,8 +188,8 @@
 				E531D1242808170800E735BA /* main.m */,
 				E5FB18CB282118430017FD5F /* GestureController.h */,
 				E5FB18CC282118430017FD5F /* GestureController.m */,
-				E5D9B308282188E900833038 /* ActionController.h */,
-				E5D9B309282188E900833038 /* ActionController.m */,
+				E5D9B308282188E900833038 /* TransportBarController.h */,
+				E5D9B309282188E900833038 /* TransportBarController.m */,
 				E5F930A3282E8C34003AFE6A /* ActionState.h */,
 				E5F930A4282E905E003AFE6A /* MuteActionState.h */,
 				E5F930A5282E905E003AFE6A /* MuteActionState.m */,
@@ -439,7 +439,7 @@
 				E5B726D92840F1FF00B300EA /* RandomAction.m in Sources */,
 				E5FB18CD282118440017FD5F /* GestureController.m in Sources */,
 				E531D1252808170800E735BA /* main.m in Sources */,
-				E5D9B30A282188E900833038 /* ActionController.m in Sources */,
+				E5D9B30A282188E900833038 /* TransportBarController.m in Sources */,
 				E5F930A6282E905E003AFE6A /* MuteActionState.m in Sources */,
 				E53B4AF22832792E0007DEDC /* ReversiActionState.m in Sources */,
 				E50CFAB72833F9EA008CB01B /* ApocalypseActionState.m in Sources */,

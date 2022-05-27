@@ -1,39 +1,33 @@
 //
-//  ActionController.m
+//  TransportBarController.m
 //  Theia
 //
 //  Created by Marc Jowett on 03/05/2022.
 //
 
-#import "ActionController.h"
+#import "TransportBarController.h"
 
-@interface ActionController()
+@interface TransportBarController()
 
     @property (strong, nonatomic) AVPlayer *player;
     @property (strong, nonatomic) AVPlayerItem *playerItem;
 
     @property (strong, nonatomic) UIAction *randomAction;
-    @property (strong, nonatomic) RandomAction *randomActionResponder;
-
     @property (strong, nonatomic) UIAction *muteAction;
-    @property (strong, nonatomic) id<ActionState> muteStateDelegate;
-
     @property (strong, nonatomic) UIAction *speedAction;
-    @property (strong, nonatomic) id<ActionState> speedStateDelegate;
-
     @property (strong, nonatomic) UIAction *teleportAction;
-    @property (strong, nonatomic) id<ActionState> teleportStateDelegate;
-
     @property (strong, nonatomic) UIAction *reversiAction;
-    @property (strong, nonatomic) id<ActionState> reversiStateDelegate;
-
     @property (strong, nonatomic) UIAction *confusedAction;
-    @property (strong, nonatomic) id<ActionState> confusedStateDelegate;
-
     @property (strong, nonatomic) UIAction *apocalypseAction;
-    @property (strong, nonatomic) id<ActionState> apocalypseStateDelegate;
-
     @property (strong, nonatomic) UIAction *fixAction;
+
+    @property (strong, nonatomic) RandomAction *randomActionResponder;
+    @property (strong, nonatomic) id<ActionState> muteStateDelegate;
+    @property (strong, nonatomic) id<ActionState> speedStateDelegate;
+    @property (strong, nonatomic) id<ActionState> teleportStateDelegate;
+    @property (strong, nonatomic) id<ActionState> reversiStateDelegate;
+    @property (strong, nonatomic) id<ActionState> confusedStateDelegate;
+    @property (strong, nonatomic) id<ActionState> apocalypseStateDelegate;
     @property (strong, nonatomic) id<ActionState> fixStateDelegate;
     @property (strong, nonatomic) id<FixActionAdditionals> fixActionAdditionalsDelegate;
 
@@ -41,8 +35,7 @@
 
 @end
 
-// TODO: TransportBarController?
-@implementation ActionController
+@implementation TransportBarController
 
 - (instancetype)initWithPlayer:(AVPlayer*)player
                     controller:(AVPlayerViewController*)controller
@@ -56,42 +49,38 @@
     return self;
 }
 
-/**
- TODO: Xcode 13.3 causes a bug that resets the position everytime you click on something.
- TODO: Set _ to self if they are properties.
- */
 - (void)setUpTransportBar {
+    [self setUpActions];
+    [self setUpDelegates];
+    
+    _playerController.transportBarCustomMenuItems = @[_randomAction, _muteAction, _speedAction, _teleportAction, _reversiAction, _confusedAction, _fixAction, _apocalypseAction];
+}
+
+- (void)setUpActions {
     _randomAction = [self setUpAndRetreiveRandomActionForTransportBar];
-    _randomActionResponder = [[RandomAction alloc] initWithAction:_randomAction player:_player actionController:self];
-    
     _muteAction = [self setUpAndRetrieveMuteActionForTransportBar];
-    _muteStateDelegate = [[MuteActionState alloc] initWithAction:_muteAction];
-    
     _speedAction = [self setUpAndRetrieveSpeedActionForTransportBar];
-    _speedStateDelegate = [[SpeedActionState alloc] initWithAction:_speedAction];
-    
     _teleportAction = [self setUpAndRetrieveTeleportActionForTransportBar];
-    _teleportStateDelegate = [[TeleportActionState alloc] initWithAction:_teleportAction];
-    
     _reversiAction = [self setUpAndRetrieveReversiActionForTransportBar];
-    _reversiStateDelegate = [[ReversiActionState alloc] initWithAction:_reversiAction];
-    
     _confusedAction = [self setUpAndRetrieveConfusedActionForTransportBar];
+    _apocalypseAction = [self setUpAndRetrieveApocalypseActionForTransportBar];
+    _fixAction = [self setUpAndRetrieveFixActionForTransportBar];
+}
+
+- (void)setUpDelegates {
+    _randomActionResponder = [[RandomAction alloc] initWithAction:_randomAction player:_player transportBarController:self];
+    _muteStateDelegate = [[MuteActionState alloc] initWithAction:_muteAction];
+    _speedStateDelegate = [[SpeedActionState alloc] initWithAction:_speedAction];
+    _teleportStateDelegate = [[TeleportActionState alloc] initWithAction:_teleportAction];
+    _reversiStateDelegate = [[ReversiActionState alloc] initWithAction:_reversiAction];
     _confusedStateDelegate = [[ConfusedActionState alloc] initWithAction:_confusedAction];
     _unexpectedAction = (id<UnexpectedAction>)_confusedStateDelegate;
-    
-    _apocalypseAction = [self setUpAndRetrieveApocalypseActionForTransportBar];
     _apocalypseStateDelegate = [[ApocalypseActionState alloc] initWithAction:_apocalypseAction];
-    
-    _fixAction = [self setUpAndRetrieveFixActionForTransportBar];
-    FixActionState *sharedFixAction = [[FixActionState alloc] initWithAction:_fixAction];
-    _fixStateDelegate = sharedFixAction;
-    _fixActionAdditionalsDelegate = sharedFixAction;
+    _fixStateDelegate = [[FixActionState alloc] initWithAction:_fixAction];
+    _fixActionAdditionalsDelegate = (id<FixActionAdditionals>)_fixStateDelegate;
     
     _delegates = @[_muteStateDelegate, _speedStateDelegate, _teleportStateDelegate, _reversiStateDelegate, _confusedStateDelegate, _apocalypseStateDelegate];
     [_fixActionAdditionalsDelegate passInActionDelegates:_delegates];
-    
-    _playerController.transportBarCustomMenuItems = @[_randomAction, _muteAction, _speedAction, _teleportAction, _reversiAction, _confusedAction, _fixAction, _apocalypseAction];
 }
 
 - (UIAction *)setUpAndRetreiveRandomActionForTransportBar {

@@ -7,14 +7,14 @@
 
 #import <Foundation/Foundation.h>
 #import "ActionState.h"
-#import "ActionController.h"
+#import "TransportBarController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ReversiActionState : NSObject <ActionState>
 - (instancetype)initWithAction:(UIAction *)action;
-- (void)carryOutActionOnController:(ActionController *)controller;
-- (void)resetValuesIncludingController:(ActionController *)controller;
+- (void)carryOutActionOnController:(TransportBarController *)controller;
+- (void)resetValuesIncludingController:(TransportBarController *)controller;
 @end
 
 NS_ASSUME_NONNULL_END

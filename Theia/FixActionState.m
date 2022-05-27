@@ -44,7 +44,7 @@ typedef NS_ENUM(NSUInteger, FixStatus) {
     }
 }
 
-- (void)carryOutActionOnController:(ActionController *)controller {
+- (void)carryOutActionOnController:(TransportBarController *)controller {
     if (isActive) {
         action.image = [images objectForKey:[NSNumber numberWithInteger:fixed]];
         [self resetAllActionsOnController:controller];
@@ -62,7 +62,7 @@ typedef NS_ENUM(NSUInteger, FixStatus) {
     [self resetValues];
 }
 
-- (void)resetAllActionsOnController:(ActionController *)controller {
+- (void)resetAllActionsOnController:(TransportBarController *)controller {
     for (int actionIndex = 0; actionIndex < _delegates.count; actionIndex++) {
         id<ActionState> currentAction = [_delegates objectAtIndex:actionIndex];
         if ([currentAction respondsToSelector:@selector(resetValuesIncludingController:)]) {

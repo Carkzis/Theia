@@ -32,7 +32,7 @@ typedef NS_ENUM(NSUInteger, Reverseness) {
     return self;
 }
 
-- (void)carryOutActionOnController:(ActionController *)controller {
+- (void)carryOutActionOnController:(TransportBarController *)controller {
     NSLog(@"Reverse");
     isActive = !isActive;
     action.image = isActive ? [images objectForKey:[NSNumber numberWithInteger:reversi]] : [images objectForKey:[NSNumber numberWithInteger:versi]];
@@ -40,7 +40,7 @@ typedef NS_ENUM(NSUInteger, Reverseness) {
     
 }
 
-- (void)resetValuesIncludingController:(ActionController *)controller {
+- (void)resetValuesIncludingController:(TransportBarController *)controller {
     if (isActive) {
         action.image = defaultImage;
         [self reverseTransportBarOnController:controller];
@@ -48,7 +48,7 @@ typedef NS_ENUM(NSUInteger, Reverseness) {
     }
 }
 
-- (void)reverseTransportBarOnController:(ActionController *)controller {
+- (void)reverseTransportBarOnController:(TransportBarController *)controller {
     NSArray *reversedArray = [[controller.playerController.transportBarCustomMenuItems reverseObjectEnumerator] allObjects];
     controller.playerController.transportBarCustomMenuItems = reversedArray;
 }

@@ -9,7 +9,7 @@
 #import <AVKit/AVKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
-#import "ActionController.h"
+#import "TransportBarController.h"
 // #import "ConfusedActionState.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface GestureController : UIViewController
 - (instancetype)initWithPlayer:(AVPlayer *)player
                     controller:(AVPlayerViewController *)controller
-              actionController:(ActionController*)actionController;
+              actionController:(TransportBarController*)actionController;
 - (void)setUpGestures;
 @end
 
