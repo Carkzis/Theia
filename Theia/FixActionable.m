@@ -5,19 +5,19 @@
 //  Created by Marc Jowett on 27/05/2022.
 //
 
-#import "FixActionState.h"
+#import "FixActionable.h"
 
 typedef NS_ENUM(NSUInteger, FixStatus) {
     fixed = 0,
     broken = 1
 };
 
-@interface FixActionState()
+@interface FixActionable()
     @property (nonatomic) NSArray *delegates;
     @property (nonatomic) int resetCompleteCounter;
 @end
 
-@implementation FixActionState
+@implementation FixActionable
     @synthesize action;
     @synthesize defaultImage;
     @synthesize images;
@@ -53,7 +53,7 @@ typedef NS_ENUM(NSUInteger, FixStatus) {
 
 - (void)resetAllActionsOnPlayer:(nonnull AVPlayer *)player {
     for (int actionIndex = 0; actionIndex < _delegates.count; actionIndex++) {
-        id<ActionState> currentAction = [_delegates objectAtIndex:actionIndex];
+        id<Actionable> currentAction = [_delegates objectAtIndex:actionIndex];
         if ([currentAction respondsToSelector:@selector(resetValuesIncludingPlayer:)]) {
             [currentAction resetValuesIncludingPlayer:player];
         }
@@ -64,7 +64,7 @@ typedef NS_ENUM(NSUInteger, FixStatus) {
 
 - (void)resetAllActionsOnController:(TransportBarController *)controller {
     for (int actionIndex = 0; actionIndex < _delegates.count; actionIndex++) {
-        id<ActionState> currentAction = [_delegates objectAtIndex:actionIndex];
+        id<Actionable> currentAction = [_delegates objectAtIndex:actionIndex];
         if ([currentAction respondsToSelector:@selector(resetValuesIncludingController:)]) {
             [currentAction resetValuesIncludingController:controller];
         }

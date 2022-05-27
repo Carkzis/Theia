@@ -22,13 +22,13 @@
     @property (strong, nonatomic) UIAction *fixAction;
 
     @property (strong, nonatomic) RandomAction *randomActionResponder;
-    @property (strong, nonatomic) id<ActionState> muteStateDelegate;
-    @property (strong, nonatomic) id<ActionState> speedStateDelegate;
-    @property (strong, nonatomic) id<ActionState> teleportStateDelegate;
-    @property (strong, nonatomic) id<ActionState> reversiStateDelegate;
-    @property (strong, nonatomic) id<ActionState> confusedStateDelegate;
-    @property (strong, nonatomic) id<ActionState> apocalypseStateDelegate;
-    @property (strong, nonatomic) id<ActionState> fixStateDelegate;
+    @property (strong, nonatomic) id<Actionable> muteActionableDelegate;
+    @property (strong, nonatomic) id<Actionable> speedActionableDelegate;
+    @property (strong, nonatomic) id<Actionable> teleportActionableDelegate;
+    @property (strong, nonatomic) id<Actionable> reversiActionableDelegate;
+    @property (strong, nonatomic) id<Actionable> confusedActionableDelegate;
+    @property (strong, nonatomic) id<Actionable> apocalypseActionableDelegate;
+    @property (strong, nonatomic) id<Actionable> fixActionableDelegate;
     @property (strong, nonatomic) id<FixActionAdditionals> fixActionAdditionalsDelegate;
 
     @property (strong, nonatomic) NSArray *delegates;
@@ -69,17 +69,17 @@
 
 - (void)setUpDelegates {
     _randomActionResponder = [[RandomAction alloc] initWithAction:_randomAction player:_player transportBarController:self];
-    _muteStateDelegate = [[MuteActionState alloc] initWithAction:_muteAction];
-    _speedStateDelegate = [[SpeedActionState alloc] initWithAction:_speedAction];
-    _teleportStateDelegate = [[TeleportActionState alloc] initWithAction:_teleportAction];
-    _reversiStateDelegate = [[ReversiActionState alloc] initWithAction:_reversiAction];
-    _confusedStateDelegate = [[ConfusedActionState alloc] initWithAction:_confusedAction];
-    _unexpectedAction = (id<UnexpectedAction>)_confusedStateDelegate;
-    _apocalypseStateDelegate = [[ApocalypseActionState alloc] initWithAction:_apocalypseAction];
-    _fixStateDelegate = [[FixActionState alloc] initWithAction:_fixAction];
-    _fixActionAdditionalsDelegate = (id<FixActionAdditionals>)_fixStateDelegate;
+    _muteActionableDelegate = [[MuteActionable alloc] initWithAction:_muteAction];
+    _speedActionableDelegate = [[SpeedActionable alloc] initWithAction:_speedAction];
+    _teleportActionableDelegate = [[TeleportActionable alloc] initWithAction:_teleportAction];
+    _reversiActionableDelegate = [[ReversiActionable alloc] initWithAction:_reversiAction];
+    _confusedActionableDelegate = [[ConfusedActionable alloc] initWithAction:_confusedAction];
+    _unexpectedAction = (id<UnexpectedAction>)_confusedActionableDelegate;
+    _apocalypseActionableDelegate = [[ApocalypseActionable alloc] initWithAction:_apocalypseAction];
+    _fixActionableDelegate = [[FixActionable alloc] initWithAction:_fixAction];
+    _fixActionAdditionalsDelegate = (id<FixActionAdditionals>)_fixActionableDelegate;
     
-    _delegates = @[_muteStateDelegate, _speedStateDelegate, _teleportStateDelegate, _reversiStateDelegate, _confusedStateDelegate, _apocalypseStateDelegate];
+    _delegates = @[_muteActionableDelegate, _speedActionableDelegate, _teleportActionableDelegate, _reversiActionableDelegate, _confusedActionableDelegate, _apocalypseActionableDelegate];
     [_fixActionAdditionalsDelegate passInActionDelegates:_delegates];
 }
 
@@ -92,55 +92,55 @@
 }
 
 - (UIAction *)setUpAndRetrieveMuteActionForTransportBar {
-    UIAction *muteAction = [UIAction actionWithTitle:@"Mute" image:_muteStateDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
-        [self performAction:self.muteStateDelegate];
+    UIAction *muteAction = [UIAction actionWithTitle:@"Mute" image:_muteActionableDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
+        [self performAction:self.muteActionableDelegate];
     }];
     return muteAction;
 }
 
 - (UIAction *)setUpAndRetrieveSpeedActionForTransportBar {
-    UIAction *speedAction = [UIAction actionWithTitle:@"Speed" image:_speedStateDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
-        [self performAction:self.speedStateDelegate];
+    UIAction *speedAction = [UIAction actionWithTitle:@"Speed" image:_speedActionableDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
+        [self performAction:self.speedActionableDelegate];
     }];
     return speedAction;
 }
 
 - (UIAction *)setUpAndRetrieveTeleportActionForTransportBar {
-    UIAction *teleportAction = [UIAction actionWithTitle:@"Teleport" image:_teleportStateDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
-        [self performAction:self.teleportStateDelegate];
+    UIAction *teleportAction = [UIAction actionWithTitle:@"Teleport" image:_teleportActionableDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
+        [self performAction:self.teleportActionableDelegate];
     }];
     return teleportAction;
 }
 
 - (UIAction *)setUpAndRetrieveReversiActionForTransportBar {
-    UIAction *reversiAction = [UIAction actionWithTitle:@"Reversi" image:_reversiStateDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
-        [self performAction:self.reversiStateDelegate];
+    UIAction *reversiAction = [UIAction actionWithTitle:@"Reversi" image:_reversiActionableDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
+        [self performAction:self.reversiActionableDelegate];
     }];
     return reversiAction;
 }
 
 - (UIAction *)setUpAndRetrieveConfusedActionForTransportBar {
-    UIAction *confusedAction = [UIAction actionWithTitle:@"Confused" image:_confusedStateDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
-        [self performAction:self.confusedStateDelegate];
+    UIAction *confusedAction = [UIAction actionWithTitle:@"Confused" image:_confusedActionableDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
+        [self performAction:self.confusedActionableDelegate];
     }];
     return confusedAction;
 }
 
 - (UIAction *)setUpAndRetrieveApocalypseActionForTransportBar {
-    UIAction *apocalypseAction = [UIAction actionWithTitle:@"Apocalypse" image:_apocalypseStateDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
-        [self performAction:self.apocalypseStateDelegate];
+    UIAction *apocalypseAction = [UIAction actionWithTitle:@"Apocalypse" image:_apocalypseActionableDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
+        [self performAction:self.apocalypseActionableDelegate];
     }];
     return apocalypseAction;
 }
 
 - (UIAction *)setUpAndRetrieveFixActionForTransportBar {
-    UIAction *fixAction = [UIAction actionWithTitle:@"Fix" image:_fixStateDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
-        [self performAction:self.fixStateDelegate];
+    UIAction *fixAction = [UIAction actionWithTitle:@"Fix" image:_fixActionableDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
+        [self performAction:self.fixActionableDelegate];
     }];
     return fixAction;
 }
 
-- (void)performAction:(id<ActionState>)action {
+- (void)performAction:(id<Actionable>)action {
     [_fixActionAdditionalsDelegate setPlayerToBroken:_player];
     if ([action respondsToSelector:@selector(carryOutActionOnPlayer:)]) {
         [action carryOutActionOnPlayer:_player];

@@ -1,18 +1,18 @@
 //
-//  ConfusedActionState.m
+//  ConfusedActionable.m
 //  Theia
 //
 //  Created by Marc Jowett on 17/05/2022.
 //
 
-#import "ConfusedActionState.h"
+#import "ConfusedActionable.h"
 
 typedef NS_ENUM(NSUInteger, Confusedness) {
     lucid = 0,
     confused = 1
 };
 
-@implementation ConfusedActionState
+@implementation ConfusedActionable
 
 @synthesize action;
 @synthesize defaultImage;

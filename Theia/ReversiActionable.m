@@ -1,18 +1,18 @@
 //
-//  ReversiActionState.m
+//  ReversiActionable.m
 //  Theia
 //
 //  Created by Marc Jowett on 16/05/2022.
 //
 
-#import "ReversiActionState.h"
+#import "ReversiActionable.h"
 
 typedef NS_ENUM(NSUInteger, Reverseness) {
     versi = 0,
     reversi = 1
 };
 
-@implementation ReversiActionState
+@implementation ReversiActionable
 
 @synthesize action;
 @synthesize defaultImage;

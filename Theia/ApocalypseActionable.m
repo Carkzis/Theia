@@ -1,18 +1,18 @@
 //
-//  ApocalypseActionState.m
+//  ApocalypseActionable.m
 //  Theia
 //
 //  Created by Marc Jowett on 17/05/2022.
 //
 
-#import "ApocalypseActionState.h"
+#import "ApocalypseActionable.h"
 
-@interface ApocalypseActionState()
+@interface ApocalypseActionable()
     @property (nonatomic) NSInteger apocalypseLevel;
     @property (strong, nonatomic) ApocalypseEnumerator *enumerator;
 @end
 
-@implementation ApocalypseActionState
+@implementation ApocalypseActionable
     @synthesize action;
     @synthesize defaultImage;
     @synthesize images;

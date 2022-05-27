@@ -5,7 +5,7 @@
 //  Created by Marc Jowett on 13/05/2022.
 //
 
-#import "SpeedActionState.h"
+#import "SpeedActionable.h"
 
 typedef NS_ENUM(NSUInteger, Speed) {
     superslow = 0,
@@ -15,11 +15,11 @@ typedef NS_ENUM(NSUInteger, Speed) {
     superfast = 4
 };
 
-@interface SpeedActionState()
+@interface SpeedActionable()
     @property (strong, nonatomic) NSMutableDictionary *speeds;
 @end
 
-@implementation SpeedActionState
+@implementation SpeedActionable
 
 @synthesize action;
 @synthesize defaultImage;

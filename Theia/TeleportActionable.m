@@ -1,23 +1,23 @@
 //
-//  TeleportActionState.m
+//  TeleportActionable.m
 //  Theia
 //
 //  Created by Marc Jowett on 16/05/2022.
 //
 
-#import "TeleportActionState.h"
+#import "TeleportActionable.h"
 
 typedef NS_ENUM(NSUInteger, TeleportStatus) {
     returned = 0,
     teleported = 1
 };
 
-@interface TeleportActionState()
+@interface TeleportActionable()
     @property (strong, nonatomic) NSMutableDictionary *speeds;
     @property (nonatomic) CMTime originalPosition;
 @end
 
-@implementation TeleportActionState
+@implementation TeleportActionable
 
 @synthesize action;
 @synthesize defaultImage;

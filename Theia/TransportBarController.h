@@ -9,15 +9,15 @@
 #import <AVKit/AVKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
-#import "ActionState.h"
-#import "MuteActionState.h"
-#import "SpeedActionState.h"
-#import "TeleportActionState.h"
-#import "ReversiActionState.h"
-#import "ConfusedActionState.h"
+#import "Actionable.h"
+#import "MuteActionable.h"
+#import "SpeedActionable.h"
+#import "TeleportActionable.h"
+#import "ReversiActionable.h"
+#import "ConfusedActionable.h"
 #import "UnexpectedAction.h"
-#import "ApocalypseActionState.h"
-#import "FixActionState.h"
+#import "ApocalypseActionable.h"
+#import "FixActionable.h"
 #import "FixActionAdditionals.h"
 #import "RandomAction.h"
 

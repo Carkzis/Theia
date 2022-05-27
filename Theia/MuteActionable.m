@@ -1,18 +1,18 @@
 //
-//  MuteActionState.m
+//  MuteActionable.m
 //  Theia
 //
 //  Created by Marc Jowett on 13/05/2022.
 //
 
-#import "MuteActionState.h"
+#import "MuteActionable.h"
 
 typedef NS_ENUM(NSUInteger, Muteness) {
     unmuted = 0,
     muted = 1
 };
 
-@implementation MuteActionState
+@implementation MuteActionable
 
 @synthesize action;
 @synthesize defaultImage;

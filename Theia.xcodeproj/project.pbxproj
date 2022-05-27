@@ -10,7 +10,7 @@
 		1DB18ACA7881C0C57FBDD9C0 /* Pods_Theia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B863B79F4931C318BF5D9998 /* Pods_Theia.framework */; };
 		761019B55B7E724A764A4F76 /* Pods_Theia_TheiaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 129227D94C7A8083E133E9F3 /* Pods_Theia_TheiaUITests.framework */; };
 		A40D210BE9653CF21B25701C /* Pods_TheiaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE64D5FAC4B2420CEE6CA40 /* Pods_TheiaTests.framework */; };
-		E50CFAB72833F9EA008CB01B /* ApocalypseActionState.m in Sources */ = {isa = PBXBuildFile; fileRef = E50CFAB62833F9EA008CB01B /* ApocalypseActionState.m */; };
+		E50CFAB72833F9EA008CB01B /* ApocalypseActionable.m in Sources */ = {isa = PBXBuildFile; fileRef = E50CFAB62833F9EA008CB01B /* ApocalypseActionable.m */; };
 		E50CFABA2833FA02008CB01B /* ApocalypseEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = E50CFAB92833FA02008CB01B /* ApocalypseEnumerator.m */; };
 		E531D1182808170600E735BA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E531D1172808170600E735BA /* AppDelegate.m */; };
 		E531D11B2808170600E735BA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E531D11A2808170600E735BA /* ViewController.m */; };
@@ -21,14 +21,14 @@
 		E531D12F2808170800E735BA /* TheiaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E531D12E2808170800E735BA /* TheiaTests.m */; };
 		E531D1392808170800E735BA /* TheiaUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E531D1382808170800E735BA /* TheiaUITests.m */; };
 		E531D13B2808170800E735BA /* TheiaUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E531D13A2808170800E735BA /* TheiaUITestsLaunchTests.m */; };
-		E53B4AF22832792E0007DEDC /* ReversiActionState.m in Sources */ = {isa = PBXBuildFile; fileRef = E53B4AF12832792E0007DEDC /* ReversiActionState.m */; };
-		E589A41B2833B66900AF65AD /* ConfusedActionState.m in Sources */ = {isa = PBXBuildFile; fileRef = E589A41A2833B66900AF65AD /* ConfusedActionState.m */; };
-		E5B726D52840BB2800B300EA /* FixActionState.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B726D42840BB2800B300EA /* FixActionState.m */; };
+		E53B4AF22832792E0007DEDC /* ReversiActionable.m in Sources */ = {isa = PBXBuildFile; fileRef = E53B4AF12832792E0007DEDC /* ReversiActionable.m */; };
+		E589A41B2833B66900AF65AD /* ConfusedActionable.m in Sources */ = {isa = PBXBuildFile; fileRef = E589A41A2833B66900AF65AD /* ConfusedActionable.m */; };
+		E5B726D52840BB2800B300EA /* FixActionable.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B726D42840BB2800B300EA /* FixActionable.m */; };
 		E5B726D92840F1FF00B300EA /* RandomAction.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B726D82840F1FF00B300EA /* RandomAction.m */; };
 		E5D9B30A282188E900833038 /* TransportBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D9B309282188E900833038 /* TransportBarController.m */; };
-		E5F930A6282E905E003AFE6A /* MuteActionState.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F930A5282E905E003AFE6A /* MuteActionState.m */; };
-		E5F930AC282EAD40003AFE6A /* SpeedActionState.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F930AB282EAD40003AFE6A /* SpeedActionState.m */; };
-		E5F930AF2832401B003AFE6A /* TeleportActionState.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F930AE2832401B003AFE6A /* TeleportActionState.m */; };
+		E5F930A6282E905E003AFE6A /* MuteActionable.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F930A5282E905E003AFE6A /* MuteActionable.m */; };
+		E5F930AC282EAD40003AFE6A /* SpeedActionable.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F930AB282EAD40003AFE6A /* SpeedActionable.m */; };
+		E5F930AF2832401B003AFE6A /* TeleportActionable.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F930AE2832401B003AFE6A /* TeleportActionable.m */; };
 		E5FB18CD282118440017FD5F /* GestureController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FB18CC282118430017FD5F /* GestureController.m */; };
 /* End PBXBuildFile section */
 
@@ -58,8 +58,8 @@
 		C9CA2D75F22FD885DA5F9DFE /* Pods-Theia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Theia.debug.xcconfig"; path = "Target Support Files/Pods-Theia/Pods-Theia.debug.xcconfig"; sourceTree = "<group>"; };
 		E2FE558D0F183B70C3DECA8E /* Pods-Theia-TheiaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Theia-TheiaUITests.debug.xcconfig"; path = "Target Support Files/Pods-Theia-TheiaUITests/Pods-Theia-TheiaUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E50CFAB42833F47B008CB01B /* UnexpectedAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnexpectedAction.h; sourceTree = "<group>"; };
-		E50CFAB52833F9EA008CB01B /* ApocalypseActionState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApocalypseActionState.h; sourceTree = "<group>"; };
-		E50CFAB62833F9EA008CB01B /* ApocalypseActionState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApocalypseActionState.m; sourceTree = "<group>"; };
+		E50CFAB52833F9EA008CB01B /* ApocalypseActionable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApocalypseActionable.h; sourceTree = "<group>"; };
+		E50CFAB62833F9EA008CB01B /* ApocalypseActionable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApocalypseActionable.m; sourceTree = "<group>"; };
 		E50CFAB82833FA02008CB01B /* ApocalypseEnumerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApocalypseEnumerator.h; sourceTree = "<group>"; };
 		E50CFAB92833FA02008CB01B /* ApocalypseEnumerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApocalypseEnumerator.m; sourceTree = "<group>"; };
 		E531D1132808170600E735BA /* Theia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Theia.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,25 +76,25 @@
 		E531D1342808170800E735BA /* TheiaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheiaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E531D1382808170800E735BA /* TheiaUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TheiaUITests.m; sourceTree = "<group>"; };
 		E531D13A2808170800E735BA /* TheiaUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TheiaUITestsLaunchTests.m; sourceTree = "<group>"; };
-		E53B4AF02832792E0007DEDC /* ReversiActionState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReversiActionState.h; sourceTree = "<group>"; };
-		E53B4AF12832792E0007DEDC /* ReversiActionState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReversiActionState.m; sourceTree = "<group>"; };
-		E589A4192833B66900AF65AD /* ConfusedActionState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfusedActionState.h; sourceTree = "<group>"; };
-		E589A41A2833B66900AF65AD /* ConfusedActionState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfusedActionState.m; sourceTree = "<group>"; };
-		E5B726D32840BB2800B300EA /* FixActionState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FixActionState.h; sourceTree = "<group>"; };
-		E5B726D42840BB2800B300EA /* FixActionState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FixActionState.m; sourceTree = "<group>"; };
+		E53B4AF02832792E0007DEDC /* ReversiActionable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReversiActionable.h; sourceTree = "<group>"; };
+		E53B4AF12832792E0007DEDC /* ReversiActionable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReversiActionable.m; sourceTree = "<group>"; };
+		E589A4192833B66900AF65AD /* ConfusedActionable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfusedActionable.h; sourceTree = "<group>"; };
+		E589A41A2833B66900AF65AD /* ConfusedActionable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfusedActionable.m; sourceTree = "<group>"; };
+		E5B726D32840BB2800B300EA /* FixActionable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FixActionable.h; sourceTree = "<group>"; };
+		E5B726D42840BB2800B300EA /* FixActionable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FixActionable.m; sourceTree = "<group>"; };
 		E5B726D62840E4C000B300EA /* FixActionAdditionals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FixActionAdditionals.h; sourceTree = "<group>"; };
 		E5B726D72840F1FF00B300EA /* RandomAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RandomAction.h; sourceTree = "<group>"; };
 		E5B726D82840F1FF00B300EA /* RandomAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RandomAction.m; sourceTree = "<group>"; };
 		E5D9B308282188E900833038 /* TransportBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransportBarController.h; sourceTree = "<group>"; };
 		E5D9B309282188E900833038 /* TransportBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransportBarController.m; sourceTree = "<group>"; };
 		E5EAAB212825042E0047248E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		E5F930A3282E8C34003AFE6A /* ActionState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActionState.h; sourceTree = "<group>"; };
-		E5F930A4282E905E003AFE6A /* MuteActionState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MuteActionState.h; sourceTree = "<group>"; };
-		E5F930A5282E905E003AFE6A /* MuteActionState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MuteActionState.m; sourceTree = "<group>"; };
-		E5F930AA282EAD40003AFE6A /* SpeedActionState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpeedActionState.h; sourceTree = "<group>"; };
-		E5F930AB282EAD40003AFE6A /* SpeedActionState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpeedActionState.m; sourceTree = "<group>"; };
-		E5F930AD2832401B003AFE6A /* TeleportActionState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeleportActionState.h; sourceTree = "<group>"; };
-		E5F930AE2832401B003AFE6A /* TeleportActionState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeleportActionState.m; sourceTree = "<group>"; };
+		E5F930A3282E8C34003AFE6A /* Actionable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Actionable.h; sourceTree = "<group>"; };
+		E5F930A4282E905E003AFE6A /* MuteActionable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MuteActionable.h; sourceTree = "<group>"; };
+		E5F930A5282E905E003AFE6A /* MuteActionable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MuteActionable.m; sourceTree = "<group>"; };
+		E5F930AA282EAD40003AFE6A /* SpeedActionable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpeedActionable.h; sourceTree = "<group>"; };
+		E5F930AB282EAD40003AFE6A /* SpeedActionable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpeedActionable.m; sourceTree = "<group>"; };
+		E5F930AD2832401B003AFE6A /* TeleportActionable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeleportActionable.h; sourceTree = "<group>"; };
+		E5F930AE2832401B003AFE6A /* TeleportActionable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeleportActionable.m; sourceTree = "<group>"; };
 		E5FB18CB282118430017FD5F /* GestureController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GestureController.h; sourceTree = "<group>"; };
 		E5FB18CC282118430017FD5F /* GestureController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GestureController.m; sourceTree = "<group>"; };
 		E8CB08A3DE9B0CC9A662AD75 /* Pods-TheiaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheiaTests.debug.xcconfig"; path = "Target Support Files/Pods-TheiaTests/Pods-TheiaTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -190,24 +190,24 @@
 				E5FB18CC282118430017FD5F /* GestureController.m */,
 				E5D9B308282188E900833038 /* TransportBarController.h */,
 				E5D9B309282188E900833038 /* TransportBarController.m */,
-				E5F930A3282E8C34003AFE6A /* ActionState.h */,
-				E5F930A4282E905E003AFE6A /* MuteActionState.h */,
-				E5F930A5282E905E003AFE6A /* MuteActionState.m */,
-				E5F930AA282EAD40003AFE6A /* SpeedActionState.h */,
-				E5F930AB282EAD40003AFE6A /* SpeedActionState.m */,
-				E5F930AD2832401B003AFE6A /* TeleportActionState.h */,
-				E5F930AE2832401B003AFE6A /* TeleportActionState.m */,
-				E53B4AF02832792E0007DEDC /* ReversiActionState.h */,
-				E53B4AF12832792E0007DEDC /* ReversiActionState.m */,
-				E589A4192833B66900AF65AD /* ConfusedActionState.h */,
-				E589A41A2833B66900AF65AD /* ConfusedActionState.m */,
+				E5F930A3282E8C34003AFE6A /* Actionable.h */,
+				E5F930A4282E905E003AFE6A /* MuteActionable.h */,
+				E5F930A5282E905E003AFE6A /* MuteActionable.m */,
+				E5F930AA282EAD40003AFE6A /* SpeedActionable.h */,
+				E5F930AB282EAD40003AFE6A /* SpeedActionable.m */,
+				E5F930AD2832401B003AFE6A /* TeleportActionable.h */,
+				E5F930AE2832401B003AFE6A /* TeleportActionable.m */,
+				E53B4AF02832792E0007DEDC /* ReversiActionable.h */,
+				E53B4AF12832792E0007DEDC /* ReversiActionable.m */,
+				E589A4192833B66900AF65AD /* ConfusedActionable.h */,
+				E589A41A2833B66900AF65AD /* ConfusedActionable.m */,
 				E50CFAB42833F47B008CB01B /* UnexpectedAction.h */,
-				E50CFAB52833F9EA008CB01B /* ApocalypseActionState.h */,
-				E50CFAB62833F9EA008CB01B /* ApocalypseActionState.m */,
+				E50CFAB52833F9EA008CB01B /* ApocalypseActionable.h */,
+				E50CFAB62833F9EA008CB01B /* ApocalypseActionable.m */,
 				E50CFAB82833FA02008CB01B /* ApocalypseEnumerator.h */,
 				E50CFAB92833FA02008CB01B /* ApocalypseEnumerator.m */,
-				E5B726D32840BB2800B300EA /* FixActionState.h */,
-				E5B726D42840BB2800B300EA /* FixActionState.m */,
+				E5B726D32840BB2800B300EA /* FixActionable.h */,
+				E5B726D42840BB2800B300EA /* FixActionable.m */,
 				E5B726D62840E4C000B300EA /* FixActionAdditionals.h */,
 				E5B726D72840F1FF00B300EA /* RandomAction.h */,
 				E5B726D82840F1FF00B300EA /* RandomAction.m */,
@@ -434,19 +434,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5F930AC282EAD40003AFE6A /* SpeedActionState.m in Sources */,
+				E5F930AC282EAD40003AFE6A /* SpeedActionable.m in Sources */,
 				E531D11B2808170600E735BA /* ViewController.m in Sources */,
 				E5B726D92840F1FF00B300EA /* RandomAction.m in Sources */,
 				E5FB18CD282118440017FD5F /* GestureController.m in Sources */,
 				E531D1252808170800E735BA /* main.m in Sources */,
 				E5D9B30A282188E900833038 /* TransportBarController.m in Sources */,
-				E5F930A6282E905E003AFE6A /* MuteActionState.m in Sources */,
-				E53B4AF22832792E0007DEDC /* ReversiActionState.m in Sources */,
-				E50CFAB72833F9EA008CB01B /* ApocalypseActionState.m in Sources */,
+				E5F930A6282E905E003AFE6A /* MuteActionable.m in Sources */,
+				E53B4AF22832792E0007DEDC /* ReversiActionable.m in Sources */,
+				E50CFAB72833F9EA008CB01B /* ApocalypseActionable.m in Sources */,
 				E50CFABA2833FA02008CB01B /* ApocalypseEnumerator.m in Sources */,
-				E5F930AF2832401B003AFE6A /* TeleportActionState.m in Sources */,
-				E589A41B2833B66900AF65AD /* ConfusedActionState.m in Sources */,
-				E5B726D52840BB2800B300EA /* FixActionState.m in Sources */,
+				E5F930AF2832401B003AFE6A /* TeleportActionable.m in Sources */,
+				E589A41B2833B66900AF65AD /* ConfusedActionable.m in Sources */,
+				E5B726D52840BB2800B300EA /* FixActionable.m in Sources */,
 				E531D1182808170600E735BA /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

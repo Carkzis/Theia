@@ -6,12 +6,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ActionState.h"
+#import "Actionable.h"
 #import "FixActionAdditionals.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FixActionState : NSObject <ActionState, FixActionAdditionals>
+@interface FixActionable : NSObject <Actionable, FixActionAdditionals>
 - (instancetype)initWithAction:(UIAction *)action;
 - (void)carryOutActionOnPlayer:(nonnull AVPlayer *)player;
 - (void)carryOutActionOnController:(TransportBarController *)controller;

@@ -33,7 +33,7 @@
         NSUInteger randomIndex = arc4random() % delegates.count;
         if (randomIndex == 0) {
             NSLog(@"A random event occured!");
-            id<ActionState> currentAction = [delegates objectAtIndex:actionIndex];
+            id<Actionable> currentAction = [delegates objectAtIndex:actionIndex];
             if ([currentAction respondsToSelector:@selector(carryOutActionOnPlayer:)]) {
                 [currentAction carryOutActionOnPlayer:_player];
             }

@@ -1,5 +1,5 @@
 //
-//  ActionState.h
+//  Actionable.h
 //  Theia
 //
 //  Created by Marc Jowett on 13/05/2022.
@@ -13,7 +13,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol ActionState <NSObject>
+@protocol Actionable <NSObject>
 
 @required
 @property (strong, nonatomic) UIAction *action;

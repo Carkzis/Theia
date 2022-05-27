@@ -1,16 +1,16 @@
 //
-//  SpeedActionState.h
+//  SpeedActionable.h
 //  Theia
 //
 //  Created by Marc Jowett on 13/05/2022.
 //
 
 #import <Foundation/Foundation.h>
-#import "ActionState.h"
+#import "Actionable.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SpeedActionState : NSObject <ActionState>
+@interface SpeedActionable : NSObject <Actionable>
 
 - (instancetype)initWithAction:(UIAction *)action;
 - (void)carryOutActionOnPlayer:(nonnull AVPlayer *)player;
