@@ -38,22 +38,31 @@ typedef NS_ENUM(NSUInteger, FixStatus) {
 - (void)carryOutActionOnPlayer:(nonnull AVPlayer *)player {
     if (isActive) {
         action.image = [images objectForKey:[NSNumber numberWithInteger:fixed]];
-        for (int actionIndex = 0; actionIndex < _delegates.count; actionIndex++) {
-            id<ActionState> currentAction = [_delegates objectAtIndex:actionIndex];
-            if ([currentAction respondsToSelector:@selector(resetValuesIncludingPlayer:)]) {
-                [currentAction resetValuesIncludingPlayer:player];
-            }
-        }
+        [self resetAllActionsOnPlayer:player];
     }
 }
 
 - (void)carryOutActionOnController:(ActionController *)controller {
     if (isActive) {
-        for (int actionIndex = 0; actionIndex < _delegates.count; actionIndex++) {
-            id<ActionState> currentAction = [_delegates objectAtIndex:actionIndex];
-            if ([currentAction respondsToSelector:@selector(resetValuesIncludingController:)]) {
-                [currentAction resetValuesIncludingController:controller];
-            }
+        action.image = [images objectForKey:[NSNumber numberWithInteger:fixed]];
+        [self resetAllActionsOnController:controller];
+    }
+}
+
+- (void)resetAllActionsOnPlayer:(nonnull AVPlayer *)player {
+    for (int actionIndex = 0; actionIndex < _delegates.count; actionIndex++) {
+        id<ActionState> currentAction = [_delegates objectAtIndex:actionIndex];
+        if ([currentAction respondsToSelector:@selector(resetValuesIncludingPlayer:)]) {
+            [currentAction resetValuesIncludingPlayer:player];
+        }
+    }
+}
+
+- (void)resetAllActionsOnController:(ActionController *)controller {
+    for (int actionIndex = 0; actionIndex < _delegates.count; actionIndex++) {
+        id<ActionState> currentAction = [_delegates objectAtIndex:actionIndex];
+        if ([currentAction respondsToSelector:@selector(resetValuesIncludingController:)]) {
+            [currentAction resetValuesIncludingController:controller];
         }
     }
 }
