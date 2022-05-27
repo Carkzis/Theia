@@ -105,77 +105,61 @@
 
 - (UIAction *)setUpAndRetrieveMuteActionForTransportBar {
     UIAction *muteAction = [UIAction actionWithTitle:@"Mute" image:_muteStateDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
-        [self setStatusOfPlayerToBroken];
-        [self.muteStateDelegate carryOutActionOnPlayer:self.player];
+        [self performAction:self.muteStateDelegate];
     }];
     return muteAction;
 }
 
 - (UIAction *)setUpAndRetrieveSpeedActionForTransportBar {
     UIAction *speedAction = [UIAction actionWithTitle:@"Speed" image:_speedStateDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
-        [self setStatusOfPlayerToBroken];
-        [self.speedStateDelegate carryOutActionOnPlayer:self.player];
+        [self performAction:self.speedStateDelegate];
     }];
     return speedAction;
 }
 
 - (UIAction *)setUpAndRetrieveTeleportActionForTransportBar {
     UIAction *teleportAction = [UIAction actionWithTitle:@"Teleport" image:_teleportStateDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
-        [self setStatusOfPlayerToBroken];
-        [self.teleportStateDelegate carryOutActionOnPlayer:self.player];
+        [self performAction:self.teleportStateDelegate];
     }];
     return teleportAction;
 }
 
 - (UIAction *)setUpAndRetrieveReversiActionForTransportBar {
     UIAction *reversiAction = [UIAction actionWithTitle:@"Reversi" image:_reversiStateDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
-        [self setStatusOfPlayerToBroken];
-        [self.reversiStateDelegate carryOutActionOnController:self];
+        [self performAction:self.reversiStateDelegate];
     }];
     return reversiAction;
 }
 
 - (UIAction *)setUpAndRetrieveConfusedActionForTransportBar {
     UIAction *confusedAction = [UIAction actionWithTitle:@"Confused" image:_confusedStateDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
-        [self setStatusOfPlayerToBroken];
-        [self.confusedStateDelegate carryOutActionOnPlayer:self.player];
+        [self performAction:self.confusedStateDelegate];
     }];
     return confusedAction;
 }
 
 - (UIAction *)setUpAndRetrieveApocalypseActionForTransportBar {
     UIAction *apocalypseAction = [UIAction actionWithTitle:@"Apocalypse" image:_apocalypseStateDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
-        [self setStatusOfPlayerToBroken];
-        [self.apocalypseStateDelegate carryOutActionOnPlayer:self.player];
+        [self performAction:self.apocalypseStateDelegate];
     }];
     return apocalypseAction;
 }
 
 - (UIAction *)setUpAndRetrieveFixActionForTransportBar {
     UIAction *fixAction = [UIAction actionWithTitle:@"Fix" image:_fixStateDelegate.defaultImage identifier:nil handler:^(__weak UIAction *action) {
-        [self setStatusOfPlayerToBroken];
-        [self.fixStateDelegate carryOutActionOnPlayer:self.player];
-        [self.fixStateDelegate carryOutActionOnController:self];
+        [self performAction:self.fixStateDelegate];
     }];
     return fixAction;
 }
 
-- (void)setStatusOfPlayerToBroken {
-    [self.fixActionAdditionalsDelegate setPlayerToBroken:self.player];
+- (void)performAction:(id<ActionState>)action {
+    [_fixActionAdditionalsDelegate setPlayerToBroken:_player];
+    if ([action respondsToSelector:@selector(carryOutActionOnPlayer:)]) {
+        [action carryOutActionOnPlayer:_player];
+    }
+    if ([action respondsToSelector:@selector(carryOutActionOnController:)]) {
+        [action carryOutActionOnController:self];
+    }
 }
-
-- (void)resetPlayerValues {
-    [self.muteStateDelegate resetValuesIncludingPlayer:_player];
-    [self.speedStateDelegate resetValuesIncludingPlayer:_player];
-    [self.teleportStateDelegate resetValuesIncludingPlayer:_player];
-    [self.reversiStateDelegate resetValuesIncludingController:self];
-    [self.confusedStateDelegate resetValuesIncludingPlayer:_player];
-    [self.apocalypseStateDelegate resetValuesIncludingPlayer:_player];
-    _isBroken = false;
-    
-    [self setUpTransportBar];
-}
-
-// TODO: If response to includingPlayer, if response to includingController.
 
 @end
