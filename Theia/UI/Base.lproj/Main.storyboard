@@ -44,11 +44,11 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="no1-2t-C3A">
-                                        <rect key="frame" x="204" y="187" width="261" height="86"/>
+                                        <rect key="frame" x="187" y="187" width="295" height="86"/>
                                         <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                                         <inset key="contentEdgeInsets" minX="35" minY="20" maxX="40" maxY="20"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="gray" title="Play Movie">
+                                        <buttonConfiguration key="configuration" style="gray" title="Play Content">
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
                                         <connections>
