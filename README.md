@@ -16,13 +16,13 @@ This will play media content on an Apple TV, but with the added bonus (sic) of a
 * You can run the app off a suitable emulator/Apple TV device.
 * On opening the app, you will see the below home screen.  Self-explanatory, but if you want to view the media content and enter the world of weird frustration, click "Play Content".
 
-    <img src="" width="300" />	
+    <img src="https://github.com/Carkzis/Theia/blob/main/Screenshots/home_screen.png?raw=true" width="800" />	
     
 * The content that will play is determined by the VIDEO_URL constant within the VideoURL.m file. The default is a presentation by some bloke from Apple.
 * You can change this to another source of content from both local and remote file-base media (e.g. MP3), or media served using HTTP Live Streaming; just change the address stored in the VIDEO_URL constant in Xcode and reload the app (it's faster than typing it into a textbox using a remote, and the feature to do so isn't implemented anyway).
 * After choosing to play the content, you will be taken to the player, as shown below:
 
-    <img src="" width="300" />
+    <img src="https://github.com/Carkzis/Theia/blob/main/Screenshots/player.png?raw=true" width="800" />
     
 * TO BE CONTINUED
 
