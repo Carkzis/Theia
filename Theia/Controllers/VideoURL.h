@@ -10,7 +10,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface VideoURL : NSObject
-    extern NSString *const VIDEO_URL;
+
+extern NSString *const VIDEO_URL;
+
 @end
 
 NS_ASSUME_NONNULL_END

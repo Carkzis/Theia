@@ -32,6 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithPlayer:(AVPlayer *)player
                     controller:(AVPlayerViewController *)controller;
 - (void)setUpTransportBar;
+
 @end
 
 NS_ASSUME_NONNULL_END
