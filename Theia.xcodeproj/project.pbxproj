@@ -18,9 +18,6 @@
 		E531D1202808170800E735BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E531D11F2808170800E735BA /* Assets.xcassets */; };
 		E531D1232808170800E735BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E531D1212808170800E735BA /* LaunchScreen.storyboard */; };
 		E531D1252808170800E735BA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E531D1242808170800E735BA /* main.m */; };
-		E531D12F2808170800E735BA /* TheiaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E531D12E2808170800E735BA /* TheiaTests.m */; };
-		E531D1392808170800E735BA /* TheiaUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E531D1382808170800E735BA /* TheiaUITests.m */; };
-		E531D13B2808170800E735BA /* TheiaUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E531D13A2808170800E735BA /* TheiaUITestsLaunchTests.m */; };
 		E53B4AF22832792E0007DEDC /* ReversiActionable.m in Sources */ = {isa = PBXBuildFile; fileRef = E53B4AF12832792E0007DEDC /* ReversiActionable.m */; };
 		E589A41B2833B66900AF65AD /* ConfusedActionable.m in Sources */ = {isa = PBXBuildFile; fileRef = E589A41A2833B66900AF65AD /* ConfusedActionable.m */; };
 		E5B726D52840BB2800B300EA /* FixActionable.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B726D42840BB2800B300EA /* FixActionable.m */; };
@@ -73,10 +70,7 @@
 		E531D1222808170800E735BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E531D1242808170800E735BA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E531D12A2808170800E735BA /* TheiaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheiaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E531D12E2808170800E735BA /* TheiaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TheiaTests.m; sourceTree = "<group>"; };
 		E531D1342808170800E735BA /* TheiaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheiaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E531D1382808170800E735BA /* TheiaUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TheiaUITests.m; sourceTree = "<group>"; };
-		E531D13A2808170800E735BA /* TheiaUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TheiaUITestsLaunchTests.m; sourceTree = "<group>"; };
 		E53B4AF02832792E0007DEDC /* ReversiActionable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReversiActionable.h; sourceTree = "<group>"; };
 		E53B4AF12832792E0007DEDC /* ReversiActionable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReversiActionable.m; sourceTree = "<group>"; };
 		E589A4192833B66900AF65AD /* ConfusedActionable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfusedActionable.h; sourceTree = "<group>"; };
@@ -159,8 +153,6 @@
 			isa = PBXGroup;
 			children = (
 				E531D1152808170600E735BA /* Theia */,
-				E531D12D2808170800E735BA /* TheiaTests */,
-				E531D1372808170800E735BA /* TheiaUITests */,
 				E531D1142808170600E735BA /* Products */,
 				B920E6522E844B4AB3EB8F45 /* Pods */,
 				15BF81776B0F5AC39684C188 /* Frameworks */,
@@ -187,23 +179,6 @@
 				E531D1242808170800E735BA /* main.m */,
 			);
 			path = Theia;
-			sourceTree = "<group>";
-		};
-		E531D12D2808170800E735BA /* TheiaTests */ = {
-			isa = PBXGroup;
-			children = (
-				E531D12E2808170800E735BA /* TheiaTests.m */,
-			);
-			path = TheiaTests;
-			sourceTree = "<group>";
-		};
-		E531D1372808170800E735BA /* TheiaUITests */ = {
-			isa = PBXGroup;
-			children = (
-				E531D1382808170800E735BA /* TheiaUITests.m */,
-				E531D13A2808170800E735BA /* TheiaUITestsLaunchTests.m */,
-			);
-			path = TheiaUITests;
 			sourceTree = "<group>";
 		};
 		E5B726DA28410ED900B300EA /* Actionables */ = {
@@ -485,7 +460,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E531D12F2808170800E735BA /* TheiaTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,8 +467,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E531D13B2808170800E735BA /* TheiaUITestsLaunchTests.m in Sources */,
-				E531D1392808170800E735BA /* TheiaUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
