@@ -13,12 +13,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RandomAction : NSObject
 
-    @property (strong, nonatomic) UIImage *image;
+@property (strong, nonatomic) UIImage *image;
 
-    - (nonnull instancetype)initWithAction:(UIAction *)action
-                                    player:(AVPlayer *)player
-                          transportBarController:(TransportBarController *)controller;
-    - (void)carryOutRandomAction:(NSArray *)actionDelegates;
+- (nonnull instancetype)initWithAction:(UIAction *)action
+                                player:(AVPlayer *)player
+                transportBarController:(TransportBarController *)controller;
+- (void)carryOutRandomAction:(NSArray *)actionDelegates;
 
 @end
 

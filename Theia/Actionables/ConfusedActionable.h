@@ -12,11 +12,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ConfusedActionable : NSObject <Actionable, UnexpectedAction>
+
 - (instancetype)initWithAction:(UIAction *)action;
 - (void)carryOutActionOnPlayer:(AVPlayer *)player;
 - (void)resetValuesIncludingPlayer:(AVPlayer *)player;
 
 - (void)mayDoUnexpectedActionOnPlayerIfConfused:(nonnull AVPlayer *)player;
+
 @end
 
 NS_ASSUME_NONNULL_END

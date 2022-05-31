@@ -7,16 +7,22 @@
 
 #import "ApocalypseActionable.h"
 
+/**
+ Actionable for the state and behaviour of the apocalypse ("Apocalypse") action, including its icon images.
+ If this is activated a certain number of times defined by the ApocalypseEnumerator, without being reset, the app will close.
+ */
 @interface ApocalypseActionable()
-    @property (nonatomic) NSInteger apocalypseLevel;
-    @property (strong, nonatomic) ApocalypseEnumerator *enumerator;
+
+@property (nonatomic) NSInteger apocalypseLevel;
+@property (strong, nonatomic) ApocalypseEnumerator *enumerator;
+
 @end
 
 @implementation ApocalypseActionable
-    @synthesize action;
-    @synthesize defaultImage;
-    @synthesize images;
-    @synthesize isActive;
+@synthesize action;
+@synthesize defaultImage;
+@synthesize images;
+@synthesize isActive;
 
 - (nonnull instancetype)initWithAction:(nonnull UIAction *)action {
     if (self = [super init]) {
@@ -31,6 +37,9 @@
     return self;
 }
 
+/**
+ Sets up the images for the Actionable, with a different one for each state.
+ */
 - (void)setUpImages {
     defaultImage = [UIImage systemImageNamed:@"circle"];
     action.image = defaultImage;

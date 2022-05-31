@@ -7,15 +7,17 @@
 
 #import <Foundation/Foundation.h>
 #import "Actionable.h"
-#import "FixActionAdditionals.h"
+#import "FixActionableAdditionals.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FixActionable : NSObject <Actionable, FixActionAdditionals>
+@interface FixActionable : NSObject <Actionable, FixActionableAdditionals>
+
 - (instancetype)initWithAction:(UIAction *)action;
 - (void)carryOutActionOnPlayer:(nonnull AVPlayer *)player;
 - (void)carryOutActionOnController:(TransportBarController *)controller;
 - (void)passInActionDelegates:(NSArray *)delegates;
+
 @end
 
 NS_ASSUME_NONNULL_END

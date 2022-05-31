@@ -77,7 +77,7 @@
 		E589A41A2833B66900AF65AD /* ConfusedActionable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfusedActionable.m; sourceTree = "<group>"; };
 		E5B726D32840BB2800B300EA /* FixActionable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FixActionable.h; sourceTree = "<group>"; };
 		E5B726D42840BB2800B300EA /* FixActionable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FixActionable.m; sourceTree = "<group>"; };
-		E5B726D62840E4C000B300EA /* FixActionAdditionals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FixActionAdditionals.h; sourceTree = "<group>"; };
+		E5B726D62840E4C000B300EA /* FixActionableAdditionals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FixActionableAdditionals.h; sourceTree = "<group>"; };
 		E5B726D72840F1FF00B300EA /* RandomAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RandomAction.h; sourceTree = "<group>"; };
 		E5B726D82840F1FF00B300EA /* RandomAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RandomAction.m; sourceTree = "<group>"; };
 		E5B726DE2841129F00B300EA /* VideoURL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoURL.h; sourceTree = "<group>"; };
@@ -192,8 +192,8 @@
 				E5F930AD2832401B003AFE6A /* TeleportActionable.h */,
 				E5F930AE2832401B003AFE6A /* TeleportActionable.m */,
 				E53B4AF02832792E0007DEDC /* ReversiActionable.h */,
-				E589A4192833B66900AF65AD /* ConfusedActionable.h */,
 				E53B4AF12832792E0007DEDC /* ReversiActionable.m */,
+				E589A4192833B66900AF65AD /* ConfusedActionable.h */,
 				E589A41A2833B66900AF65AD /* ConfusedActionable.m */,
 				E50CFAB42833F47B008CB01B /* UnexpectedAction.h */,
 				E50CFAB52833F9EA008CB01B /* ApocalypseActionable.h */,
@@ -202,7 +202,7 @@
 				E50CFAB92833FA02008CB01B /* ApocalypseEnumerator.m */,
 				E5B726D32840BB2800B300EA /* FixActionable.h */,
 				E5B726D42840BB2800B300EA /* FixActionable.m */,
-				E5B726D62840E4C000B300EA /* FixActionAdditionals.h */,
+				E5B726D62840E4C000B300EA /* FixActionableAdditionals.h */,
 				E5B726D72840F1FF00B300EA /* RandomAction.h */,
 				E5B726D82840F1FF00B300EA /* RandomAction.m */,
 			);

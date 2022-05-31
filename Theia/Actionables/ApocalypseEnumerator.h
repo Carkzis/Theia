@@ -11,15 +11,17 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ApocalypseEnumerator : NSObject
-    typedef NS_ENUM(NSUInteger, ApocalypseLevel) {
-        notDying = 0,
-        dying = 1,
-        nearDeath = 2,
-        apocalypse = 3,
-        end = 4
-    };
-    - (NSUInteger)retrieveNextApocalypseLevel;
-    - (void)resetApocalypseLevel;
+
+typedef NS_ENUM(NSUInteger, ApocalypseLevel) {
+    notDying = 0,
+    dying = 1,
+    nearDeath = 2,
+    apocalypse = 3,
+    end = 4
+};
+- (NSUInteger)retrieveNextApocalypseLevel;
+- (void)resetApocalypseLevel;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -9,9 +9,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ Protocol for allowing an unexpected action to potentially occur on the player.
+ */
 @protocol UnexpectedAction <NSObject>
+
 @optional
+
 - (void)mayDoUnexpectedActionOnPlayerIfConfused:(nonnull AVPlayer *)player;
+
 @end
 
 NS_ASSUME_NONNULL_END

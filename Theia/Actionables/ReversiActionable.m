@@ -12,6 +12,10 @@ typedef NS_ENUM(NSUInteger, Reverseness) {
     reversi = 1
 };
 
+/**
+ Actionable for the state and behaviour of the reversi ("Reversi") action, including its icon images.
+ Causes the Transport Bar item positions to reverse themselves.
+ */
 @implementation ReversiActionable
 
 @synthesize action;
@@ -48,6 +52,9 @@ typedef NS_ENUM(NSUInteger, Reverseness) {
     }
 }
 
+/**
+ Reverses the Transport Bar items.
+ */
 - (void)reverseTransportBarOnController:(TransportBarController *)controller {
     NSArray *reversedArray = [[controller.playerController.transportBarCustomMenuItems reverseObjectEnumerator] allObjects];
     controller.playerController.transportBarCustomMenuItems = reversedArray;

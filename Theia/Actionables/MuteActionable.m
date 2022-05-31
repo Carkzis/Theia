@@ -12,6 +12,10 @@ typedef NS_ENUM(NSUInteger, Muteness) {
     muted = 1
 };
 
+/**
+ Actionable for the state and behaviour of the mute ("Silence") action, including its icon images.
+ Mutes and unmutes the player.
+ */
 @implementation MuteActionable
 
 @synthesize action;

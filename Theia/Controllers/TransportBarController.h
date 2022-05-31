@@ -18,7 +18,7 @@
 #import "UnexpectedAction.h"
 #import "ApocalypseActionable.h"
 #import "FixActionable.h"
-#import "FixActionAdditionals.h"
+#import "FixActionableAdditionals.h"
 #import "RandomAction.h"
 
 NS_ASSUME_NONNULL_BEGIN

@@ -12,9 +12,16 @@ typedef NS_ENUM(NSUInteger, TeleportStatus) {
     teleported = 1
 };
 
+/**
+ Actionable for the state and behaviour of the teleport ("Teleport") action, including its icon images.
+ Randomly changes the playback position within the player, and returns to the original, cached position
+ when inactivated.
+ */
 @interface TeleportActionable()
-    @property (strong, nonatomic) NSMutableDictionary *speeds;
-    @property (nonatomic) CMTime originalPosition;
+
+@property (strong, nonatomic) NSMutableDictionary *speeds;
+@property (nonatomic) CMTime originalPosition;
+
 @end
 
 @implementation TeleportActionable
@@ -34,6 +41,9 @@ typedef NS_ENUM(NSUInteger, TeleportStatus) {
     return self;
 }
 
+/**
+ Sets up the images for the Actionable, with a different one for each state.
+ */
 - (void)setUpImages {
     defaultImage = [UIImage systemImageNamed:@"lasso.and.sparkles"];
     action.image = defaultImage;
@@ -57,11 +67,17 @@ typedef NS_ENUM(NSUInteger, TeleportStatus) {
     }
 }
 
+/**
+ Retrieves the current player item time.
+ */
 - (CMTime)getCurrentPlayerItemTime:(AVPlayerItem *)playerItem {
     CMTime cachedPosition = playerItem.currentTime;
     return cachedPosition;
 }
 
+/**
+ Generates a new, random player position within the confines of the player item.
+ */
 - (CMTime)generateRandomPlayerPosition:(AVPlayerItem *)playerItem {
     CMTimeValue timeValue = playerItem.duration.value;
     CMTimeScale timeScale = playerItem.duration.timescale;
@@ -70,6 +86,9 @@ typedef NS_ENUM(NSUInteger, TeleportStatus) {
     return formattedTeleportTime;
 }
 
+/**
+ Changes the current playback position.
+ */
 - (void)teleportToPosition:(CMTime)timePosition withPlayer:(nonnull AVPlayer *)player {
     [player seekToTime:timePosition];
 }

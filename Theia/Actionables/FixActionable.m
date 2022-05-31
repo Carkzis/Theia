@@ -12,16 +12,23 @@ typedef NS_ENUM(NSUInteger, FixStatus) {
     broken = 1
 };
 
+/**
+ Actionable for the state and behaviour of the fix ("Fix") action, including its icon images.
+ It is activating whenever any other Actionable is in activated,
+ and will reset all Actionables to their default values.
+ */
 @interface FixActionable()
-    @property (nonatomic) NSArray *delegates;
-    @property (nonatomic) int resetCompleteCounter;
+
+@property (nonatomic) NSArray *delegates;
+@property (nonatomic) int resetCompleteCounter;
+
 @end
 
 @implementation FixActionable
-    @synthesize action;
-    @synthesize defaultImage;
-    @synthesize images;
-    @synthesize isActive;
+@synthesize action;
+@synthesize defaultImage;
+@synthesize images;
+@synthesize isActive;
 
 - (nonnull instancetype)initWithAction:(nonnull UIAction *)action {
     if (self = [super init]) {
@@ -73,6 +80,9 @@ typedef NS_ENUM(NSUInteger, FixStatus) {
     [self resetValues];
 }
 
+/**
+ Resets the FixActionable values.
+ */
 - (void)resetValues {
     if (_resetCompleteCounter == 2) {
         NSLog(@"Fixed");
@@ -86,6 +96,9 @@ typedef NS_ENUM(NSUInteger, FixStatus) {
     _delegates = delegates;
 }
 
+/**
+ Sets the FixActionable to the broken, making it active and changing the icon image.
+ */
 - (void)setPlayerToBroken:(nonnull AVPlayer *)player {
     isActive = true;
     action.image = [images objectForKey:[NSNumber numberWithInteger:broken]];

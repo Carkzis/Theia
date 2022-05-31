@@ -15,8 +15,15 @@ typedef NS_ENUM(NSUInteger, Speed) {
     superfast = 4
 };
 
+/**
+ Actionable for the state and behaviour of the speed ("Slow/Haste") actions, including its icon images.
+ Randomly changes the playback speed of the player, the options being
+ superslow, slow, standard, fast and superfast.
+ */
 @interface SpeedActionable()
-    @property (strong, nonatomic) NSMutableDictionary *speeds;
+
+@property (strong, nonatomic) NSMutableDictionary *speeds;
+
 @end
 
 @implementation SpeedActionable
@@ -38,6 +45,9 @@ typedef NS_ENUM(NSUInteger, Speed) {
     return self;
 }
 
+/**
+ Sets up the images for the Actionable, with a different one for each speed.
+ */
 - (void)setUpImages {
     self.defaultImage = [UIImage systemImageNamed:@"figure.walk"];
     self.action.image = defaultImage;
@@ -49,6 +59,9 @@ typedef NS_ENUM(NSUInteger, Speed) {
     [images setObject: [UIImage systemImageNamed:@"pawprint.fill"] forKey:[NSNumber numberWithInteger:superfast]];
 }
 
+/**
+ Sets up the speeds for the Actionable, deciding the multiplier for each speed level.
+ */
 - (void)setUpSpeeds {
     self.speeds = [NSMutableDictionary dictionary];
     [_speeds setObject: @[@0.25, @"Superslow"] forKey: [NSNumber numberWithInteger:superslow]];

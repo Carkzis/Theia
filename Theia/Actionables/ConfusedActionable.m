@@ -12,6 +12,10 @@ typedef NS_ENUM(NSUInteger, Confusedness) {
     confused = 1
 };
 
+/**
+ Actionable for the state and behaviour of the confused ("Confused") action, including its icon images.
+ Randomly results in the player pausing/playing when pressing the directional button whilst on the Transport Bar.
+ */
 @implementation ConfusedActionable
 
 @synthesize action;
@@ -49,6 +53,9 @@ typedef NS_ENUM(NSUInteger, Confusedness) {
     action.image = defaultImage;
 }
 
+/**
+ If the Actionable is active, may randomly do an unexpected action on the player; this does nothing otherwise.
+ */
 - (void)mayDoUnexpectedActionOnPlayerIfConfused:(nonnull AVPlayer *)player  {
     if (isActive) {
         [self doUnexpectedActionOnPlayer:player];
@@ -57,6 +64,9 @@ typedef NS_ENUM(NSUInteger, Confusedness) {
     }
 }
 
+/**
+ Results in a 20% chance of pausing if the player is currently playing, or playing if the player is currently paused.
+ */
 - (void)doUnexpectedActionOnPlayer:(nonnull AVPlayer *)player  {
     NSUInteger randomIndex = arc4random() % 100;
     if (randomIndex < 20) {

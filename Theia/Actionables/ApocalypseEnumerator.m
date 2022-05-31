@@ -7,8 +7,14 @@
 
 #import "ApocalypseEnumerator.h"
 
+/**
+ Enumerator for the Apocalypse Actionable.
+ There are 5 states; not dying (0), dying (1), near death (2), apocalypse (3) and end (4, the final state).
+ */
 @interface ApocalypseEnumerator()
-    @property (nonatomic) NSInteger apocalypseLevel;
+
+@property (nonatomic) NSInteger apocalypseLevel;
+
 @end
 
 @implementation ApocalypseEnumerator
@@ -20,11 +26,17 @@
     return self;
 }
 
+/**
+ Returns the apocalypse level after incrementing it.
+ */
 - (NSUInteger)retrieveNextApocalypseLevel {
     _apocalypseLevel++;
     return _apocalypseLevel;
 }
 
+/**
+ Resets the apocalpse level to 0 (not dying).
+ */
 - (void)resetApocalypseLevel {
     _apocalypseLevel = 0;
 }

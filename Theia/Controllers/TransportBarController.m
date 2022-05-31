@@ -32,7 +32,7 @@
 @property (strong, nonatomic) id<Actionable> confusedActionableDelegate;
 @property (strong, nonatomic) id<Actionable> apocalypseActionableDelegate;
 @property (strong, nonatomic) id<Actionable> fixActionableDelegate;
-@property (strong, nonatomic) id<FixActionAdditionals> fixActionAdditionalsDelegate;
+@property (strong, nonatomic) id<FixActionableAdditionals> fixActionAdditionalsDelegate;
 
 @property (strong, nonatomic) NSArray *delegates;
 
@@ -90,7 +90,7 @@
     _unexpectedAction = (id<UnexpectedAction>)_confusedActionableDelegate;
     _apocalypseActionableDelegate = [[ApocalypseActionable alloc] initWithAction:_apocalypseAction];
     _fixActionableDelegate = [[FixActionable alloc] initWithAction:_fixAction];
-    _fixActionAdditionalsDelegate = (id<FixActionAdditionals>)_fixActionableDelegate;
+    _fixActionAdditionalsDelegate = (id<FixActionableAdditionals>)_fixActionableDelegate;
     
     _delegates = @[_muteActionableDelegate, _speedActionableDelegate, _teleportActionableDelegate, _reversiActionableDelegate, _confusedActionableDelegate, _apocalypseActionableDelegate];
     [_fixActionAdditionalsDelegate passInActionDelegates:_delegates];
